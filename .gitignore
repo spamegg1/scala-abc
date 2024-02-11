@@ -36,10 +36,10 @@ metals.sbt
 /.worksheet/
 
 # Misc.
-.py
-.jpg
-.png
-.rkt
-.js
-.pdf
-.sml
+*.py
+*.jpg
+*.png
+*.rkt
+*.js
+*.pdf
+*.sml
