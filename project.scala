@@ -1,4 +1,4 @@
-//> using scala 3.3.1
+//> using scala 3.4.0
 //> using platform jvm scala-native
 //> using resourceDir ./src/main/resources
 //> using test.resourceDir ./test/main/resources
@@ -9,7 +9,7 @@
 //> using dep io.spray::spray-json:1.3.6
 //> using dep org.scala-lang.modules::scala-xml:2.2.0
 //> using dep org.xerial:sqlite-jdbc:3.45.1.0
-//> using dep com.typesafe.slick::slick:3.5.0-RC1
+//> using dep com.typesafe.slick::slick:3.5.0
 //> using dep org.scala-graph:graph-core_2.13:2.0.1
 //> using dep com.github.cascala:galileo_2.13:0.1.3
 //> using dep at.logic.gapt:gapt_2.13:2.16.0

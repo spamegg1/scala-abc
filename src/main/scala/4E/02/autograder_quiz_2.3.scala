@@ -12,7 +12,8 @@
 // This first line is provided for you
 import scala.io.StdIn.readLine
 
-@main def basicPay =
+@main
+def basicPay =
   val hour = readLine("Enter Hours: ").toDouble
   val rate = readLine("Enter rate per hour: ").toDouble
   println(f"Pay: ${hour * rate}")

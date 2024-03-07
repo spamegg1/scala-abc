@@ -208,4 +208,6 @@ def nextTank(tank: Tank): Tank = tank.direction match
   case Left  => Tank(math.max(-WIDTH / 2, tank.x - TANKSPEED), Left)
   case Right => Tank(math.min(WIDTH / 2, tank.x + TANKSPEED), Right)
 
+// un-comment to start game!
 // main(GameState(Nil, Nil, Tank(0.0, Left)))
+2 + 3

@@ -23,12 +23,12 @@ def students1 =
   val p4 = Person("John")
 
   val p = Person("Spam Egg")
-  println(p.getName)        // Spam
-  println(p.getLastName)    // Egg
+  println(p.getName) // Spam
+  println(p.getLastName) // Egg
   p.setBirthday(6, 7, 1985)
-  println(p.getAge)         // 37
+  println(p.getAge) // 37
 
   val q = Person("Ham Python")
-  println(p compare q)   // true
+  println(p `compare` q) // true
   println(isStudent1(s1)) // true
-  println(isStudent1(q))  // false
+  println(isStudent1(q)) // false

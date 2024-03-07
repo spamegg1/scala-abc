@@ -15,11 +15,11 @@ class LineSegment(
 
   def shift(dx: Double, dy: Double): GeoVal =
     LineSegment(x1 + dx, y1 + dy, x2 + dx, y2 + dy)
-  def intersect(that: GeoVal): GeoVal = that intersectLineSegment this
-  def intersectPoint(that: Point): GeoVal = that intersectLineSegment this
-  def intersectLine(that: Line): GeoVal = that intersectLineSegment this
+  def intersect(that: GeoVal): GeoVal = that `intersectLineSegment` this
+  def intersectPoint(that: Point): GeoVal = that `intersectLineSegment` this
+  def intersectLine(that: Line): GeoVal = that `intersectLineSegment` this
   def intersectVerticalLine(that: VerticalLine): GeoVal =
-    that intersectLineSegment this
+    that `intersectLineSegment` this
 
   def intersectWithSegmentAsLineResult(that: LineSegment): GeoVal =
     if GeoVal.realClose(x1, x2) then // segments are on a vertical line

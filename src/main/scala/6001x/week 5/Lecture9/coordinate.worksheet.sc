@@ -10,7 +10,7 @@ case class Coordinate(x: Double, y: Double):
 
   def -(other: Coordinate) = Coordinate(x - other.x, y - other.y)
 
-val c = Coordinate(3,4)
-val origin = Coordinate(0,0)
-c distance origin
+val c = Coordinate(3, 4)
+val origin = Coordinate(0, 0)
+c `distance` origin
 origin - c
