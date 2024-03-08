@@ -19,7 +19,6 @@
 import scala.io.Source.fromResource
 
 val file = fromResource("mbox-short.txt")
-
 //val resourcePath = os.pwd/"src"/"main"/"resources"
 //val fileName = resourcePath/"mbox-short.txt"
 

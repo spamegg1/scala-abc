@@ -21,7 +21,8 @@ def computepay(hour: Int, rate: Double) =
   if hour <= 40 then hour * rate
   else (hour - 40) * 1.5 * rate + 40 * rate
 
-@main def timeAndAHalf =
+@main
+def timeAndAHalf =
   val hour = readLine("Enter Hours: ").toInt
   val rate = readLine("Enter rate per hour: ").toDouble
   println(f"Pay ${computepay(hour, rate)}")

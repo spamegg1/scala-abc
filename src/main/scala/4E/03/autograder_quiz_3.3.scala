@@ -15,7 +15,8 @@
 // B
 import scala.io.StdIn.readLine
 
-@main def score =
+@main
+def score =
   val score = readLine("Enter Score: ").toDouble
 
   if score < 0 || score > 1 then println("Error! Score out of range [0.0, 1.0]")

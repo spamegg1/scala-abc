@@ -12,23 +12,21 @@
 import scala.io.StdIn.readLine
 import util.boundary, boundary.break
 
-@main def minMax =
+@main
+def minMax =
   var largest: Option[Int] = None
   var smallest: Option[Int] = None
 
   boundary:
-    while true
-    do
+    while true do
       val num = readLine("Enter a number: ")
-
       if num == "done" then break()
+
       try
         val int = num.toInt
-
         if smallest.isDefined then
           if int < smallest.get then smallest = Some(int)
         else smallest = Some(int)
-
         if largest.isDefined then
           if int > largest.get then largest = Some(int)
         else largest = Some(int)

@@ -13,7 +13,8 @@
 // 498.75
 import scala.io.StdIn.*
 
-@main def complicatedPay =
+@main
+def complicatedPay =
   val hour = readLine("Enter Hours: ").toDouble
   val rate = readLine("Enter rate per hour: ").toDouble
   val pay =
