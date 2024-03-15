@@ -44,35 +44,28 @@
 // using the re.findall(), looking for a regular expression of '[0-9]+'
 // and then converting the extracted strings to integers and summing up the
 // integers.
-
+import scala.util.Using
 import scala.io.Source.fromResource
 
 val sample = "regex_sum_42.txt" // 445833
 val data = "regex_sum_1129910.txt" // 492327
-val file = fromResource(data) // test with open(sample) first
-
 val numberPattern = "[0-9]+".r
 
-val strings =
-  for line <- file.getLines
-  yield numberPattern.findAllIn(line).toList
-
-val numbers =
-  strings.flatten
-    .map(_.toInt)
-
-println(numbers.sum)
-file.close()
+Using.resource(fromResource(data)): file =>
+  val strings = for line <- file.getLines yield numberPattern.findAllIn(line).toList
+  val numbers = strings.flatten.map(_.toInt)
+  numbers.sum
 
 // Optional: Just for Fun
 // There are a number of different ways to approach this problem. While we don't
 // recommend trying to write the most compact code possible, it can sometimes be
 // a fun exercise. Here is a a redacted version of two-line version of this
 // program:
-fromResource("regex_sum_1129910.txt").getLines
-  .flatMap(line => "[0-9]+".r.findAllIn(line).toList)
-  .map(_.toInt)
-  .sum
+Using.resource(fromResource("regex_sum_1129910.txt")): inFile =>
+  inFile.getLines
+    .flatMap(line => "[0-9]+".r.findAllIn(line).toList)
+    .map(_.toInt)
+    .sum
 
 // Please don't waste a lot of time trying to figure out the shortest solution
 // until you have completed the homework. List comprehension is mentioned in

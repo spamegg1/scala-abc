@@ -2,9 +2,10 @@ package ocw2016.ps3
 
 import math.*
 import util.Random.*
-import util.control.Breaks.*
 import scala.io.Source.fromResource
 import scala.io.StdIn.readLine
+import scala.util.Using
+import scala.util.boundary, boundary.break
 
 type Hand = Map[Char, Int]
 type Words = List[String]
@@ -49,21 +50,15 @@ val SCRABBLE = Map(
 // Helper code
 // (you don't need to understand this helper code)
 def loadWords(fileName: String) =
-  /** fileName (string) = the name of the file containing the list of words to
-    * load Returns: a list of valid words. Words are strings of lowercase
-    * letters. Depending on the size of the word list, this function may take a
-    * while to finish.
+  /** fileName (string) = the name of the file containing the list of words to load
+    * Returns: a list of valid words. Words are strings of lowercase letters. Depending on
+    * the size of the word list, this function may take a while to finish.
     */
   println("Loading word list from file...")
-  val inFile = fromResource(fileName)
-  val wordList = inFile.getLines
-    .map(_.toLowerCase)
-    .toList
-
-  println(wordList.length.toString + " words loaded.")
-  inFile.close()
-
-  wordList
+  Using.resource(fromResource(fileName)): inFile =>
+    val wordList = inFile.getLines.map(_.toLowerCase).toList
+    println(s"${wordList.length} words loaded.")
+    wordList
 
 def getFreqMap(word: String) =
   // Returns a dictionary where the keys are elements of the sequence
@@ -112,9 +107,7 @@ def displayHand(hand: Hand): Unit =
   //     a x x l l l e
   // The order of the letters is unimportant.
   // hand: dictionary (string -> int)
-  val letters: Iterable[String] =
-    for (letter, count) <- hand
-    yield s"$letter " * count
+  val letters: Iterable[String] = for (letter, count) <- hand yield s"$letter " * count
   println(s"Current hand: ${letters.mkString}")
 
 // Make sure you understand how this function works and what it does!
@@ -129,12 +122,10 @@ def dealHand(handSize: Int, numVowels: Int): Hand =
   // n: int >= 0
   // returns: dictionary (string -> int)
   val vowels: Iterable[Char] =
-    for _ <- 1 to numVowels
-    yield VOWELS(between(0, VOWELS.size))
+    for _ <- 1 to numVowels yield VOWELS(between(0, VOWELS.size))
 
   val consonants: Iterable[Char] =
-    for _ <- numVowels + 1 to handSize
-    yield CONSONANTS(between(0, CONSONANTS.size))
+    for _ <- numVowels + 1 to handSize yield CONSONANTS(between(0, CONSONANTS.size))
 
   getFreqMap(vowels.mkString + consonants.mkString)
 
@@ -154,11 +145,10 @@ def updateHand(hand: Hand, word: String): Hand =
   // returns: dictionary (string -> int)
   val wordLower = word.toLowerCase
   val handFromWord: Hand = getFreqMap(wordLower)
-  hand.map((letter, count) =>
+  hand.map: (letter, count) =>
     handFromWord.get(letter) match
       case Some(num) => (letter, count - num)
       case None      => (letter, count)
-  )
 
 // Problem #3: Test word validity
 def isValidWord(word: String, hand: Hand, wordList: Words): Boolean =
@@ -171,9 +161,8 @@ def isValidWord(word: String, hand: Hand, wordList: Words): Boolean =
   // returns: boolean
   val wordLower = word.toLowerCase
   val wordHand: Hand = getFreqMap(wordLower)
-  val wordIsInHand: Boolean = wordLower.forall(char =>
+  val wordIsInHand: Boolean = wordLower.forall: char =>
     hand.contains(char) && wordHand(char) <= hand(char)
-  )
   wordIsInHand && wordList.contains(wordLower)
 
 // Problem #5: Playing a hand
@@ -218,16 +207,15 @@ def playHand(hand: Hand, words: Words, num: Int): Unit =
   // Game is over (user entered "!!" or ran out of letters),
   // so tell user the total score
   // Return the total score as result of function
+
   var score: Int = 0
   var currentHand: Hand = hand
-  breakable(
-    while calculateHandlen(currentHand) > 0
-    do
+  boundary:
+    while calculateHandlen(currentHand) > 0 do
       displayHand(currentHand)
-      val word: String = readLine(
-        "Enter a word, or a . to indicate you are finished: "
-      )
-      if word == "." then break
+      val word: String = readLine("Enter a word, or a . to indicate you are finished: ")
+
+      if word == "." then break()
       else if !isValidWord(word, hand, words) then
         println("Invalid word, please try again.")
       else
@@ -235,7 +223,7 @@ def playHand(hand: Hand, words: Words, num: Int): Unit =
         score += wordScore
         println(s"$word earned $wordScore points. Total: $score points.")
         currentHand = updateHand(currentHand, word)
-  )
+
   if calculateHandlen(currentHand) == 0 then
     println(s"Ran out of letters. Total score: $score points.")
   else println(s"Goodbye! Total score: $score points.")
@@ -261,16 +249,8 @@ def substituteHand(hand: Hand, letter: Char) =
 
   if !hand.contains(letter) then hand
   else
-    val availableLetters =
-      for
-        l <- VOWELS + CONSONANTS
-        if !hand.contains(l)
-      yield l
-
-    hand.updated(
-      letter,
-      availableLetters(nextInt(availableLetters.length))
-    )
+    val availableLetters = for l <- VOWELS + CONSONANTS if !hand.contains(l) yield l
+    hand.updated(letter, availableLetters(nextInt(availableLetters.length)))
 
 def playGame(words: Words, handSize: Int, vowelRatio: Int): Unit =
   // Allow the user to play a series of hands
@@ -298,24 +278,21 @@ def playGame(words: Words, handSize: Int, vowelRatio: Int): Unit =
   var lastHand: Hand = Map()
   var command: String = ""
 
-  while true
-  do
-    command = readLine(
-      "Enter n to deal a new hand, r to replay last hand, or e to end the game: "
-    )
-    while command == "r" && lastHand.isEmpty
-    do
-      println("You have not played a hand yet. Please play a new hand first!")
-      command = readLine(
-        "Enter n to deal a new hand, r to replay last hand, or e to end the game: "
-      )
-    if command == "n" then
-      val newHand = dealHand(handSize, handSize / vowelRatio)
-      lastHand = newHand
-      playHand(newHand, words, handSize)
-    if command == "r" then playHand(lastHand, words, handSize)
-    if command == "e" then return
-    if !List("e", "n", "r").contains(command) then println("Invalid command.")
+  val msg = "Enter n to deal a new hand, r to replay last hand, or e to end the game: "
+
+  boundary:
+    while true do
+      command = readLine(msg)
+      while command == "r" && lastHand.isEmpty do
+        println("You have not played a hand yet. Please play a new hand first!")
+        command = readLine(msg)
+      if command == "n" then
+        val newHand = dealHand(handSize, handSize / vowelRatio)
+        lastHand = newHand
+        playHand(newHand, words, handSize)
+      if command == "r" then playHand(lastHand, words, handSize)
+      if command == "e" then break()
+      if !List("e", "n", "r").contains(command) then println("Invalid command.")
 
 // Build data structures used for entire session and play game
 // Do not remove the "if __name__ == "__main__":" line - this code is executed

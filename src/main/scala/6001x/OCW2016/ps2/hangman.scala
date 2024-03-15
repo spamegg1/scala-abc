@@ -1,7 +1,8 @@
 import util.Random.*
-import util.control.Breaks.*
 import scala.io.Source.fromResource
 import scala.io.StdIn.readLine
+import scala.util.Using
+import scala.util.boundary, boundary.break
 
 type Word = String
 
@@ -20,13 +21,10 @@ val VOWELS = "aeiou"
 def loadWords(fileName: String) =
   println("Loading word list from file...")
 
-  val inFile = fromResource(fileName)
-  val wordList = inFile.mkString.split(" ").toList
-
-  println(wordList.length.toString + " words loaded.")
-  inFile.close()
-
-  wordList
+  Using.resource(fromResource(fileName)): inFile =>
+    val wordList = inFile.mkString.split(" ").toList
+    println(s"${wordList.length} words loaded.")
+    wordList
 
 def chooseWord(wordList: List[Word]) =
   // wordList (list): list of words (strings)
@@ -43,7 +41,7 @@ def isWordGuessed(secretWord: Word, lettersGuessed: List[Char]) =
   //   assumes that all letters are lowercase
   // returns: boolean, True if all the letters of secretWord are in lettersGuessed;
   //   False otherwise
-  secretWord.forall(letter => lettersGuessed.contains(letter))
+  secretWord.forall(lettersGuessed.contains)
 
 def getGuessedWord(secretWord: Word, lettersGuessed: List[Char]) =
   // secretWord: string, the word the user is guessing
@@ -58,9 +56,7 @@ def getAvailableLetters(lettersGuessed: List[Char]) =
   // lettersGuessed: list (of letters), which letters have been guessed so far
   // returns: string (of letters), comprised of letters that represents which
   //   letters have not yet been guessed.
-  LOWER
-    .filter(char => !lettersGuessed.contains(char))
-    .mkString
+  LOWER.filter(!lettersGuessed.contains(_)).mkString
 
 def hangman(secretWord: Word) =
   // secretWord: string, the secret word to guess.
@@ -88,9 +84,8 @@ def hangman(secretWord: Word) =
   println(s"I am thinking of a word that is ${secretWord.length} letters long.")
   println(s"You have ${warningsLeft} warnings left.")
 
-  breakable(
-    while guessesLeft > 0
-    do
+  boundary:
+    while guessesLeft > 0 do
       println("-------------")
       println(s"You have ${guessesLeft} guesses left.")
       println(s"Available letters: ${getAvailableLetters(lettersGuessed)}")
@@ -134,10 +129,9 @@ def hangman(secretWord: Word) =
         score = guessesLeft * secretWord.distinct.size
         println("Congratulations, you won!")
         println(s"Your total score for this game is: ${score}")
-        break
-  )
-  if !wonGame then
-    println(s"Sorry, you ran out of guesses. The word was ${secretWord}.")
+        break()
+
+  if !wonGame then println(s"Sorry, you ran out of guesses. The word was ${secretWord}.")
 
 def matchWithGaps(myWord: Word, otherWord: Word) =
   // myWord: string with _ characters, current guess of secret word
@@ -172,7 +166,8 @@ def hangmanWithHints(secretWord: Word, wordList: List[Word]) =
   // * The user should start with 6 guesses
   // * Before each round, you should display to the user how many guesses
   //   s/he has left and the letters that the user has not yet guessed.
-  // * Ask the user to supply one guess per round. Make sure to check that the user guesses a letter
+  // * Ask the user to supply one guess per round.
+  //   Make sure to check that the user guesses a letter
   // * The user should receive feedback immediately after each guess
   //   about whether their guess appears in the computer's word.
   // * After each guess, you should display to the user the
@@ -191,9 +186,8 @@ def hangmanWithHints(secretWord: Word, wordList: List[Word]) =
   println(s"I am thinking of a word that is ${secretWord.length} letters long.")
   println(s"You have ${warningsLeft} warnings left.")
 
-  breakable(
-    while guessesLeft > 0
-    do
+  boundary:
+    while guessesLeft > 0 do
       println("-------------")
       println(s"You have ${guessesLeft} guesses left.")
       println(s"Available letters: ${getAvailableLetters(lettersGuessed)}")
@@ -206,14 +200,11 @@ def hangmanWithHints(secretWord: Word, wordList: List[Word]) =
           showPossibleMatches(guessesSoFar, wordList)
         else if warningsLeft > 0 then
           warningsLeft -= 1
-          println(
-            s"Oops! That is not a valid letter. You have ${warningsLeft} warnings left: ${guessesSoFar}"
-          )
+          println("Oops! That is not a valid letter.")
+          println(s"You have ${warningsLeft} warnings left: ${guessesSoFar}")
         else
           guessesLeft -= 1
-          println(
-            "Oops! You've already guessed that letter. You have no warnings left"
-          )
+          println("Oops! You've already guessed that letter. You have no warnings left")
           println(s"so you lose one guess: ${guessesSoFar}")
       else if lettersGuessed.contains(guess) then
         if warningsLeft > 0 then
@@ -223,9 +214,7 @@ def hangmanWithHints(secretWord: Word, wordList: List[Word]) =
           println(guessesSoFar)
         else
           guessesLeft -= 1
-          println(
-            "Oops! You've already guessed that letter. You have no warnings left"
-          )
+          println("Oops! You've already guessed that letter. You have no warnings left")
           println(s"so you lose one guess: ${guessesSoFar}")
       else if !secretWord.contains(guess) then
         lettersGuessed = guess :: lettersGuessed
@@ -243,10 +232,9 @@ def hangmanWithHints(secretWord: Word, wordList: List[Word]) =
         score = guessesLeft * secretWord.distinct.size
         println("Congratulations, you won!")
         println(s"Your total score for this game is: ${score}")
-        break
-  )
-  if !wonGame then
-    println(s"Sorry, you ran out of guesses. The word was ${secretWord}.")
+        break()
+
+  if !wonGame then println(s"Sorry, you ran out of guesses. The word was ${secretWord}.")
 
 // When you've completed your hangman_with_hint function, comment the two similar
 // lines above that were used to run the hangman function, and then uncomment
@@ -263,7 +251,7 @@ def tests =
 @main
 def playHangman =
   tests
-  val wordList = loadWords(WORDLISTFILENAME)
-  val secretWord = chooseWord(wordList)
+  // val wordList = loadWords(WORDLISTFILENAME)
+  // val secretWord = chooseWord(wordList)
   // hangman(secretWord)
-  hangmanWithHints(secretWord, wordList)
+  // hangmanWithHints(secretWord, wordList)

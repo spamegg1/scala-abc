@@ -210,4 +210,3 @@ def nextTank(tank: Tank): Tank = tank.direction match
 
 // un-comment to start game!
 // main(GameState(Nil, Nil, Tank(0.0, Left)))
-2 + 3

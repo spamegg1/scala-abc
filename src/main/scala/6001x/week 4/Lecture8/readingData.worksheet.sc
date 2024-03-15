@@ -10,12 +10,8 @@ val fileName = "a.txt"
 
 try
   val file = fromResource(fileName)
-  for line <- file.getLines
-  do data += line
+  for line <- file.getLines do data += line
 catch
-  case _: FileNotFoundException =>
-    println(s"file ${fileName} cannot be found.")
-  case _: IOException =>
-    println(s"cannot open ${fileName}.")
-// finally
-//   file.close() // close file even if fail
+  case _: FileNotFoundException => println(s"file ${fileName} cannot be found.")
+  case _: IOException           => println(s"cannot open ${fileName}.")
+// finally file.close() // close file even if fail

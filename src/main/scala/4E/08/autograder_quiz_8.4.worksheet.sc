@@ -13,17 +13,16 @@
 // 'soft', 'sun', 'the', 'through', 'what', 'window', 'with', 'yonder']
 
 import scala.io.Source.fromResource
+import scala.util.Using
 
 val fileName = "romeo.txt"
-val file = fromResource(fileName)
-
 var words = List[String]()
 
-for
-  line <- file.getLines
-  word <- line.split(" ")
-  if !words.contains(word)
-do words = word :: words
+Using.resource(fromResource(fileName)): file =>
+  for
+    line <- file.getLines
+    word <- line.split(" ")
+    if !words.contains(word)
+  do words = word :: words
 
-println(words.sorted)
-file.close()
+  words.sorted

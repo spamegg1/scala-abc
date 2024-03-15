@@ -65,8 +65,7 @@ object SnakeFx extends JFXApp3:
   given d: Dimensions = (700, 700)
 
   def gameLoop(update: => Unit): Unit =
-    Future { update; Thread.sleep(80) }
-      .flatMap(_ => Future(gameLoop(update)))
+    Future { update; Thread.sleep(80) }.flatMap(_ => Future(gameLoop(update)))
 
   override def start(): Unit =
     val state = ObjectProperty(State(initialSnake, randomFood))

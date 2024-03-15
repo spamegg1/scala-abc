@@ -15,8 +15,7 @@ class Piece(pointArray: Array[(Int, Int)]):
 
 object Piece:
   def move(board: Board): Piece = ???
-  def nextPiece(board: Board) =
-    Piece(allPieces(nextInt(allPieces.length)))
+  def nextPiece(board: Board) = Piece(allPieces(nextInt(allPieces.length)))
 
   val allPieces: Array[Array[(Int, Int)]] = ???
 

@@ -11,27 +11,26 @@
 
 import scala.io.Source.fromResource
 import collection.mutable.Map
+import scala.util.Using
 
 val fileName = "mbox-short.txt"
-val file = fromResource(fileName)
-
 val senders = Map[String, Int]()
 
-for
-  line <- file.getLines
-  if line.startsWith("From ")
-do
-  val sender = line.split(" ")(1)
-  senders(sender) = senders.getOrElse(sender, 0) + 1
+Using.resource(fromResource(fileName)): file =>
+  for
+    line <- file.getLines
+    if line.startsWith("From ")
+  do
+    val sender = line.split(" ")(1)
+    senders(sender) = senders.getOrElse(sender, 0) + 1
 
-var maximum = 0
-var topSender = ""
-for
-  (sender, count) <- senders
-  if count > maximum
-do
-  maximum = count
-  topSender = sender
+  var maximum = 0
+  var topSender = ""
+  for
+    (sender, count) <- senders
+    if count > maximum
+  do
+    maximum = count
+    topSender = sender
 
-print(f"${topSender} ${maximum}")
-file.close()
+  s"${topSender} ${maximum}"

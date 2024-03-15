@@ -1,5 +1,4 @@
-// package MIT6001x.ps6
-
+import scala.util.Using
 import scala.io.Source.fromResource
 
 type Words = List[String]
@@ -12,23 +11,20 @@ val UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 val VOWELS = "aeiou"
 val PUNCTUATION = raw"(\p{Punct})"
 
-// DO NOT MODIFY THIS FUNCTION //////
+// DO NOT MODIFY THIS FUNCTION
 def loadWords(fileName: String) =
   // fileName (string) = the name of the file containing
   // the list of words to load
   // Returns: a list of valid words. Words are strings of lowercase letters.
   // Depending on the size of the word list, this function may
   // take a while to finish.
-
   println("Loading word list from file...")
-  val inFile = fromResource(fileName)
-  val line = inFile.mkString // file has a single line of text in it
-  val wordList = line.split(" ").toList
-  println(s"${wordList.length} words loaded.")
-  inFile.close()
-  wordList
+  Using.resource(fromResource(fileName)): inFile =>
+    val wordList = inFile.mkString.split(" ").toList // file has a single line
+    println(s"${wordList.length} words loaded.")
+    wordList
 
-// DO NOT MODIFY THIS FUNCTION //////
+// DO NOT MODIFY THIS FUNCTION
 def isWord(wordList: Words, word: Word) =
   // Determines if word is a valid word, ignoring
   // capitalization and punctuation
@@ -43,24 +39,21 @@ def isWord(wordList: Words, word: Word) =
   val newWord = word.replaceAll(PUNCTUATION, "").toLowerCase
   wordList.contains(newWord)
 
-// DO NOT MODIFY THIS FUNCTION //////
+// DO NOT MODIFY THIS FUNCTION
 def getStoryString =
   // Returns: a joke in encrypted text.
-  val file = fromResource(STORYFILENAME)
-  val story = file.mkString.toLowerCase
-  file.close()
-  story
+  Using.resource(fromResource(STORYFILENAME))(file => file.mkString.toLowerCase)
 
 class Message(messageText: String):
   val validWords = loadWords(WORDLISTFILENAME)
 
-  // DO NOT MODIFY THIS METHOD //////
+  // DO NOT MODIFY THIS METHOD
   def getMessageText =
     // Used to safely access messageText outside of the class
     // Returns: messageText
     messageText
 
-  // DO NOT MODIFY THIS METHOD //////
+  // DO NOT MODIFY THIS METHOD
   def getValidWords =
     // Used to safely access a copy of validWords outside of the class
     // Returns: a COPY of validWords
@@ -75,14 +68,8 @@ class Message(messageText: String):
     // shift (integer) = the amount by which to shift every letter of the
     // alphabet. 0 <= shift < 26
     // Returns: a dictionary mapping a letter (string) to another letter (string).
-    val lowerDict =
-      (for i <- 0 until 26
-      yield LOWER(i) -> LOWER((i + shift) % 26)).toMap
-
-    val upperDict =
-      (for i <- 0 until 26
-      yield LOWER(i) -> LOWER((i + shift) % 26)).toMap
-
+    val lowerDict = (for i <- 0 until 26 yield LOWER(i) -> LOWER((i + shift) % 26)).toMap
+    val upperDict = (for i <- 0 until 26 yield LOWER(i) -> LOWER((i + shift) % 26)).toMap
     lowerDict ++ upperDict
 
   def applyShift(shift: Int) =
@@ -94,11 +81,8 @@ class Message(messageText: String):
     // Returns: the message text (string) in which every character is shifted
     //       down the alphabet by the input shift
     val shiftDict = buildShiftDict(shift)
-    messageText.map(letter =>
-      if (LOWER + UPPER).contains(letter)
-      then shiftDict(letter)
-      else letter
-    )
+    messageText.map: letter =>
+      if (LOWER + UPPER).contains(letter) then shiftDict(letter) else letter
 
 class PlaintextMessage(text: String, var shift: Int) extends Message(text):
   // Initializes a PlaintextMessage object
@@ -184,16 +168,16 @@ class CiphertextMessage(text: String) extends Message(text):
 
 // Example test case (PlaintextMessage)
 val plaintext = PlaintextMessage("hello", 2)
-println("Expected Output: jgnnq")
-println(s"Actual Output: ${plaintext.getmessageTextEncrypted}")
+"Expected Output: jgnnq"
+s"Actual Output: ${plaintext.getmessageTextEncrypted}"
 
 // Example test case (CiphertextMessage)
 val ciphertext = CiphertextMessage("jgnnq")
-println(s"Expected Output: ${(24, "hello")}")
-println(s"Actual Output: ${ciphertext.decryptMessage}")
+s"Expected Output: ${(24, "hello")}"
+s"Actual Output: ${ciphertext.decryptMessage}"
 
 def decryptedStory =
   val encryptedStory = CiphertextMessage(getStoryString)
   encryptedStory.decryptMessage
 
-println(decryptedStory)
+decryptedStory

@@ -17,21 +17,17 @@
 // Desired output:
 // Average spam confidence: 0.7507185185185187
 import scala.io.Source.fromResource
-
-val file = fromResource("mbox-short.txt")
-//val resourcePath = os.pwd/"src"/"main"/"resources"
-//val fileName = resourcePath/"mbox-short.txt"
+import util.Using
 
 var total = 0.0
 var count = 0
 
-for
-  // line <- os.read.lines(fileName)
-  line <- file.getLines
-  if line.startsWith("X-DSPAM-Confidence:")
-do
-  total += line.drop(line.length - 6).toDouble
-  count += 1
+Using(fromResource("mbox-short.txt")): file =>
+  for
+    line <- file.getLines
+    if line.startsWith("X-DSPAM-Confidence:")
+  do
+    total += line.drop(line.length - 6).toDouble
+    count += 1
 
-println(f"Average spam confidence: ${total / count}")
-file.close() // TODO: replace this with scala.util.Using(???)
+s"Average spam confidence: ${total / count}"

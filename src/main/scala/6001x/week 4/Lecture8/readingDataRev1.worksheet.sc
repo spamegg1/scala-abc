@@ -11,15 +11,12 @@ val data = ArrayBuffer[String]()
 try
   for line <- file.getLines
   do data += line
-catch
-  case _: IOException =>
-    println(s"cannot open ${fileName}")
+catch case _: IOException => println(s"cannot open ${fileName}")
 finally file.close() // close file even if fail
 
 val gradesData = ArrayBuffer[(String, List[String])]()
 if data.nonEmpty then
-  for student <- data
-  do
+  for student <- data do
     try
       val item = (student.take(2), List(student.take(3).drop(2)))
       gradesData += item

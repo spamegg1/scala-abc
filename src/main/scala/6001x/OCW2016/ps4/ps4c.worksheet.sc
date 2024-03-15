@@ -1,3 +1,4 @@
+import scala.util.Using
 import scala.io.Source.fromResource
 
 // you may find these constants helpful
@@ -24,13 +25,10 @@ def getPermutations(sequence: String): List[String] =
 
 def loadWords(fileName: String) =
   println("Loading word list from file...")
-  val inFile = fromResource(fileName)
-  val wordList = inFile.mkString.split(" ").toList
-
-  println(wordList.length.toString + " words loaded.")
-  inFile.close()
-
-  wordList
+  Using.resource(fromResource(fileName)): inFile =>
+    val wordList = inFile.mkString.split(" ").toList
+    println(s"${wordList.length} words loaded.")
+    wordList
 
 def isWord(wordList: List[String], word: String) =
   val newWord = word.toLowerCase.replaceAll(PUNCTUATION, "")
@@ -53,8 +51,8 @@ class SubMessage(text: String):
     messageText
 
   def getValidWords =
-    /** Used to safely access a copy of self.validWords outside of the class
-      * Returns: a COPY of self.validWords
+    /** Used to safely access a copy of self.validWords outside of the class Returns: a
+      * COPY of self.validWords
       */
     validWords
 
@@ -74,11 +72,8 @@ class SubMessage(text: String):
 
     // Returns: a dictionary mapping a letter (string) to
     //             another letter (string).
-    val consonantsLower =
-      for consonant <- CONSONANTSLOWER yield consonant -> consonant
-
-    val consonantsUpper =
-      for consonant <- CONSONANTSUPPER yield consonant -> consonant
+    val consonantsLower = for consonant <- CONSONANTSLOWER yield consonant -> consonant
+    val consonantsUpper = for consonant <- CONSONANTSUPPER yield consonant -> consonant
 
     val vowelsLower =
       for i <- 0 until vowelsPermutation.length
@@ -96,8 +91,7 @@ class SubMessage(text: String):
     // on the dictionary
     var encryptedMessage = ""
 
-    for letter <- messageText
-    do
+    for letter <- messageText do
       if letter.isLetter then encryptedMessage += transposeDict(letter)
       else encryptedMessage += letter
 
@@ -121,15 +115,13 @@ class EncryptedSubMessage(text: String) extends SubMessage(text):
     var maxWords = 0
     var decryptedMessage = ""
 
-    for perm <- perms
-    do
+    for perm <- perms do
       val transposeDict = buildTransposeDict(perm)
       val transposedMessage = applyTranspose(transposeDict)
       val words = transposedMessage.split(" ")
       var wordCount = 0
 
-      for word <- words
-      do if isWord(validWords, word) then wordCount += 1
+      for word <- words do if isWord(validWords, word) then wordCount += 1
 
       if wordCount > maxWords then
         maxWords = wordCount
@@ -142,11 +134,9 @@ val message = SubMessage("Hello World!")
 val permutation = "eaiuo"
 val encDict = message.buildTransposeDict(permutation)
 
-println(
-  "Original message: " + message.getMessageText + "Permutation: " + permutation
-)
-println("Expected encryption: " + "Hallu Wurld!")
-println("Actual encryption: " + message.applyTranspose(encDict))
+s"Original message: ${message.getMessageText} Permutation: $permutation"
+"Expected encryption: Hallu Wurld!"
+s"Actual encryption: ${message.applyTranspose(encDict)}"
 
 val encMessage = EncryptedSubMessage(message.applyTranspose(encDict))
 println("Decrypted message: " + encMessage.decryptMessage)
