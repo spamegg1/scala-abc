@@ -1,8 +1,7 @@
 package C.w1
 
-class Board(_game: Tetris):
+class Board(var game: Tetris):
   var score = 0
-  var game = _game
   var delay = 500
   var grid = Array.fill(Block.rows, Block.cols)(0)
   var currentBlock = ???
