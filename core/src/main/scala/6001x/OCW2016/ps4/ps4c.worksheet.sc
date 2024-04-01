@@ -134,9 +134,9 @@ val message = SubMessage("Hello World!")
 val permutation = "eaiuo"
 val encDict = message.buildTransposeDict(permutation)
 
-s"Original message: ${message.getMessageText} Permutation: $permutation"
-"Expected encryption: Hallu Wurld!"
-s"Actual encryption: ${message.applyTranspose(encDict)}"
+val original = s"Original message: ${message.getMessageText} Permutation: $permutation"
+val expected = "Expected encryption: Hallu Wurld!"
+val actual = s"Actual encryption: ${message.applyTranspose(encDict)}"
 
 val encMessage = EncryptedSubMessage(message.applyTranspose(encDict))
 println("Decrypted message: " + encMessage.decryptMessage)

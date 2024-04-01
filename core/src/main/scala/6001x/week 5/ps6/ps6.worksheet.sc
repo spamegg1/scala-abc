@@ -168,16 +168,12 @@ class CiphertextMessage(text: String) extends Message(text):
 
 // Example test case (PlaintextMessage)
 val plaintext = PlaintextMessage("hello", 2)
-"Expected Output: jgnnq"
-s"Actual Output: ${plaintext.getmessageTextEncrypted}"
+val expected1 = "Expected Output: jgnnq"
+val actual1 = s"Actual Output: ${plaintext.getmessageTextEncrypted}"
 
 // Example test case (CiphertextMessage)
 val ciphertext = CiphertextMessage("jgnnq")
-s"Expected Output: ${(24, "hello")}"
-s"Actual Output: ${ciphertext.decryptMessage}"
+val expected2 = s"Expected Output: ${(24, "hello")}"
+val actual2 = s"Actual Output: ${ciphertext.decryptMessage}"
 
-def decryptedStory =
-  val encryptedStory = CiphertextMessage(getStoryString)
-  encryptedStory.decryptMessage
-
-decryptedStory
+val decryptedStory = CiphertextMessage(getStoryString).decryptMessage

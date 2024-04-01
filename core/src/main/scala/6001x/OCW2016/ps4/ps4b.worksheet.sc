@@ -157,29 +157,29 @@ class CiphertextMessage(text: String) extends Message(text):
 
 // Example test case (PlaintextMessage)
 val plaintext = PlaintextMessage("hello", 2)
-println("Expected Output: jgnnq")
-s"Actual Output: ${plaintext.getMessageTextEncrypted}"
+val expected1 = "Expected Output: jgnnq"
+val actual1 = s"Actual Output: ${plaintext.getMessageTextEncrypted}"
 
 // Example test case (CiphertextMessage)
 val ciphertext = CiphertextMessage("jgnnq")
-s"Expected Output: ${(24, "hello")})"
-s"Actual Output: ${ciphertext.decryptMessage}"
+val expected2 = s"Expected Output: ${(24, "hello")})"
+val actual2 = s"Actual Output: ${ciphertext.decryptMessage}"
 
 // Example test case (PlaintextMessage)
 val msg = Message("test")
 val plaintext2 = PlaintextMessage("hello", 2)
-"Expected Output: jgnnq"
-s"Actual Output: ${plaintext.getMessageTextEncrypted}"
+val expected3 = "Expected Output: jgnnq"
+val actual3 = s"Actual Output: ${plaintext.getMessageTextEncrypted}"
 
 // Example test case (CiphertextMessage)
 val ciphertext2 = CiphertextMessage("jgnnq")
-s"Expected Output: ${(24, "hello")}"
-s"Actual Output: ${ciphertext.decryptMessage}"
+val expected4 = s"Expected Output: ${(24, "hello")}"
+val actual4 = s"Actual Output: ${ciphertext.decryptMessage}"
 
 // Example test case (CiphertextMessage)
 val ciphertext3 = CiphertextMessage("fdw")
-s"Expected Output: ${(23, "cat")}"
-s"Actual Output: ${ciphertext3.decryptMessage}"
+val expected5 = s"Expected Output: ${(23, "cat")}"
+val actual5 = s"Actual Output: ${ciphertext3.decryptMessage}"
 
 // TODO: WRITE YOUR TEST CASES HERE
 

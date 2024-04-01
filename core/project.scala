@@ -1,4 +1,4 @@
-//> using scala 3.4.0
+//> using scala 3.4.1
 //> using platform jvm scala-native
 //> using resourceDir ./src/main/resources
 //> using test.resourceDir ./test/main/resources
