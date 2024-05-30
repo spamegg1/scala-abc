@@ -1,8 +1,10 @@
-//> using scala 3.4.1
-//> using platform jvm scala-native
+//> using scala 3.4.2
+//> using platform jvm native
+//> using nativeVersion 0.5.2
 //> using resourceDir ./src/main/resources
 //> using test.resourceDir ./test/main/resources
 //> using toolkit default
+//> using dep org.scala-lang.modules::scala-parallel-collections::1.0.4
 //> using dep org.scalafx::scalafx:21.0.0-R32
 //> using dep org.creativescala::doodle:0.21.0
 //> using dep net.ruippeixotog::scala-scraper:3.1.1

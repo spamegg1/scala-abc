@@ -1,4 +1,4 @@
-//> using scala 2.13.13
+//> using scala 2.13.14
 //> using resourceDir ./src/main/resources
 //> using test.resourceDir ./test/main/resources
 //> using dep org.axle-lang::axle-core:0.6.6
