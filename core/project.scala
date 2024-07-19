@@ -1,6 +1,6 @@
 //> using scala 3.4.2
 //> using platform jvm native
-//> using nativeVersion 0.5.2
+//> using nativeVersion 0.5.4
 //> using resourceDir ./src/main/resources
 //> using test.resourceDir ./test/main/resources
 //> using toolkit default
