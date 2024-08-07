@@ -3,7 +3,7 @@ import doodle.image.Image
 import doodle.image.Image.Elements.Triangle
 import doodle.syntax.all.AngleIntOps
 import doodle.image.syntax.all.ImageOps
-import doodle.java2d.java2dRenderer
+import doodle.java2d.{java2dRenderer, java2dFrame}
 import cats.effect.unsafe.implicits.global
 
 /*

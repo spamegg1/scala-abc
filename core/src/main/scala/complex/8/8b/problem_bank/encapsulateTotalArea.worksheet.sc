@@ -11,29 +11,30 @@ import doodle.image.syntax.all.*
 import scala.util.Random
 
 extension (image: Image)
-  def size: Double = image match
+  def area: Double = image match
     case OpenPath(elements)                  => 0.0
     case ClosedPath(elements)                => 0.0
-    case Text(get)                           => get.size.toDouble
+    case Text(get)                           => get.length.toDouble
     case Circle(d)                           => math.Pi * d * d / 4
     case Rectangle(w, h)                     => w * h
     case Triangle(w, h)                      => w * h / 2
-    case Beside(l, r)                        => l.size + r.size
-    case Above(l, r)                         => l.size + r.size
-    case On(t, b)                            => math.max(t.size, b.size)
-    case At(image, _)                        => image.size
-    case Transform(tx, i)                    => i.size
-    case StrokeWidth(image, width)           => image.size
-    case StrokeColor(image, color)           => image.size
-    case FillColor(image, color)             => image.size
-    case FillGradient(image, gradient)       => image.size
-    case NoStroke(image)                     => image.size
-    case NoFill(image)                       => image.size
-    case Font(image, font)                   => image.size
-    case Debug(image, color)                 => image.size
-    case StrokeCap(image, cap)               => image.size
-    case StrokeJoin(image, cap)              => image.size
-    case StrokeDash(image, cap)              => image.size
+    case Beside(l, r)                        => l.area + r.area
+    case Above(l, r)                         => l.area + r.area
+    case On(t, b)                            => math.max(t.area, b.area)
+    case At(image, _)                        => image.area
+    case Transform(tx, i)                    => i.area
+    case StrokeWidth(image, width)           => image.area
+    case StrokeColor(image, color)           => image.area
+    case FillColor(image, color)             => image.area
+    case FillGradient(image, gradient)       => image.area
+    case NoStroke(image)                     => image.area
+    case NoFill(image)                       => image.area
+    case Font(image, font)                   => image.area
+    case Debug(image, color)                 => image.area
+    case StrokeCap(image, cap)               => image.area
+    case StrokeJoin(image, cap)              => image.area
+    case StrokeDash(image, cap)              => image.area
+    case Size(image, width, height)          => image.area
     case Margin(i, top, right, bottom, left) => 0.0
     case OriginAt(image, landmark)           => 0.0
     case Empty                               => 0.0
@@ -63,13 +64,13 @@ val dir4 = Directory("dir4", List(dir3), List(img4))
 // called total-area. Be sure to revise the signature, purpose, tests etc.
 // Dir -> Natural
 // produce total area of all images in dir
-totalArea(dir4) == img1.size + img2.size + img3.size + img4.size
+totalArea(dir4) == img1.area + img2.area + img3.area + img4.area
 
 // <template from Dir, ListOfDir and ListOfImage, encapsulated with local>
 def totalArea(directory: Directory): Double =
   def totalDir(dir: Directory): Double =
     totalDirList(dir.subdirs) + totalImgList(dir.images)
   def totalDirList(dirList: List[Directory]): Double = dirList.map(totalDir).sum
-  def totalImgList(imgList: List[Image]): Double = imgList.map(_.size).sum
+  def totalImgList(imgList: List[Image]): Double = imgList.map(_.area).sum
 
   totalDir(directory)

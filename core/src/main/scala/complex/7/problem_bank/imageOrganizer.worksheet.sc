@@ -11,29 +11,30 @@ import doodle.image.syntax.all.*
 import scala.util.Random
 
 extension (image: Image)
-  def size: Double = image match
+  def area: Double = image match
     case OpenPath(elements)            => 0.0
     case ClosedPath(elements)          => 0.0
-    case Text(get)                     => get.size.toDouble
+    case Text(get)                     => get.length.toDouble
     case Circle(d)                     => math.Pi * d * d / 4
     case Rectangle(w, h)               => w * h
     case Triangle(w, h)                => w * h / 2
-    case Beside(l, r)                  => l.size + r.size
-    case Above(l, r)                   => l.size + r.size
-    case On(t, b)                      => math.max(t.size, b.size)
-    case At(image, _)                  => image.size
-    case Transform(tx, i)              => i.size
-    case StrokeWidth(image, width)     => image.size
-    case StrokeColor(image, color)     => image.size
-    case FillColor(image, color)       => image.size
-    case FillGradient(image, gradient) => image.size
-    case NoStroke(image)               => image.size
-    case NoFill(image)                 => image.size
-    case Font(image, font)             => image.size
-    case Debug(image, color)           => image.size
-    case StrokeCap(image, cap)         => image.size
-    case StrokeJoin(image, cap)        => image.size
-    case StrokeDash(image, cap)        => image.size
+    case Beside(l, r)                  => l.area + r.area
+    case Above(l, r)                   => l.area + r.area
+    case On(t, b)                      => math.max(t.area, b.area)
+    case At(image, _)                  => image.area
+    case Transform(tx, i)              => i.area
+    case StrokeWidth(image, width)     => image.area
+    case StrokeColor(image, color)     => image.area
+    case FillColor(image, color)       => image.area
+    case FillGradient(image, gradient) => image.area
+    case NoStroke(image)               => image.area
+    case NoFill(image)                 => image.area
+    case Font(image, font)             => image.area
+    case Debug(image, color)           => image.area
+    case StrokeCap(image, cap)         => image.area
+    case StrokeJoin(image, cap)        => image.area
+    case StrokeDash(image, cap)        => image.area
+    case Size(image, width, height)    => image.area
     case Margin(_, _, _, _, _)         => 0.0
     case OriginAt(_, _)                => 0.0
     case Empty                         => 0.0
@@ -75,15 +76,15 @@ def fnForDirectoryList(directories: List[Directory]) = directories match
 
 // Functions:
 // PROBLEM B:
-// Design a function to calculate the total size (width * height) of all the
+// Design a function to calculate the total area (width * height) of all the
 // images in a directory and its sub-directories.
 // Dir             -> Natural
 // ListOfDir       -> Natural
 // ListOfImage     -> Natural
 // produce total area of all images in dir
-areaDirectory(dir4) == img1.size + img2.size + img3.size + img4.size
-areaDirectoryList(List(dir1, dir2)) == img1.size + img2.size + img3.size
-areaImageList(List(img1, img2)) == img1.size + img2.size
+areaDirectory(dir4) == img1.area + img2.area + img3.area + img4.area
+areaDirectoryList(List(dir1, dir2)) == img1.area + img2.area + img3.area
+areaImageList(List(img1, img2)) == img1.area + img2.area
 
 //<templates taken from Dir, ListOfDir, and ListOfImage>
 // def areaDirectory(directory: Directory): Double = 0.0 // stub
@@ -97,7 +98,7 @@ def areaDirectoryList(directories: List[Directory]): Double = directories match
   case head :: next => areaDirectory(head) + areaDirectoryList(next)
   case Nil          => 0.0
 
-def areaImageList(images: List[Image]): Double = images.map(_.size).sum
+def areaImageList(images: List[Image]): Double = images.map(_.area).sum
 
 // PROBLEM C:
 // Design a function to produce rendering of a directory with its images.

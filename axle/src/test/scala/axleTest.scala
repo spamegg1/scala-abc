@@ -5,4 +5,3 @@ class AxleTest extends munit.FunSuite {
     assertEquals(Axle.hello, "Hello from Axle!")
   }
 }
-
