@@ -15,4 +15,4 @@
 //> using dep org.jblas:jblas:1.2.5
 //> using dep org.scala-lang.modules::scala-xml:2.3.0
 //> using dep org.scalatest::scalatest:3.2.19
-//> using test.dep org.scalameta::munit:1.0.0
+//> using test.dep org.scalameta::munit:1.0.1
