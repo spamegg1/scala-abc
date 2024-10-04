@@ -1,4 +1,3 @@
-import galileo.logic.Bool
 import doodle.core.*
 import doodle.core.Color.*
 import doodle.image.Image
