@@ -13,4 +13,4 @@
 //> using dep org.xerial:sqlite-jdbc:3.46.1.3
 //> using dep com.typesafe.slick::slick:3.5.2
 //> using dep at.logic.gapt::gapt:2.17.0
-//> using dep org.scala-graph:graph-core_2.13:2.0.1
+//> using dep org.scala-graph:graph-core_2.13:2.0.2
