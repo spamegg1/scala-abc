@@ -51,59 +51,22 @@
 // place_id may not match for this assignment.
 // place_id: ChIJneqLZyq7j4ARf2j8RBrwzSk
 
-import sttp.client4.{DefaultSyncBackend, basicRequest, UriContext}
-import spray.json.*
-import DefaultJsonProtocol.*
+@main
+def geojson =
+  val apiKey = 42
+  val loc = "Stanford"
+  val url = uri"http://py4e-data.dr-chuck.net/json?address=${loc}&key=${apiKey}"
 
-val apiKey = 42
-val location = "Stanford"
-val url =
-  uri"http://py4e-data.dr-chuck.net/json?address=${location}&key=${apiKey}"
+  val client = DefaultSyncBackend()
+  val request = basicRequest.get(url)
+  val response = client.send(request)
+  val body = response.body.getOrElse("")
 
-val client = DefaultSyncBackend()
-val request = basicRequest.get(url)
-val response = client.send(request)
-val body = response.body.getOrElse("")
+  val jsObject = body.parseJson.asJsObject
+  val mapJsVal = jsObject.fields
+  val arrayJsObj = mapJsVal("results").convertTo[Array[JsObject]]
+  val firstRes = arrayJsObj(0).asJsObject.fields
 
-val jsObject = body.parseJson.asJsObject
-val mapJsVal = jsObject.fields
-val arrayJsObj = mapJsVal("results").convertTo[Array[JsObject]]
-val firstRes = arrayJsObj(0).asJsObject.fields
+  println(firstRes("place_id").toString)
 
-firstRes("place_id").toString
-
-client.close()
-
-// while True:
-//     address = input('Enter location: ')
-//     if len(address) < 1: break
-
-//     parms = dict()
-//     parms['address'] = address
-//     if api_key is not False: parms['key'] = api_key
-//     url = serviceurl + urllib.parse.urlencode(parms)
-
-//     print('Retrieving', url)
-//     uh = urllib.request.urlopen(url, context=ctx)
-//     data = uh.read().decode()
-//     print('Retrieved', len(data), 'characters')
-
-//     try:
-//         js = json.loads(data)
-//     except:
-//         js = None
-
-//     if not js or 'status' not in js or js['status'] != 'OK':
-//         print('==== Failure To Retrieve ====')
-//         print(data)
-//         continue
-
-//     # print(json.dumps(js, indent=4))
-
-//     # lat = js['results'][0]['geometry']['location']['lat']
-//     # lng = js['results'][0]['geometry']['location']['lng']
-//     # print('lat', lat, 'lng', lng)
-//     # location = js['results'][0]['formatted_address']
-//     # print(location)
-//     place_id = js['results'][0]['place_id']
-//     print(f'Place id {place_id}')
+  client.close()

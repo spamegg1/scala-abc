@@ -41,6 +41,8 @@
 
 import slick.*
 
+val x = "hello world"
+
 // "hello world"
 
 // import json

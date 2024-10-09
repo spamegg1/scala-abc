@@ -21,17 +21,17 @@
 // Cache-Control: max-age=0, no-cache, no-store, must-revalidate
 // Content-Type: text/plain
 
-import sttp.client4.{DefaultSyncBackend, basicRequest, UriContext}
+@main
+def socket1 =
+  val request = basicRequest.get(uri"http://data.pr4e.org/intro-short.txt")
+  val client = DefaultSyncBackend()
+  val response = client.send(request)
+  val header = response.header
 
-val request = basicRequest.get(uri"http://data.pr4e.org/intro-short.txt")
-val client = DefaultSyncBackend()
-val response = client.send(request)
-val header = response.header
+  println(header("ETag").get)
+  println(header("Last-Modified").get)
+  println(header("Content-Length").get)
+  println(header("Cache-Control").get)
+  println(header("Content-Type").get)
 
-header("ETag").get
-header("Last-Modified").get
-header("Content-Length").get
-header("Cache-Control").get
-header("Content-Type").get
-
-client.close()
+  client.close()

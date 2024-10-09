@@ -49,39 +49,37 @@
 // Enter the last name retrieved and your Python code below:
 // Name: (name starts with A)
 
-import net.ruippeixotog.scalascraper.browser.JsoupBrowser
-import net.ruippeixotog.scalascraper.dsl.DSL.*
+@main
+def urllinks1 =
+  val count = 7 // 4
+  val position = 18 // 3
+  val browser = JsoupBrowser()
 
-val count = 7 // 4
-val position = 18 // 3
-val browser = JsoupBrowser()
+  // var url = "http://py4e-data.dr-chuck.net/known_by_Fikret.html"
+  var url = "http://py4e-data.dr-chuck.net/known_by_Rimal.html"
+  println(s"Retrieving: $url")
+  var document = browser.get(url)
+  var i = 0
 
-// var url = "http://py4e-data.dr-chuck.net/known_by_Fikret.html"
-var url = "http://py4e-data.dr-chuck.net/known_by_Rimal.html"
-println("Retrieving: " + url)
-var document = browser.get(url)
-var i = 0
+  while i < count do
+    val anchors = document >> Extract.elementList("a")
+    val links = anchors.map(_ >> Extract.attr("href"))
 
-while i < count
-do
-  val anchors = document >> Extract.elementList("a")
-  val links = anchors.map(_ >> Extract.attr("href"))
+    url = links(position - 1)
+    println(s"Retrieving: ${url}")
 
-  url = links(position - 1)
-  println(s"Retrieving: ${url}")
+    document = browser.get(url)
+    i += 1
 
-  document = browser.get(url)
-  i += 1
-
-// # Enter - http://py4e-data.dr-chuck.net/known_by_Rimal.html
-// # Enter count: 7
-// # Enter position: 18
-// # Retrieving: http://py4e-data.dr-chuck.net/known_by_Rimal.html
-// # Retrieving: http://py4e-data.dr-chuck.net/known_by_Lula.html
-// # Retrieving: http://py4e-data.dr-chuck.net/known_by_Cator.html
-// # Retrieving: http://py4e-data.dr-chuck.net/known_by_Kelsiee.html
-// # Retrieving: http://py4e-data.dr-chuck.net/known_by_Jeannie.html
-// # Retrieving: http://py4e-data.dr-chuck.net/known_by_Nidhi.html
-// # Retrieving: http://py4e-data.dr-chuck.net/known_by_Romi.html
-// # Retrieving: http://py4e-data.dr-chuck.net/known_by_Artemis.html
-// # Artemis
+// Enter - http://py4e-data.dr-chuck.net/known_by_Rimal.html
+// Enter count: 7
+// Enter position: 18
+// Retrieving: http://py4e-data.dr-chuck.net/known_by_Rimal.html
+// Retrieving: http://py4e-data.dr-chuck.net/known_by_Lula.html
+// Retrieving: http://py4e-data.dr-chuck.net/known_by_Cator.html
+// Retrieving: http://py4e-data.dr-chuck.net/known_by_Kelsiee.html
+// Retrieving: http://py4e-data.dr-chuck.net/known_by_Jeannie.html
+// Retrieving: http://py4e-data.dr-chuck.net/known_by_Nidhi.html
+// Retrieving: http://py4e-data.dr-chuck.net/known_by_Romi.html
+// Retrieving: http://py4e-data.dr-chuck.net/known_by_Artemis.html
+// Artemis

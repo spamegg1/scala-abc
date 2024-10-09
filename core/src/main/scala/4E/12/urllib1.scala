@@ -55,16 +55,15 @@
 // Enter the sum from the actual data and your Python code below:
 // Sum: (ends with 83)
 
-import net.ruippeixotog.scalascraper.browser.JsoupBrowser
-import net.ruippeixotog.scalascraper.dsl.DSL.*
+@main
+def urllib1 =
+  // val sample = "http://py4e-data.dr-chuck.net/comments_42.html"
+  val actual = "http://py4e-data.dr-chuck.net/comments_1129912.html"
 
-// val sample = "http://py4e-data.dr-chuck.net/comments_42.html"
-val actual = "http://py4e-data.dr-chuck.net/comments_1129912.html"
+  val browser = JsoupBrowser()
+  val document = browser.get(actual)
+  val items = document >> Extract.elementList("span")
+  val numbers = items.map(_ >> Extract.allText("span"))
 
-val browser = JsoupBrowser()
-val document = browser.get(actual)
-val items = document >> Extract.elementList("span")
-val numbers = items.map(_ >> Extract.allText("span"))
-
-// 2283 for actual, 2553 for sample
-numbers.map(_.toInt).sum
+  // 2283 for actual, 2553 for sample
+  println(numbers.map(_.toInt).sum)

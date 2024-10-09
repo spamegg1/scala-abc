@@ -2,8 +2,12 @@
 // They cut down on repeated imports in dozens of files.
 // Does not work in worksheets (they are outside project scope).
 // Think of it as an addition to scala.Prelude.
+export net.ruippeixotog.scalascraper.browser.JsoupBrowser
+export net.ruippeixotog.scalascraper.dsl.DSL.*
+export scala.collection.mutable.{Map => MMap}
 export scala.io.StdIn.readLine
 export scala.io.Source.fromResource
-export scala.util.boundary, boundary.break
-export scala.util.Using
-export collection.mutable.{Map => MMap}
+export scala.util.{boundary, Using}, boundary.break
+export scala.xml.XML
+export spray.json.{DefaultJsonProtocol, enrichString, JsObject}, DefaultJsonProtocol.*
+export sttp.client4.{DefaultSyncBackend, basicRequest, UriContext}

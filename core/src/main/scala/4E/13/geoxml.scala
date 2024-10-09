@@ -53,30 +53,28 @@
 // Enter the sum from the actual data and your Python code below:
 // Sum: (ends with 60) 2560
 
-import sttp.client4.{DefaultSyncBackend, basicRequest, UriContext}
-import xml.XML
+@main
+def geoxml =
+  // val sample = uri"http://py4e-data.dr-chuck.net/comments_42.xml"
+  val url = uri"http://py4e-data.dr-chuck.net/comments_1129914.xml"
 
-//val sample = uri"http://py4e-data.dr-chuck.net/comments_42.xml"
-val url = uri"http://py4e-data.dr-chuck.net/comments_1129914.xml"
+  val client = DefaultSyncBackend()
+  val request = basicRequest.get(url)
+  val response = client.send(request)
+  val body = response.body.getOrElse("")
 
-val client = DefaultSyncBackend()
-val request = basicRequest.get(url)
-val response = client.send(request)
-val body = response.body.getOrElse("")
+  val bodyElem = XML.loadString(body)
+  val counts = bodyElem \ "comments" \ "comment" \ "count"
 
-val bodyElem = XML.loadString(body)
-val counts = bodyElem \ "comments" \ "comment" \ "count"
+  var count = 0
+  var total = 0
 
-var count = 0
-var total = 0
+  for elem <- counts do
+    val score = elem.text.toInt
+    total += score
+    count += 1
 
-for elem <- counts
-do
-  val score = elem.text.toInt
-  total += score
-  count += 1
+  println(s"Count: ${count}")
+  println(s"Sum: ${total}")
 
-println(s"Count: ${count}")
-println(s"Sum: ${total}")
-
-client.close()
+  client.close()

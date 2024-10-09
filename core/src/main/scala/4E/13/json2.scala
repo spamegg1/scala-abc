@@ -52,33 +52,30 @@
 // Enter the sum from the actual data and your Python code below:
 // Sum: (ends with 55) 2455
 
-import sttp.client4.{DefaultSyncBackend, basicRequest, UriContext}
-import spray.json.*
-import DefaultJsonProtocol.*
+@main
+def json2 =
+  // val sample = uri"http://py4e-data.dr-chuck.net/comments_42.json"
+  val url = uri"http://py4e-data.dr-chuck.net/comments_1129915.json"
 
-//val sample = uri"http://py4e-data.dr-chuck.net/comments_42.json"
-val url = uri"http://py4e-data.dr-chuck.net/comments_1129915.json"
+  val client = DefaultSyncBackend()
+  val request = basicRequest.get(url)
+  val response = client.send(request)
+  val body = response.body.getOrElse("")
 
-val client = DefaultSyncBackend()
-val request = basicRequest.get(url)
-val response = client.send(request)
-val body = response.body.getOrElse("")
+  val jsObject = body.parseJson.asJsObject
+  val mapJsVal = jsObject.fields
+  val comments = mapJsVal("comments").convertTo[Array[JsObject]]
 
-val jsObject = body.parseJson.asJsObject
-val mapJsVal = jsObject.fields
-val comments = mapJsVal("comments").convertTo[Array[JsObject]]
+  var count = 0
+  var total = 0
 
-var count = 0
-var total = 0
+  for obj <- comments do
+    val jsObj = obj.fields
+    val objCount = jsObj("count").convertTo[Int]
+    total += objCount
+    count += 1
 
-for obj <- comments
-do
-  val jsObj = obj.fields
-  val objCount = jsObj("count").convertTo[Int]
-  total += objCount
-  count += 1
+  println(s"Count: ${count}")
+  println(s"Sum: ${total}")
 
-println(s"Count: ${count}")
-println(s"Sum: ${total}")
-
-client.close()
+  client.close()
