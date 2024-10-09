@@ -9,8 +9,6 @@
 // Invalid input
 // Maximum is 10
 // Minimum is 2
-import scala.io.StdIn.readLine
-import util.boundary, boundary.break
 
 @main
 def minMax =

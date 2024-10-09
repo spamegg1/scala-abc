@@ -43,17 +43,17 @@
 // cwen@iupui.edu
 // There were 27 lines in the file with From as the first word
 
-import scala.io.Source.fromResource
-import scala.util.Using
+@main
+def quiz85 =
+  val fileName = "mbox-short.txt"
+  var count = 0
 
-val fileName = "mbox-short.txt"
-var count = 0
-Using.resource(fromResource(fileName)): file =>
-  for
-    line <- file.getLines
-    if line.startsWith("From ")
-  do
-    println(line.split(" ")(1))
-    count += 1
+  Using.resource(fromResource(fileName)): file =>
+    for
+      line <- file.getLines
+      if line.startsWith("From ")
+    do
+      println(line.split(" ")(1))
+      count += 1
 
-  s"There were ${count} lines in the file with From as the first word"
+  println(s"There were ${count} lines in the file with From as the first word")

@@ -20,20 +20,20 @@
 // 18 1
 // 19 1
 
-import scala.io.Source.fromResource
-import collection.mutable.Map
+@main
+def quiz102 =
+  val fileName = "mbox-short.txt"
+  val file = fromResource(fileName)
+  val hours = MMap[String, Int]()
 
-val fileName = "mbox-short.txt"
-val file = fromResource(fileName)
-val hours = Map[String, Int]()
+  Using.resource(fromResource(fileName)): file =>
+    for
+      line <- file.getLines
+      if line.startsWith("From ")
+    do
+      val time = line.split(" ")(6)
+      val hour = time.split(":")(0)
+      hours(hour) = hours.getOrElse(hour, 0) + 1
 
-for
-  line <- file.getLines
-  if line.startsWith("From ")
-do
-  val time = line.split(" ")(6)
-  val hour = time.split(":")(0)
-  hours(hour) = hours.getOrElse(hour, 0) + 1
-
-for (key, value) <- hours.toList.sortBy(_._1)
-do println(f"${key} ${value}")
+  for (key, value) <- hours.toList.sortBy(_._1)
+  do println(f"${key} ${value}")

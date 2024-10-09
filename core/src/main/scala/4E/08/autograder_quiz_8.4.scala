@@ -12,17 +12,16 @@
 // 'envious', 'fair', 'grief', 'is', 'kill', 'light', 'moon', 'pale', 'sick',
 // 'soft', 'sun', 'the', 'through', 'what', 'window', 'with', 'yonder']
 
-import scala.io.Source.fromResource
-import scala.util.Using
+@main
+def quiz84 =
+  val fileName = "romeo.txt"
+  var words = List[String]()
 
-val fileName = "romeo.txt"
-var words = List[String]()
+  Using.resource(fromResource(fileName)): file =>
+    for
+      line <- file.getLines
+      word <- line.split(" ")
+      if !words.contains(word)
+    do words = word :: words
 
-Using.resource(fromResource(fileName)): file =>
-  for
-    line <- file.getLines
-    word <- line.split(" ")
-    if !words.contains(word)
-  do words = word :: words
-
-  words.sorted
+  println(words.sorted)

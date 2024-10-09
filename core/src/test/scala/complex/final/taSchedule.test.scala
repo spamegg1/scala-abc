@@ -1,4 +1,5 @@
-package complex.finalExam
+package complex
+package finalExam
 
 class TAScheduleSuite extends munit.FunSuite:
   val spam = TA("Spam", 2, List(Slot(1), Slot(3))) /*  set-up TAs for testing  */

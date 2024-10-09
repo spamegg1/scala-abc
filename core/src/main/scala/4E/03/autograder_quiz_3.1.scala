@@ -11,7 +11,6 @@
 
 // Desired output:
 // 498.75
-import scala.io.StdIn.*
 
 @main
 def complicatedPay =

@@ -9,20 +9,18 @@
 // Desired output:
 // cwen@iupui.edu 5
 
-import scala.io.Source.fromResource
-import collection.mutable.Map
-import scala.util.Using
+@main
+def quiz94 =
+  val fileName = "mbox-short.txt"
+  val senders = MMap[String, Int]()
 
-val fileName = "mbox-short.txt"
-val senders = Map[String, Int]()
-
-Using.resource(fromResource(fileName)): file =>
-  for
-    line <- file.getLines
-    if line.startsWith("From ")
-  do
-    val sender = line.split(" ")(1)
-    senders(sender) = senders.getOrElse(sender, 0) + 1
+  Using.resource(fromResource(fileName)): file =>
+    for
+      line <- file.getLines
+      if line.startsWith("From ")
+    do
+      val sender = line.split(" ")(1)
+      senders(sender) = senders.getOrElse(sender, 0) + 1
 
   var maximum = 0
   var topSender = ""
@@ -33,4 +31,4 @@ Using.resource(fromResource(fileName)): file =>
     maximum = count
     topSender = sender
 
-  s"${topSender} ${maximum}"
+  println(s"${topSender} ${maximum}") // cwen@iupui.edu 5

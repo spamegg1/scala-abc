@@ -15,7 +15,6 @@
 
 // Desired output:
 // Pay 498.75
-import scala.io.StdIn.readLine
 
 def computepay(hour: Int, rate: Double) =
   if hour <= 40 then hour * rate

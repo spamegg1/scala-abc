@@ -10,7 +10,6 @@
 // Pay: 96.25
 
 // This first line is provided for you
-import scala.io.StdIn.readLine
 
 @main
 def basicPay =

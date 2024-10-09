@@ -13,7 +13,6 @@
 // For the test, enter a score of 0.85.
 // Desired output:
 // B
-import scala.io.StdIn.readLine
 
 @main
 def score =
