@@ -6,7 +6,7 @@ import org.scalacheck.Prop.forAll
 import Suit.*, Rank.*, Color.*, Move.*
 
 class HW2ChallengeSuite extends munit.FunSuite:
-  test("01. scoreChallenge") {
+  test("01. scoreChallenge"):
     val inputs: List[(List[Card], Int)] = List(
       (List((Hearts, Ace), (Diamonds, Ace), (Clubs, Ace), (Spades, Ace)), 10)
       // add more test cases here!
@@ -16,9 +16,8 @@ class HW2ChallengeSuite extends munit.FunSuite:
         // add more test cases here!
     )
     assertEquals(inputs map scoreChallenge, expected)
-  }
 
-  test("02. officiateChallenge") {
+  test("02. officiateChallenge"):
     val inputs: List[(List[Card], List[Move], Int)] = List(
       (List((Hearts, Ace), (Clubs, Ace)), List(Draw, Draw), 15)
       // add more test cases here!
@@ -28,7 +27,6 @@ class HW2ChallengeSuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map officiateChallenge, expected)
-  }
 
   /*  Properties  */
   type Property = (GameState, List[Move]) => Boolean
@@ -38,8 +36,8 @@ class HW2ChallengeSuite extends munit.FunSuite:
     val (hand, _, goal, _) = st
     sumCards(hand) <= goal
 
-  /** A card is drawn whenever the goal is more than 10 greater than the value
-    * of the held cards.
+  /** A card is drawn whenever the goal is more than 10 greater than the value of the held
+    * cards.
     */
   val prop2: Property = (st: GameState, moves: List[Move]) =>
     val (hand, _, goal, _) = st
@@ -54,8 +52,8 @@ class HW2ChallengeSuite extends munit.FunSuite:
     val (_, _, _, scr) = st
     scr != 0 || moves.isEmpty
 
-  /** If it is possible to reach a score of 0 by discarding a card followed by
-    * drawing a card, then this must be done.
+  /** If it is possible to reach a score of 0 by discarding a card followed by drawing a
+    * card, then this must be done.
     */
   val prop4: Property = (st: GameState, moves: List[Move]) =>
     !possibleToDiscardThenDraw(st) ||
@@ -82,33 +80,28 @@ class HW2ChallengeSuite extends munit.FunSuite:
   val goalGen: Gen[Int] = Gen.choose(0, 100)
 
   /*  convert a Property to a Prop */
-  def convert(p: Property): Prop = forAll(deckGen, goalGen) { (deck, goal) =>
+  def convert(p: Property): Prop = forAll(deckGen, goalGen): (deck, goal) =>
     checkProp(p, carefulPlayer(deck, goal), start(deck, goal))
-  }
 
-  test("03a. carefulPlayer: value of held cards never exceeds goal") {
+  test("03a. carefulPlayer: value of held cards never exceeds goal"):
     convert(prop1).check()
-  }
 
   test(
     "03b. carefulPlayer: A card is drawn whenever the goal is more than" +
       " 10 greater than the value of the held cards."
-  ) {
+  ):
     convert(prop2).check()
-  }
 
   test(
     "03c. carefulPlayer: If a score of 0 is reached, " +
       "there must be no more moves"
-  ) {
+  ):
     convert(prop3).check()
-  }
 
   test(
     "03d. carefulPlayer: If it is possible to reach a score of 0 by " +
       "discarding a card followed by drawing a card, then this must be done"
-  ) {
+  ):
     convert(prop4).check()
-  }
 
 end HW2ChallengeSuite

@@ -3,7 +3,7 @@ package A.w3
 class HW3Suite extends munit.FunSuite:
   import Pattern.*, Value.*
 
-  test("01. onlyCapitals") {
+  test("01. onlyCapitals"):
     val inputs: List[List[String]] = List(
       List("hello", "Spam", "egg")
       // add more test cases here!
@@ -13,9 +13,8 @@ class HW3Suite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map onlyCapitals, expected)
-  }
 
-  test("02. longestString1") {
+  test("02. longestString1"):
     val inputs: List[List[String]] = List(
       List("hello", "Spam", "egg")
       // add more test cases here!
@@ -25,9 +24,8 @@ class HW3Suite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map longestString1, expected)
-  }
 
-  test("03. longestString2") {
+  test("03. longestString2"):
     val inputs: List[List[String]] = List(
       List("Spam", "eggs")
       // add more test cases here!
@@ -37,9 +35,8 @@ class HW3Suite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map longestString2, expected)
-  }
 
-  test("04. longestStringHelper") {
+  test("04. longestStringHelper"):
     val funs: List[(Int, Int) => Boolean] = List(
       (x, y) => x > y,
       (x, y) => x % 2 == 1 && y % 2 == 0
@@ -68,9 +65,8 @@ class HW3Suite extends munit.FunSuite:
       // add more results for more functions above!
     )
     assertEquals(applied, expected)
-  }
 
-  test("05. longestString3") {
+  test("05. longestString3"):
     val inputs: List[List[String]] = List(
       List("hello", "Spam", "egg")
       // add more test cases here!
@@ -80,9 +76,8 @@ class HW3Suite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map longestString3, expected)
-  }
 
-  test("06. longestString4") {
+  test("06. longestString4"):
     val inputs: List[List[String]] = List(
       List("Spam", "eggs")
       // add more test cases here!
@@ -92,9 +87,8 @@ class HW3Suite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map longestString4, expected)
-  }
 
-  test("07. longestCapitalized") {
+  test("07. longestCapitalized"):
     val inputs: List[List[String]] = List(
       List("hello", "Spam", "egg")
       // add more test cases here!
@@ -104,9 +98,8 @@ class HW3Suite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map longestCapitalized, expected)
-  }
 
-  test("08. revString") {
+  test("08. revString"):
     val inputs: List[String] = List(
       "Spam"
       // add more test cases here!
@@ -116,9 +109,8 @@ class HW3Suite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map revString, expected)
-  }
 
-  test("09. firstAnswer") {
+  test("09. firstAnswer"):
     val funs: List[Int => Option[Int]] =
       List(x => if x > 0 then Some(x) else None
       // add more functions here!
@@ -138,9 +130,8 @@ class HW3Suite extends munit.FunSuite:
       // add more results for more functions above!
     )
     assertEquals(applied, expected)
-  }
 
-  test("10. allAnswers") {
+  test("10. allAnswers"):
     val funs: List[Int => Option[List[Int]]] =
       List(x => if x > 1 then Some(List(x, x + 1)) else None
       // add more functions here!
@@ -161,7 +152,6 @@ class HW3Suite extends munit.FunSuite:
       // add more results for more functions above!
     )
     assertEquals(applied, expected)
-  }
 
   /* Some patterns and values for testing */
   val pat1 = Wildcard
@@ -182,7 +172,7 @@ class HW3Suite extends munit.FunSuite:
   )
   val val5 = Tuple(List(Const(1), Const(2), Unit, Const(17)))
 
-  test("11. countWildcards") {
+  test("11. countWildcards"):
     val inputs: List[Pattern] = List(
       pat7
       // add more test cases here!
@@ -192,9 +182,8 @@ class HW3Suite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map countWildcards, expected)
-  }
 
-  test("12. countWildAndVariableLengths") {
+  test("12. countWildAndVariableLengths"):
     val inputs: List[Pattern] = List(
       pat5
       // add more test cases here!
@@ -204,9 +193,8 @@ class HW3Suite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map countWildAndVariableLengths, expected)
-  }
 
-  test("13. countSomeVar") {
+  test("13. countSomeVar"):
     val inputs: List[(String, Pattern)] = List(
       ("pat2", pat7)
       // add more test cases here!
@@ -216,9 +204,8 @@ class HW3Suite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map countSomeVar, expected)
-  }
 
-  test("14. checkPat") {
+  test("14. checkPat"):
     val inputs: List[Pattern] = List(
       pat5,
       pat7
@@ -230,9 +217,8 @@ class HW3Suite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map checkPat, expected)
-  }
 
-  test("15. patMatch") {
+  test("15. patMatch"):
     val inputs: List[(Value, Pattern)] = List(
       (val5, pat5)
       // add more test cases here!
@@ -242,9 +228,8 @@ class HW3Suite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map patMatch, expected)
-  }
 
-  test("16. firstMatch") {
+  test("16. firstMatch"):
     val values: List[Value] = List(
       Unit
       // add more test cases here!
@@ -259,4 +244,3 @@ class HW3Suite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map ((v, pl) => firstMatch(v)(pl)), expected)
-  }

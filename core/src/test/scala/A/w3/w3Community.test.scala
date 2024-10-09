@@ -1,7 +1,7 @@
 package A.w3
 
 class Week2CommunitySuite extends munit.FunSuite:
-  test("01. composeOpt") {
+  test("01. composeOpt"):
     val firstArgs: List[Int => Option[Int]] = List(x => Some(x * x)
     // add more functions here!
     )
@@ -27,9 +27,8 @@ class Week2CommunitySuite extends munit.FunSuite:
       // add more test cases here (for each function pair)
     )
     assertEquals(applied, expected)
-  }
 
-  test("02. doUntil") {
+  test("02. doUntil"):
     val firstArgs: List[Int => Int] = List(x => x / 2
     // add more functions here!
     )
@@ -53,9 +52,8 @@ class Week2CommunitySuite extends munit.FunSuite:
       // add more test cases here (for each function pair)
     )
     assertEquals(applied, expected)
-  }
 
-  test("03. factorial") {
+  test("03. factorial"):
     val inputs: List[Int] = List(
       5
       // add more test cases here!
@@ -65,9 +63,8 @@ class Week2CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map factorial, expected)
-  }
 
-  test("04. fixedPoint") {
+  test("04. fixedPoint"):
     val firstArgs: List[Int => Int] = List(x => x / 2
     // add more functions here!
     )
@@ -84,9 +81,8 @@ class Week2CommunitySuite extends munit.FunSuite:
       // add more test cases here (for each function)
     )
     assertEquals(applied, expected)
-  }
 
-  test("05. map2") {
+  test("05. map2"):
     val firstArgs: List[Int => Boolean] = List(x => x % 2 == 0
     // add more functions here!
     )
@@ -104,9 +100,8 @@ class Week2CommunitySuite extends munit.FunSuite:
       // add more test cases here (for each function)
     )
     assertEquals(applied, expected)
-  }
 
-  test("06. appAll") {
+  test("06. appAll"):
     val firstArgs: List[Int => List[Double]] = List(x => List(x / 2, x / 4)
     // add more functions here!
     )
@@ -130,9 +125,8 @@ class Week2CommunitySuite extends munit.FunSuite:
       // add more test cases here (for each function pair)
     )
     assertEquals(applied, expected)
-  }
 
-  test("07. myFoldRight") {
+  test("07. myFoldRight"):
     val funArgs: List[(Int, Boolean) => Boolean] =
       List((x, y) => (x % 2 == 0) && y
       // add more functions here!
@@ -149,9 +143,8 @@ class Week2CommunitySuite extends munit.FunSuite:
       // add more test cases here (for each function)
     )
     assertEquals(applied, expected)
-  }
 
-  // test("01. ") {
+  // test("01. "):
   //   val inputs: List[] = List(
   //     ,
   //     // add more test cases here!
@@ -163,7 +156,7 @@ class Week2CommunitySuite extends munit.FunSuite:
   //   assertEquals(inputs map , expected)
   // }
 
-  // test("01. ") {
+  // test("01. "):
   //   val inputs: List[] = List(
   //     ,
   //     // add more test cases here!

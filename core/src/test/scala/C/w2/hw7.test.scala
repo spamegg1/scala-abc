@@ -8,7 +8,7 @@ class HW7Suite extends munit.FunSuite:
 
   val emptyEnv = Map[String, GeoVal]()
 
-  test("01. Point") {
+  test("01. Point"):
     /*  initialization */
     val p = Point(three, five)
     assertEquals(p.x, three)
@@ -18,4 +18,3 @@ class HW7Suite extends munit.FunSuite:
 
     val e2 = p.preprocessProg
     assert(p == e2)
-  }

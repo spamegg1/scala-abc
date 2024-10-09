@@ -1,7 +1,7 @@
 package A.w1
 
 class Week1CommunitySuite extends munit.FunSuite:
-  test("01. alternate") {
+  test("01. alternate"):
     val inputs: List[List[Int]] = List(
       List(1, 2, 3, 4)
       // add more test cases here!
@@ -11,8 +11,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map alternate, expected)
-  }
-  test("02. minMax") {
+
+  test("02. minMax"):
     val inputs: List[List[Int]] = List(
       List(1, 2, 3)
       // add more test cases here!
@@ -22,9 +22,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map minMax, expected)
-  }
 
-  test("03. cumsum") {
+  test("03. cumsum"):
     val inputs: List[List[Int]] = List(
       List(1, 2, 3)
       // add more test cases here!
@@ -34,9 +33,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map cumsum, expected)
-  }
 
-  test("04. greeting") {
+  test("04. greeting"):
     val inputs: List[Option[String]] = List(
       Some("spam")
       // add more test cases here!
@@ -46,9 +44,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map greeting, expected)
-  }
 
-  test("05. myRepeat") {
+  test("05. myRepeat"):
     val inputs: List[(List[Int], List[Int])] = List(
       (List(1, 2, 3), List(4, 0, 3))
       // add more test cases here!
@@ -58,9 +55,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map myRepeat, expected)
-  }
 
-  test("06. addOpt") {
+  test("06. addOpt"):
     val inputs: List[(Option[Int], Option[Int])] = List(
       (None, None)
       // add more test cases here!
@@ -70,9 +66,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map addOpt, expected)
-  }
 
-  test("07. addAllOpt") {
+  test("07. addAllOpt"):
     val inputs: List[List[Option[Int]]] = List(
       List(None, Some(1))
       // add more test cases here!
@@ -82,9 +77,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map addAllOpt, expected)
-  }
 
-  test("08. any") {
+  test("08. any"):
     val inputs: List[List[Boolean]] = List(
       List()
       // add more test cases here!
@@ -94,9 +88,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map any, expected)
-  }
 
-  test("09. all") {
+  test("09. all"):
     val inputs: List[List[Boolean]] = List(
       List()
       // add more test cases here!
@@ -106,9 +99,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map all, expected)
-  }
 
-  test("10. myZip") {
+  test("10. myZip"):
     val inputs: List[(List[Int], List[Int])] = List(
       (List(1, 2), List(3))
       // add more test cases here!
@@ -118,9 +110,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map myZip, expected)
-  }
 
-  test("11. zipRecycle") {
+  test("11. zipRecycle"):
     val inputs: List[(List[Int], List[Int])] = List(
       (List(1, 2), List(3))
       // add more test cases here!
@@ -130,9 +121,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map zipRecycle, expected)
-  }
 
-  test("12. zipOpt") {
+  test("12. zipOpt"):
     val inputs: List[(List[Int], List[Int])] = List(
       (List(1), List(2, 3))
       // add more test cases here!
@@ -142,9 +132,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map zipOpt, expected)
-  }
 
-  test("13. lookup") {
+  test("13. lookup"):
     val inputs: List[(List[(String, Int)], String)] = List(
       (List(("spam", 42)), "spam")
       // add more test cases here!
@@ -154,9 +143,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map lookup, expected)
-  }
 
-  test("14. splitUp") {
+  test("14. splitUp"):
     val inputs: List[List[Int]] = List(
       List(1, -2, 3)
       // add more test cases here!
@@ -166,9 +154,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map splitUp, expected)
-  }
 
-  test("15. mySplitAt") {
+  test("15. mySplitAt"):
     val inputs: List[(List[Int], Int)] = List(
       (List(1, 2, 3), 2)
       // add more test cases here!
@@ -178,9 +165,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map mySplitAt, expected)
-  }
 
-  test("16. isSorted") {
+  test("16. isSorted"):
     val inputs: List[List[Int]] = List(
       List(1, 2, 3)
       // add more test cases here!
@@ -190,9 +176,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map isSorted, expected)
-  }
 
-  test("17. isAnySorted") {
+  test("17. isAnySorted"):
     val inputs: List[List[Int]] = List(
       List(3, 2, 1)
       // add more test cases here!
@@ -202,9 +187,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map isAnySorted, expected)
-  }
 
-  test("18. sortedMerge") {
+  test("18. sortedMerge"):
     val inputs: List[(List[Int], List[Int])] = List(
       (List(1, 3), List(2, 4))
       // add more test cases here!
@@ -214,9 +198,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map sortedMerge, expected)
-  }
 
-  test("19. qsort") {
+  test("19. qsort"):
     val inputs: List[List[Int]] = List(
       List(3, 2, 1)
       // add more test cases here!
@@ -226,9 +209,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map qsort, expected)
-  }
 
-  test("20. divide") {
+  test("20. divide"):
     val inputs: List[List[Int]] = List(
       List(1, 2, 3)
       // add more test cases here!
@@ -238,9 +220,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map divide, expected)
-  }
 
-  test("21. notSoQuickSort") {
+  test("21. notSoQuickSort"):
     val inputs: List[List[Int]] = List(
       List(3, 1, 2)
       // add more test cases here!
@@ -250,9 +231,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map notSoQuickSort, expected)
-  }
 
-  test("22. fullDivide") {
+  test("22. fullDivide"):
     val inputs: List[(Int, Int)] = List(
       (3, 9)
       // add more test cases here!
@@ -262,9 +242,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map fullDivide, expected)
-  }
 
-  test("23. factorize") {
+  test("23. factorize"):
     val inputs: List[Int] = List(
       20
       // add more test cases here!
@@ -274,9 +253,8 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map factorize, expected)
-  }
 
-  test("24. multiply") {
+  test("24. multiply"):
     val inputs: List[List[(Int, Int)]] = List(
       List((2, 2), (5, 1))
       // add more test cases here!
@@ -286,4 +264,3 @@ class Week1CommunitySuite extends munit.FunSuite:
       // add more test cases here!
     )
     assertEquals(inputs map multiply, expected)
-  }

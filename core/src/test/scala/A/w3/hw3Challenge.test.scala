@@ -265,6 +265,5 @@ class HW3ChallengeSuite extends munit.FunSuite:
     Some(TupleT(List(Anything, Anything)))
   )
 
-  test("01-15. typecheckPatterns") {
+  test("01-15. typecheckPatterns"):
     assertEquals(inputs map typecheckPatterns, expected)
-  }

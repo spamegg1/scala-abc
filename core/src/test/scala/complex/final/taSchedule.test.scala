@@ -1,14 +1,12 @@
 package complex.finalExam
 
 class TAScheduleSuite extends munit.FunSuite:
-
-  /*  set-up TAs for testing  */
-  val spam = TA("Spam", 2, List(Slot(1), Slot(3)))
+  val spam = TA("Spam", 2, List(Slot(1), Slot(3))) /*  set-up TAs for testing  */
   val ham = TA("Ham", 1, List(Slot(3), Slot(4)))
   val egg = TA("Egg", 1, List(Slot(2)))
   val spammers = List(spam, ham, egg)
 
-  test("01. solve") {
+  test("01. solve"):
     val inputs: List[(TAs, Slots)] = List(
       (Nil, Nil),
       (Nil, List(Slot(1))),
@@ -38,10 +36,7 @@ class TAScheduleSuite extends munit.FunSuite:
       Some(Map(Slot(3) -> spam)),
       Some(Map(Slot(3) -> spam, Slot(4) -> ham)),
       Some(Map(Slot(2) -> egg, Slot(3) -> spam)),
-      Some(
-        Map(Slot(1) -> spam, Slot(2) -> egg, Slot(3) -> spam, Slot(4) -> ham)
-      )
+      Some(Map(Slot(1) -> spam, Slot(2) -> egg, Slot(3) -> spam, Slot(4) -> ham))
     )
 
     assertEquals(inputs map solve, expected)
-  }

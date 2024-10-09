@@ -4,7 +4,7 @@ class HW1ChallengeSuite extends munit.FunSuite:
   def check[T, S](inputs: List[T], expected: List[S], fun: T => S): Unit =
     assertEquals(inputs map fun, expected)
 
-  test("01. numberInMonthsChallenge") {
+  test("01. numberInMonthsChallenge"):
     val inputs: List[(List[Date], List[Int])] = List(
       (List((2012, 2, 28), (2013, 12, 1), (2011, 4, 28)), List(2))
       // add more test cases here!
@@ -18,9 +18,8 @@ class HW1ChallengeSuite extends munit.FunSuite:
       expected,
       numberInMonthsChallenge
     )
-  }
 
-  test("02. datesInMonthsChallenge") {
+  test("02. datesInMonthsChallenge"):
     val inputs: List[(List[Date], List[Int])] = List(
       (List((2012, 2, 28), (2013, 12, 1)), List(2))
       // add more test cases here!
@@ -34,4 +33,3 @@ class HW1ChallengeSuite extends munit.FunSuite:
       expected,
       datesInMonthsChallenge
     )
-  }

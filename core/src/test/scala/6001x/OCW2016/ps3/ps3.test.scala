@@ -1,7 +1,7 @@
 package ocw2016.ps3
 
 class PS3Suite extends munit.FunSuite:
-  test("01. getWordScore") {
+  test("01. getWordScore"):
     val inputs: List[(String, Int)] = List(
       ("", 7),
       ("it", 7),
@@ -11,16 +11,15 @@ class PS3Suite extends munit.FunSuite:
       ("WaYbILl", 7),
       ("Outgnaw", 7),
       ("fork", 7),
-      ("FORK", 4),
+      ("FORK", 4)
       // add more test cases here!
     )
     val expected: List[Int] = List(
-      0, 2, 54, 176, 351, 735, 539, 209, 308, // add more test cases here!
+      0, 2, 54, 176, 351, 735, 539, 209, 308 // add more test cases here!
     )
     assertEquals(inputs map getWordScore, expected)
-  }
 
-  test("02. updateHand") {
+  test("02. updateHand"):
     val inputs: List[(Hand, String)] = List(
       (
         Map('a' -> 1, 'q' -> 1, 'l' -> 2, 'm' -> 1, 'u' -> 1, 'i' -> 1),
@@ -33,19 +32,18 @@ class PS3Suite extends munit.FunSuite:
       (
         Map('h' -> 1, 'e' -> 1, 'l' -> 2, 'o' -> 1),
         "HELLO"
-      ),
+      )
       // add more test cases here!
     )
     val expected: List[Hand] = List(
       Map('a' -> 0, 'q' -> 0, 'l' -> 1, 'm' -> 1, 'u' -> 0, 'i' -> 0),
       Map('e' -> 0, 'v' -> 1, 'n' -> 1, 'i' -> 0, 'l' -> 1),
-      Map('h' -> 0, 'e' -> 0, 'l' -> 0, 'o' -> 0),
+      Map('h' -> 0, 'e' -> 0, 'l' -> 0, 'o' -> 0)
       // add more test cases here!
     )
     assertEquals(inputs map updateHand, expected)
-  }
 
-  test("03. isValidWord") {
+  test("03. isValidWord"):
     val wordList = loadWords(WORDLISTFILENAME)
     val inputs: List[(String, Hand)] = List(
       (
@@ -62,7 +60,7 @@ class PS3Suite extends munit.FunSuite:
       ),
       (
         "honey",
-        Map('r' -> 1, 'a' -> 3, 'p' -> 2, 't' -> 1, 'u' -> 2),
+        Map('r' -> 1, 'a' -> 3, 'p' -> 2, 't' -> 1, 'u' -> 2)
       )
       // add more test cases here!
     )
@@ -70,14 +68,14 @@ class PS3Suite extends munit.FunSuite:
       true,
       true,
       true,
-      false,
+      false
       // add more test cases here!
     )
     assertEquals(
       inputs.map((word, hand) => isValidWord(word, hand, wordList)),
       expected
     )
-  }
+
 // def test_wildcard(word_list):
 //     """
 //     Unit test for is_valid_word
@@ -85,7 +83,7 @@ class PS3Suite extends munit.FunSuite:
 //     failure = False
 
 //     # test 1
-//     hand = {'a': 1, 'r': 1, 'e': 1, 'j': 2, 'm': 1, '*': 1}
+//     hand =:'a': 1, 'r': 1, 'e': 1, 'j': 2, 'm': 1, '*': 1}
 //     word = "e*m"
 
 //     if is_valid_word(word, hand, word_list):
@@ -95,7 +93,7 @@ class PS3Suite extends munit.FunSuite:
 //         failure = True
 
 //     # test 2
-//     hand = {'n': 1, 'h': 1, '*': 1, 'y': 1, 'd': 1, 'w': 1, 'e': 2}
+//     hand =:'n': 1, 'h': 1, '*': 1, 'y': 1, 'd': 1, 'w': 1, 'e': 2}
 //     word = "honey"
 
 //     if is_valid_word(word, hand, word_list):
@@ -105,7 +103,7 @@ class PS3Suite extends munit.FunSuite:
 //         failure = True
 
 //     # test 3
-//     hand = {'n': 1, 'h': 1, '*': 1, 'y': 1, 'd': 1, 'w': 1, 'e': 2}
+//     hand =:'n': 1, 'h': 1, '*': 1, 'y': 1, 'd': 1, 'w': 1, 'e': 2}
 //     word = "h*ney"
 
 //     if not is_valid_word(word, hand, word_list):
@@ -115,7 +113,7 @@ class PS3Suite extends munit.FunSuite:
 //         failure = True
 
 //     # test 4
-//     hand = {'c': 1, 'o': 1, '*': 1, 'w': 1, 's': 1, 'z': 1, 'y': 2}
+//     hand =:'c': 1, 'o': 1, '*': 1, 'w': 1, 's': 1, 'z': 1, 'y': 2}
 //     word = "c*wz"
 
 //     if is_valid_word(word, hand, word_list):
@@ -125,7 +123,7 @@ class PS3Suite extends munit.FunSuite:
 //         failure = True
 
 //     # dictionary of words and scores WITH wildcards
-//     words = {("h*ney", 7): 290, ("c*ws", 6): 176, ("wa*ls", 7): 203}
+//     words =:("h*ney", 7): 290, ("c*ws", 6): 176, ("wa*ls", 7): 203}
 //     for (word, n) in words.keys():
 //         score = get_word_score(word, n)
 //         if score != words[(word, n)]:
