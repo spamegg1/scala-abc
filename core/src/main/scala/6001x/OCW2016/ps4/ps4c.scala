@@ -1,6 +1,3 @@
-import scala.util.Using
-import scala.io.Source.fromResource
-
 // you may find these constants helpful
 val VOWELSLOWER = "aeiou"
 val VOWELSUPPER = "AEIOU"
@@ -129,16 +126,18 @@ class EncryptedSubMessage(text: String) extends SubMessage(text):
 
     decryptedMessage
 
-// Example test case
-val message = SubMessage("Hello World!")
-val permutation = "eaiuo"
-val encDict = message.buildTransposeDict(permutation)
+@main
+def ps4c =
+  // Example test case
+  val message = SubMessage("Hello World!")
+  val permutation = "eaiuo"
+  val encDict = message.buildTransposeDict(permutation)
 
-val original = s"Original message: ${message.getMessageText} Permutation: $permutation"
-val expected = "Expected encryption: Hallu Wurld!"
-val actual = s"Actual encryption: ${message.applyTranspose(encDict)}"
+  println(s"Original message: ${message.getMessageText} Permutation: $permutation")
+  println("Expect encryption: Hallu Wurld!")
+  println(s"Actual encryption: ${message.applyTranspose(encDict)}")
 
-val encMessage = EncryptedSubMessage(message.applyTranspose(encDict))
-println("Decrypted message: " + encMessage.decryptMessage)
+  val encMessage = EncryptedSubMessage(message.applyTranspose(encDict))
+  println(s"Decrypted message: ${encMessage.decryptMessage}")
 
-// TODO: WRITE YOUR TEST CASES HERE
+  // TODO: WRITE YOUR TEST CASES HERE

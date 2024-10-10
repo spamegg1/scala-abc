@@ -4,10 +4,10 @@
 // Think of it as an addition to scala.Prelude.
 export net.ruippeixotog.scalascraper.browser.JsoupBrowser
 export net.ruippeixotog.scalascraper.dsl.DSL.{deepFunctorOps, Extract, RichHtmlExtractor}
-export scala.collection.mutable.{Map => MMap}
+export scala.collection.mutable.{Map => MMap, ArrayBuffer}
 export scala.io.StdIn.readLine
 export scala.io.Source.fromResource
-export scala.util.{boundary, Using}, boundary.break
+export scala.util.{boundary, Using, Random}, boundary.break
 export scala.xml.XML
 export spray.json.{DefaultJsonProtocol, enrichString, JsObject}, DefaultJsonProtocol.*
 export sttp.client4.{DefaultSyncBackend, basicRequest, UriContext}

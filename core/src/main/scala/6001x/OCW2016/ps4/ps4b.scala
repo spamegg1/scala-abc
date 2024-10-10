@@ -1,6 +1,3 @@
-import scala.util.Using
-import scala.io.Source.fromResource
-
 val WORDLISTFILENAME = "words.txt"
 val STORYFILENAME = "story.txt"
 val LOWER = "abcdefghijklmnopqrstuvwxyz"
@@ -155,32 +152,34 @@ class CiphertextMessage(text: String) extends Message(text):
 
     (bestShiftValue, decryptedMessageText)
 
-// Example test case (PlaintextMessage)
-val plaintext = PlaintextMessage("hello", 2)
-val expected1 = "Expected Output: jgnnq"
-val actual1 = s"Actual Output: ${plaintext.getMessageTextEncrypted}"
+@main
+def ps4b =
+  // Example test case (PlaintextMessage)
+  val plaintext = PlaintextMessage("hello", 2)
+  println("Expect Output: jgnnq")
+  println(s"Actual Output: ${plaintext.getMessageTextEncrypted}")
 
-// Example test case (CiphertextMessage)
-val ciphertext = CiphertextMessage("jgnnq")
-val expected2 = s"Expected Output: ${(24, "hello")})"
-val actual2 = s"Actual Output: ${ciphertext.decryptMessage}"
+  // Example test case (CiphertextMessage)
+  val ciphertext = CiphertextMessage("jgnnq")
+  println(s"Expect Output: ${(24, "hello")})")
+  println(s"Actual Output: ${ciphertext.decryptMessage}")
 
-// Example test case (PlaintextMessage)
-val msg = Message("test")
-val plaintext2 = PlaintextMessage("hello", 2)
-val expected3 = "Expected Output: jgnnq"
-val actual3 = s"Actual Output: ${plaintext.getMessageTextEncrypted}"
+  // Example test case (PlaintextMessage)
+  val msg = Message("test")
+  val plaintext2 = PlaintextMessage("hello", 2)
+  println("Expect Output: jgnnq")
+  println(s"Actual Output: ${plaintext.getMessageTextEncrypted}")
 
-// Example test case (CiphertextMessage)
-val ciphertext2 = CiphertextMessage("jgnnq")
-val expected4 = s"Expected Output: ${(24, "hello")}"
-val actual4 = s"Actual Output: ${ciphertext.decryptMessage}"
+  // Example test case (CiphertextMessage)
+  val ciphertext2 = CiphertextMessage("jgnnq")
+  println(s"Expect Output: ${(24, "hello")}")
+  println(s"Actual Output: ${ciphertext.decryptMessage}")
 
-// Example test case (CiphertextMessage)
-val ciphertext3 = CiphertextMessage("fdw")
-val expected5 = s"Expected Output: ${(23, "cat")}"
-val actual5 = s"Actual Output: ${ciphertext3.decryptMessage}"
+  // Example test case (CiphertextMessage)
+  val ciphertext3 = CiphertextMessage("fdw")
+  println(s"Expect Output: ${(23, "cat")}")
+  println(s"Actual Output: ${ciphertext3.decryptMessage}")
 
-// TODO: WRITE YOUR TEST CASES HERE
+  // TODO: WRITE YOUR TEST CASES HERE
 
-// TODO: best shift value and unencrypted story
+  // TODO: best shift value and unencrypted story

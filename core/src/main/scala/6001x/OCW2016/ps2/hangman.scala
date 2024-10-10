@@ -1,9 +1,3 @@
-import util.Random.*
-import scala.io.Source.fromResource
-import scala.io.StdIn.readLine
-import scala.util.Using
-import scala.util.boundary, boundary.break
-
 type Word = String
 
 val WORDLISTFILENAME = "words.txt"
@@ -29,7 +23,7 @@ def loadWords(fileName: String) =
 def chooseWord(wordList: List[Word]) =
   // wordList (list): list of words (strings)
   // Returns a word from wordList at random
-  wordList(between(0, wordList.length))
+  wordList(Random.between(0, wordList.length))
 
 // end of helper code
 

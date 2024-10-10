@@ -1,5 +1,5 @@
-import scala.util.Using
 import scala.io.Source.fromResource
+import scala.util.Using
 
 val WORDLISTFILENAME = "words.txt"
 val STORYFILENAME = "story.txt"

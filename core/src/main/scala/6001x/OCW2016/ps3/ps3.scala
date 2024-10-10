@@ -1,12 +1,3 @@
-package ocw2016.ps3
-
-import math.*
-import util.Random.*
-import scala.io.Source.fromResource
-import scala.io.StdIn.readLine
-import scala.util.Using
-import scala.util.boundary, boundary.break
-
 type Hand = Map[Char, Int]
 type Words = List[String]
 
@@ -95,7 +86,7 @@ def getWordScore(word: String, num: Int): Int =
   val len = word.length
   val wordLower = word.toLowerCase
   val first = (for letter <- wordLower yield SCRABBLE(letter)).sum
-  val second = max(1, 7 * len - 3 * (num - len))
+  val second = math.max(1, 7 * len - 3 * (num - len))
   first * second
 
 // Make sure you understand how this function works and what it does!
@@ -122,10 +113,11 @@ def dealHand(handSize: Int, numVowels: Int): Hand =
   // n: int >= 0
   // returns: dictionary (string -> int)
   val vowels: Iterable[Char] =
-    for _ <- 1 to numVowels yield VOWELS(between(0, VOWELS.size))
+    for _ <- 1 to numVowels yield VOWELS(Random.between(0, VOWELS.size))
 
   val consonants: Iterable[Char] =
-    for _ <- numVowels + 1 to handSize yield CONSONANTS(between(0, CONSONANTS.size))
+    for _ <- numVowels + 1 to handSize
+    yield CONSONANTS(Random.between(0, CONSONANTS.size))
 
   getFreqMap(vowels.mkString + consonants.mkString)
 
@@ -250,7 +242,7 @@ def substituteHand(hand: Hand, letter: Char) =
   if !hand.contains(letter) then hand
   else
     val availableLetters = for l <- VOWELS + CONSONANTS if !hand.contains(l) yield l
-    hand.updated(letter, availableLetters(nextInt(availableLetters.length)))
+    hand.updated(letter, availableLetters(Random.nextInt(availableLetters.length)))
 
 def playGame(words: Words, handSize: Int, vowelRatio: Int): Unit =
   // Allow the user to play a series of hands

@@ -1,7 +1,3 @@
-package ps1b
-
-import scala.io.StdIn.readLine
-
 def months(
     salary: Int,
     save: Double,
@@ -26,8 +22,7 @@ def months(
   var currentSavings = 0.0
   var updatedSalary = salary.toDouble
 
-  while currentSavings < total * down
-  do
+  while currentSavings < total * down do
     val investReturn: Double = currentSavings * rate / 12
     val monthlySave: Double = updatedSalary / 12 * save
     currentSavings += monthlySave + investReturn
@@ -69,4 +64,4 @@ def ps1b =
     portionDownPay,
     annualRate
   )
-  println("Number of months: " + result.toString)
+  println(s"Number of months: $result")

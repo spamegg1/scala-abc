@@ -1,37 +1,28 @@
-import collection.mutable.ArrayBuffer
-
 def uniqueValues(aDict: Map[Char, Int]) =
-  /**
-   * aDict: a dictionary that maps to integer values.
-   * returns: a list
-   * Returns a list, consisting of keys in aDict that map to unique integer
-   * values. If no key maps to a unique integer value, returns empty list.
-   * The returned list is in increasing order.
-   * Example:
-   *   aDict = Map('a': 1, 'b': 2, 'c': 2, 'd': 3)
-   *   uniqueValues(aDict) -> List('a', 'd']
-   */
+  /** aDict: a dictionary that maps to integer values. returns: a list Returns a list,
+    * consisting of keys in aDict that map to unique integer values. If no key maps to a
+    * unique integer value, returns empty list. The returned list is in increasing order.
+    * Example: aDict = Map('a': 1, 'b': 2, 'c': 2, 'd': 3) uniqueValues(aDict) ->
+    * List('a', 'd']
+    */
   val result = ArrayBuffer[Char]()
 
   for
     (key, value) <- aDict
     if !aDict.exists((char, int) => int == value && char != key)
-  do
-    result += key
+  do result += key
 
   result.toList.sorted
 
-
 def testUniqueValues =
-  /**
-   * Tests uniqueValues function.
-   */
+  /** Tests uniqueValues function.
+    */
   val dict1 = Map[Char, Int]()
-  val dict2 = Map('a'-> 1)
-  val dict3 = Map('a'-> 1, 'b'-> 1)
-  val dict4 = Map('d'-> 1, 'z'-> 2, 'a'-> 3)
-  val dict5 = Map('b'-> 2, 'd'-> 3, 'c'-> 2, 'a'-> 1)
-  val dict6 = Map('a'-> 1, 'b'-> 1, 'c'-> 2, 'd'-> 2, 'e'-> 3, 'f'-> 3)
+  val dict2 = Map('a' -> 1)
+  val dict3 = Map('a' -> 1, 'b' -> 1)
+  val dict4 = Map('d' -> 1, 'z' -> 2, 'a' -> 3)
+  val dict5 = Map('b' -> 2, 'd' -> 3, 'c' -> 2, 'a' -> 1)
+  val dict6 = Map('a' -> 1, 'b' -> 1, 'c' -> 2, 'd' -> 2, 'e' -> 3, 'f' -> 3)
 
   assert(uniqueValues(dict1) == Nil)
   assert(uniqueValues(dict2) == List('a'))
@@ -42,14 +33,11 @@ def testUniqueValues =
 
   print("Testing uniqueValues: PASS")
 
-
 def laceStringsRecur(s1: String, s2: String) =
-  /**
-   * s1 and s2 are strings.
-   * Returns a new str with elements of s1 and s2 interlaced,
-   * beginning with s1. If strings are not of same length,
-   * then the extra elements should appear at the end.
-   */
+  /** s1 and s2 are strings. Returns a new str with elements of s1 and s2 interlaced,
+    * beginning with s1. If strings are not of same length, then the extra elements should
+    * appear at the end.
+    */
   def helpLaceStrings(s1: String, s2: String, out: String): String =
     if s1.isEmpty then out + s2
     else if s2.isEmpty then out + s1
@@ -57,11 +45,9 @@ def laceStringsRecur(s1: String, s2: String) =
 
   helpLaceStrings(s1, s2, "")
 
-
 def testLaceStringsRecur =
-  /**
-   * Tests laceStringsRecur function.
-   */
+  /** Tests laceStringsRecur function.
+    */
   val s1 = ""
   val s2 = "a"
   val s3 = "bc"
@@ -80,7 +66,6 @@ def testLaceStringsRecur =
   assert(laceStringsRecur(s5, s4) == "pqpwpeprptpyppppppp")
   print("Testing laceStringsRecur: PASS")
 
-
 def generalPoly(L: List[Int]): Int => Double =
   // L, a list of numbers (n0, n1, n2, ... nk)
   // Returns a function, which when applied to a value x, returns the value
@@ -93,9 +78,8 @@ def generalPoly(L: List[Int]): Int => Double =
   f
 
 def testGeneralPoly =
-  /**
-   * Tests generalPoly function.
-   */
+  /** Tests generalPoly function.
+    */
   val l0 = List[Int]()
   val l1 = List(1)
   val l2 = List(2, 3)
@@ -123,8 +107,9 @@ def testGeneralPoly =
   assert(generalPoly(l8)(x4) == -141060)
   print("Testing generalPoly: PASS")
 
-
 // TESTING
-testUniqueValues
-testLaceStringsRecur
-testGeneralPoly
+@main
+def mitMidterm =
+  testUniqueValues
+  testLaceStringsRecur
+  testGeneralPoly

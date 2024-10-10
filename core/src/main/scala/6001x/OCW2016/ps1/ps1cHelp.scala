@@ -1,72 +1,70 @@
 trait Ps1CInterface:
-
   def savings36(
-    startSalary: Double,
-    portion: Int,
-    investRate: Double,
-    semiRaise: Double
+      startSalary: Double,
+      portion: Int,
+      investRate: Double,
+      semiRaise: Double
   ): Double
-    // This should calculate and return the 36 month savings.
-    // Make sure to count the months from 0 to 35, not 1 to 36.
-    // Apply the semi-annual raise whenever the month is
-    // positive and divisible by 6.
-    // Do NOT MUTATE (update) the startSalary variable.
-    // Create a new fresh variable named salary,
-    // set its initial value to startSalary, and mutate that instead.
+  // This should calculate and return the 36 month savings.
+  // Make sure to count the months from 0 to 35, not 1 to 36.
+  // Apply the semi-annual raise whenever the month is
+  // positive and divisible by 6.
+  // Do NOT MUTATE (update) the startSalary variable.
+  // Create a new fresh variable named salary,
+  // set its initial value to startSalary, and mutate that instead.
 
   def bisearchOneStep(
-    saving: Double,
-    downPay: Double,
-    left: Int,
-    right: Int,
-    portion: Int,
-    steps: Int
+      saving: Double,
+      downPay: Double,
+      left: Int,
+      right: Int,
+      portion: Int,
+      steps: Int
   ): (Int, Int, Int, Int)
-    // This should return the next values of left, right, portion, steps.
-    // Do NOT check the loop-stopping condition here.
-    // We will do that in the next function.
-    // Just use the bisection search logic, regardless of the stopping condition.
-    // Use INTEGER DIVISION for the new portion (with // 2 instead of / 2).
-    // Do NOT mutate (update) left, right, portion, steps.
-    // Create new, fresh variables new_left, new_right, new_portion, new_steps
-    // and return those instead.
-    // This function is very useful, because you can see the "next step results"
-    // without inserting a bunch of print statements everywhere.
-    // Because it only advances the search by 1 STEP ONLY.
+  // This should return the next values of left, right, portion, steps.
+  // Do NOT check the loop-stopping condition here.
+  // We will do that in the next function.
+  // Just use the bisection search logic, regardless of the stopping condition.
+  // Use INTEGER DIVISION for the new portion (with // 2 instead of / 2).
+  // Do NOT mutate (update) left, right, portion, steps.
+  // Create new, fresh variables new_left, new_right, new_portion, new_steps
+  // and return those instead.
+  // This function is very useful, because you can see the "next step results"
+  // without inserting a bunch of print statements everywhere.
+  // Because it only advances the search by 1 STEP ONLY.
 
   def bisearch(
-    salary: Double,
-    investRate: Double,
-    semiRaise: Double,
-    downPay: Double,
-    left: Int,
-    right: Int,
-    portion: Int,
-    steps: Int
+      salary: Double,
+      investRate: Double,
+      semiRaise: Double,
+      downPay: Double,
+      left: Int,
+      right: Int,
+      portion: Int,
+      steps: Int
   ): (Int, Int)
-    // Use the saving_36 function to calculate the savings for the current portion.
-    // If absolute value of (saving - downPay) is less than 100,
-    // you can stop, and return portion and steps.
-    // Otherwise, call bisearchOneStep with the savings.
-    // This will give you new_left, new_right, new_portion, new_steps.
-    // Then call bisearch with these new values. (loop)
-    // salary, investRate, semiRaise, downPay stay unchanged.
+  // Use the saving_36 function to calculate the savings for the current portion.
+  // If absolute value of (saving - downPay) is less than 100,
+  // you can stop, and return portion and steps.
+  // Otherwise, call bisearchOneStep with the savings.
+  // This will give you new_left, new_right, new_portion, new_steps.
+  // Then call bisearch with these new values. (loop)
+  // salary, investRate, semiRaise, downPay stay unchanged.
 
   def optimalSavingRate(
-    salary: Double,
-    investRate: Double,
-    semiRaise: Double,
-    downPay: Double
+      salary: Double,
+      investRate: Double,
+      semiRaise: Double,
+      downPay: Double
   ): Unit
-    // Calculate maximum possible 36-month savings with portion = 10000.
-    // If this value is less than downPay, then it's not possible to
-    // pay the down payment in 3 years.
-    // Otherwise, call bisearch with starting values of
-    // left, right, portion = 0, 10000, 5000
-    // That will return portion and steps.
-    // Then print best savings rate as: portion / 10000,
-    // and the number of steps in bisection search.
-
+  // Calculate maximum possible 36-month savings with portion = 10000.
+  // If this value is less than downPay, then it's not possible to
+  // pay the down payment in 3 years.
+  // Otherwise, call bisearch with starting values of
+  // left, right, portion = 0, 10000, 5000
+  // That will return portion and steps.
+  // Then print best savings rate as: portion / 10000,
+  // and the number of steps in bisection search.
 
 // Here define the global constants of semiRaise, investRate, downPay.
 // Then ask user for starting salary.
