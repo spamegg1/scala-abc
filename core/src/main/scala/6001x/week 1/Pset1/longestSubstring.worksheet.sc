@@ -17,36 +17,69 @@ def longestSubstring(s: String): String =
   var substring = s(0).toString
   var longest = substring
 
-  for
-    i <- 1 until s.length
-  do
+  for i <- 1 until s.length do
     if s(i - 1) <= s(i) then
       substring += s(i)
-      if substring.length > longest.length then
-        longest = substring
-    else
-      substring = s(i).toString
+      if substring.length > longest.length then longest = substring
+    else substring = s(i).toString
 
-  println("Longest substring in alphabetical order is: " + longest)
+  println(s"Longest substring in alphabetical order is: $longest")
   longest
 
 // TESTING
 val WORDS = List(
-  "dbxuofuzgon", "fsagwlltxifaqg", "bogvxlzntxzurfdxqiz",
-  "twameqnktryeugaufxic", "kapyrljsstow", "kdfopywicsstu",
-  "upqnbtxfywnuvisrpg", "abcdefghijklmnopqrstuvwxyz", "lsbjatmsvwwrdxw",
-  "wjhprvhwneixskmgpyj", "hjfnqvttoqrp", "zyxwvutsrqponmlkjihgfedcba",
-  "rvdaorualoonojnzt", "grqdjfzworbuiededct", "zqfreprxpbdfxkcjaj",
-  "jccuqkkb", "iodrczqeih", "iaysxzeidqgwdc", "aiikeudqfyikcooed",
-  "ligwdpsszgbzjw", "azcbobobegghakl", "abcbcd", "abczhefghijtatuvwxy",
+  "dbxuofuzgon",
+  "fsagwlltxifaqg",
+  "bogvxlzntxzurfdxqiz",
+  "twameqnktryeugaufxic",
+  "kapyrljsstow",
+  "kdfopywicsstu",
+  "upqnbtxfywnuvisrpg",
+  "abcdefghijklmnopqrstuvwxyz",
+  "lsbjatmsvwwrdxw",
+  "wjhprvhwneixskmgpyj",
+  "hjfnqvttoqrp",
+  "zyxwvutsrqponmlkjihgfedcba",
+  "rvdaorualoonojnzt",
+  "grqdjfzworbuiededct",
+  "zqfreprxpbdfxkcjaj",
+  "jccuqkkb",
+  "iodrczqeih",
+  "iaysxzeidqgwdc",
+  "aiikeudqfyikcooed",
+  "ligwdpsszgbzjw",
+  "azcbobobegghakl",
+  "abcbcd",
+  "abczhefghijtatuvwxy",
   "abczhefghijtatuvwxyz",
   "aaaaaaaaaaaabaaaaaaaaaazaaaaaaaaaafaaaaaaaaayaaaaaaaa"
 )
 val ANSWERS = List(
-  "fuz", "lltx", "ntxz", "tw", "jsst", "dfopy", "btx",
-  "abcdefghijklmnopqrstuvwxyz", "msvww", "hprv", "fnqv", "z", "aoru", "gr",
-  "eprx", "ccu", "io", "sxz", "aiik", "dpssz", "beggh", "abc", "efghijt",
-  "atuvwxyz", "aaaaaaaaaaaab"
+  "fuz",
+  "lltx",
+  "ntxz",
+  "tw",
+  "jsst",
+  "dfopy",
+  "btx",
+  "abcdefghijklmnopqrstuvwxyz",
+  "msvww",
+  "hprv",
+  "fnqv",
+  "z",
+  "aoru",
+  "gr",
+  "eprx",
+  "ccu",
+  "io",
+  "sxz",
+  "aiik",
+  "dpssz",
+  "beggh",
+  "abc",
+  "efghijt",
+  "atuvwxyz",
+  "aaaaaaaaaaaab"
 )
 
 assert(WORDS.map(longestSubstring) == ANSWERS)

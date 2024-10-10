@@ -1,6 +1,3 @@
-val x = 6
+val x = 5
 
-if x != 5 then
-  println("i am here")
-else
-  println("no I am not")
+if x != 5 then "i am here" else "no I am not"

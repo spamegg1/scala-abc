@@ -7,12 +7,11 @@ val VOWELS = "aeiou"
 val s = "azcbobobegghakl"
 
 var vowels = 0
-for
-  letter <- s
-do
-  if VOWELS contains letter then
-    vowels += 1
-println("Number of vowels: " + vowels)
+for letter <- s do if VOWELS contains letter then vowels += 1
+s"Number of vowels: $vowels"
 
 // better:
 s.count(char => VOWELS contains char)
+
+// better:
+s.count(VOWELS.contains)

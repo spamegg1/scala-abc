@@ -1,5 +1,3 @@
-import scala.io.StdIn.readLine
-
 @main
 def evenOdd =
   val x = readLine("Enter an integer: ").toInt
