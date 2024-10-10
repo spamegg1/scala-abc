@@ -41,7 +41,7 @@
 
 import slick.*
 
-val x = "hello world"
+val z = "hello world"
 
 // "hello world"
 

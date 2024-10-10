@@ -3,7 +3,7 @@
 // Does not work in worksheets (they are outside project scope).
 // Think of it as an addition to scala.Prelude.
 export net.ruippeixotog.scalascraper.browser.JsoupBrowser
-export net.ruippeixotog.scalascraper.dsl.DSL.*
+export net.ruippeixotog.scalascraper.dsl.DSL.{deepFunctorOps, Extract, RichHtmlExtractor}
 export scala.collection.mutable.{Map => MMap}
 export scala.io.StdIn.readLine
 export scala.io.Source.fromResource

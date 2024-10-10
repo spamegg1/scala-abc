@@ -64,7 +64,7 @@
 
 import slick.*
 
-val x = "hello world"
+val y = "hello world"
 
 // import xml.etree.ElementTree as ET
 // import sqlite3
