@@ -1,32 +1,15 @@
-// # -*- coding: utf-8 -*-
-// """
-// Created on Wed Jun  8 12:33:30 2016
+// Returns true if given string is a palindrome
+def isPalindrome(string: String) =
+  def toChars(s: String) =
+    val ss = s.toLowerCase()
+    var ans = ""
+    for char <- ss do if char.isLetter then ans += char
+    ans
 
-// @author: ericgrimson
-// """
+  def isPal(s: String): Boolean =
+    s.length <= 1 || (s.head == s.last && isPal(s.tail.init))
 
-// def is_palindrome(string):
-//     '''Returns true if given string is a palindrome'''
+  isPal(toChars(string))
 
-//     def to_chars(string):
-//         string = string.lower()
-//         ans = ''
-//         for char in string:
-//             if char in 'abcdefghijklmnopqrstuvwxyz':
-//                 ans = ans + char
-//         return ans
-
-//     def is_pal(string):
-//         if len(string) <= 1:
-//             return True
-//         return string[0] == string[-1] and is_pal(string[1:-1])
-
-//     return is_pal(to_chars(string))
-
-// print("")
-// print('Is eve a palindrome?')
-// print(is_palindrome('eve'))
-
-// print('')
-// print('Is able was I ere I saw Elba a palindrome?')
-// print(is_palindrome('Able was I, ere I saw Elba'))
+isPalindrome("eve")
+isPalindrome("Able was I, ere I saw Elba")

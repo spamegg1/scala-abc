@@ -1,20 +1,10 @@
-// # -*- coding: utf-8 -*-
-// """
-// Created on Fri Jun 10 13:03:44 2016
+// assume L is ordered in increasing order
+def findElemRecur(e: Int, L: List[Int]): Boolean =
+  if L.isEmpty then false
+  else if L.length == 1 then L.head == e
+  else
+    val half = L.length / 2
+    if L(half) > e then findElemRecur(e, L.take(half))
+    else findElemRecur(e, L.drop(half))
 
-// @author: ericgrimson
-// """
-
-// def find_elem_recur(e, L):
-//     if L == []:
-//         return False
-//     elif len(L) == 1:
-//         return L[0] == e
-//     else:
-//         half = len(L)//2
-//         if L[half] > e:
-//             return find_elem_recur(e, L[:half])
-//         else:
-//             return find_elem_recur(e, L[half:])
-
-// print(find_elem_recur(1, [1, 2, 3, 5, 7, 8, 9, 15]))
+findElemRecur(6, List(1, 2, 3, 5, 7, 8, 9, 15))
