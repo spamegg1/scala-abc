@@ -10,5 +10,5 @@ while i < word.length do
   else println(s"Give me a ${char}! ${char}")
   i += 1
 
-"What does that spell?"
+println("What does that spell?")
 for _ <- 0 until times do println(s"$word!!!")

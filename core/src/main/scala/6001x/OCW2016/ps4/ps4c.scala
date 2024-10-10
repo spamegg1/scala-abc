@@ -1,34 +1,34 @@
 // you may find these constants helpful
-val VOWELSLOWER = "aeiou"
-val VOWELSUPPER = "AEIOU"
-val CONSONANTSLOWER = "bcdfghjklmnpqrstvwxyz"
-val CONSONANTSUPPER = "BCDFGHJKLMNPQRSTVWXYZ"
-val WORDLISTFILENAME = "words.txt"
-val STORYFILENAME = "story.txt"
-val LOWER = "abcdefghijklmnopqrstuvwxyz"
-val UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-val PUNCTUATION = raw"(\p{Punct})"
+val VOWELSLOWER4 = "aeiou"
+val VOWELSUPPER4 = "AEIOU"
+val CONSONANTSLOWER4 = "bcdfghjklmnpqrstvwxyz"
+val CONSONANTSUPPER4 = "BCDFGHJKLMNPQRSTVWXYZ"
+val WORDLISTFILENAME4 = "words.txt"
+val STORYFILENAME4 = "story.txt"
+val LOWER4 = "abcdefghijklmnopqrstuvwxyz"
+val UPPER4 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+val PUNCTUATION4 = raw"(\p{Punct})"
 
-def getPermutations(sequence: String): List[String] =
+def getPermutations4(sequence: String): List[String] =
   if sequence.length == 1 then List(sequence)
   else
     val first = sequence.take(1)
-    val perms = getPermutations(sequence.drop(1))
+    val perms = getPermutations4(sequence.drop(1))
     for
       perm <- perms
       index <- 0 to perm.length
       (left, right) = (perm.take(index), perm.drop(index))
     yield left + first + right
 
-def loadWords(fileName: String) =
+def loadWords4(fileName: String) =
   println("Loading word list from file...")
   Using.resource(fromResource(fileName)): inFile =>
     val wordList = inFile.mkString.split(" ").toList
     println(s"${wordList.length} words loaded.")
     wordList
 
-def isWord(wordList: List[String], word: String) =
-  val newWord = word.toLowerCase.replaceAll(PUNCTUATION, "")
+def isWord4(wordList: List[String], word: String) =
+  val newWord = word.toLowerCase.replaceAll(PUNCTUATION4, "")
   wordList contains newWord
 
 // END HELPER CODE
@@ -39,7 +39,7 @@ class SubMessage(text: String):
   //     self.messageText (string, determined by input text)
   //     self.valid_words (list, determined using helper function load_words)
   val messageText = text
-  val validWords = loadWords(WORDLISTFILENAME)
+  val validWords = loadWords4(WORDLISTFILENAME4)
 
   def getMessageText =
     /** Used to safely access self.messageText outside of the class Returns:
@@ -69,16 +69,16 @@ class SubMessage(text: String):
 
     // Returns: a dictionary mapping a letter (string) to
     //             another letter (string).
-    val consonantsLower = for consonant <- CONSONANTSLOWER yield consonant -> consonant
-    val consonantsUpper = for consonant <- CONSONANTSUPPER yield consonant -> consonant
+    val consonantsLower = for consonant <- CONSONANTSLOWER4 yield consonant -> consonant
+    val consonantsUpper = for consonant <- CONSONANTSUPPER4 yield consonant -> consonant
 
     val vowelsLower =
       for i <- 0 until vowelsPermutation.length
-      yield VOWELSLOWER(i) -> vowelsPermutation(i)
+      yield VOWELSLOWER4(i) -> vowelsPermutation(i)
 
     val vowelsUpper =
       for i <- 0 until vowelsPermutation.length
-      yield VOWELSUPPER(i) -> vowelsPermutation(i)
+      yield VOWELSUPPER4(i) -> vowelsPermutation(i)
 
     (consonantsLower ++ consonantsUpper ++ vowelsLower ++ vowelsUpper).toMap
 
@@ -108,7 +108,7 @@ class EncryptedSubMessage(text: String) extends SubMessage(text):
     // Returns: the best decrypted message
     // Hint: use your function from Part 4A
 
-    val perms = getPermutations(VOWELSLOWER)
+    val perms = getPermutations4(VOWELSLOWER4)
     var maxWords = 0
     var decryptedMessage = ""
 
@@ -118,7 +118,7 @@ class EncryptedSubMessage(text: String) extends SubMessage(text):
       val words = transposedMessage.split(" ")
       var wordCount = 0
 
-      for word <- words do if isWord(validWords, word) then wordCount += 1
+      for word <- words do if isWord4(validWords, word) then wordCount += 1
 
       if wordCount > maxWords then
         maxWords = wordCount

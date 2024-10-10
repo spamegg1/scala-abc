@@ -1,11 +1,11 @@
 type Hand = Map[Char, Int]
 type Words = List[String]
 
-val VOWELS = "aeiou"
+val VOWELS3 = "aeiou"
 val CONSONANTS = "bcdfghjklmnpqrstvwxyz"
 val HANDSIZE = 10
 val VOWELRATIO = 3
-val WORDLISTFILENAME = "wordgame.txt"
+val WORDLISTFILENAME3 = "wordgame.txt"
 val BONUS = 50
 
 val SCRABBLE = Map(
@@ -40,7 +40,7 @@ val SCRABBLE = Map(
 
 // Helper code
 // (you don't need to understand this helper code)
-def loadWords(fileName: String) =
+def loadWords3(fileName: String) =
   /** fileName (string) = the name of the file containing the list of words to load
     * Returns: a list of valid words. Words are strings of lowercase letters. Depending on
     * the size of the word list, this function may take a while to finish.
@@ -105,7 +105,7 @@ def displayHand(hand: Hand): Unit =
 // You will need to modify this for Problem #4.
 def dealHand(handSize: Int, numVowels: Int): Hand =
   // Returns a random hand containing n lowercase letters.
-  // ceil(n/3) letters in the hand should be VOWELS (note,
+  // ceil(n/3) letters in the hand should be VOWELS3 (note,
   // ceil(n/3) means the smallest integer not less than n/3).
   // Hands are represented as dictionaries. The keys are
   // letters and the values are the number of times the
@@ -113,7 +113,7 @@ def dealHand(handSize: Int, numVowels: Int): Hand =
   // n: int >= 0
   // returns: dictionary (string -> int)
   val vowels: Iterable[Char] =
-    for _ <- 1 to numVowels yield VOWELS(Random.between(0, VOWELS.size))
+    for _ <- 1 to numVowels yield VOWELS3(Random.between(0, VOWELS3.size))
 
   val consonants: Iterable[Char] =
     for _ <- numVowels + 1 to handSize
@@ -224,7 +224,7 @@ def playHand(hand: Hand, words: Words, num: Int): Unit =
 // procedure you will use to substitute a letter in a hand
 def substituteHand(hand: Hand, letter: Char) =
   // Allow the user to replace all copies of one letter in the hand (chosen by user)
-  // with a new letter chosen from the VOWELS and CONSONANTS at random. The new letter
+  // with a new letter chosen from the VOWELS3 and CONSONANTS at random. The new letter
   // should be different from user"s choice, and should not be any of the letters
   // already in the hand.
   // If user provide a letter not in the hand, the hand should be the same.
@@ -241,7 +241,7 @@ def substituteHand(hand: Hand, letter: Char) =
 
   if !hand.contains(letter) then hand
   else
-    val availableLetters = for l <- VOWELS + CONSONANTS if !hand.contains(l) yield l
+    val availableLetters = for l <- VOWELS3 + CONSONANTS if !hand.contains(l) yield l
     hand.updated(letter, availableLetters(Random.nextInt(availableLetters.length)))
 
 def playGame(words: Words, handSize: Int, vowelRatio: Int): Unit =
@@ -290,5 +290,5 @@ def playGame(words: Words, handSize: Int, vowelRatio: Int): Unit =
 // Do not remove the "if __name__ == "__main__":" line - this code is executed
 // when the program is run directly, instead of through an import statement
 @main def playWordGame =
-  val wordList = loadWords(WORDLISTFILENAME)
+  val wordList = loadWords3(WORDLISTFILENAME3)
   playGame(wordList, HANDSIZE, VOWELRATIO)

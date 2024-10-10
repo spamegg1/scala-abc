@@ -1,4 +1,4 @@
-def months(
+def monthsB(
     salary: Int,
     save: Double,
     total: Int,
@@ -32,15 +32,15 @@ def months(
 
   month
 
-def test =
-  assert(months(120000, 0.05, 500000, 0.03, 0.25, 0.04) == 142)
-  assert(months(80000, 0.1, 800000, 0.03, 0.25, 0.04) == 159)
-  assert(months(75000, 0.05, 1500000, 0.05, 0.25, 0.04) == 261)
+def testB =
+  assert(monthsB(120000, 0.05, 500000, 0.03, 0.25, 0.04) == 142)
+  assert(monthsB(80000, 0.1, 800000, 0.03, 0.25, 0.04) == 159)
+  assert(monthsB(75000, 0.05, 1500000, 0.05, 0.25, 0.04) == 261)
   println("Tests pass.")
 
 @main
 def ps1b =
-  test
+  testB
 
   val portionDownPay = 0.25
   val annualRate = 0.04
@@ -56,7 +56,7 @@ def ps1b =
     "Enter the semi-annual raise, as a decimal: "
   ).toDouble
 
-  val result = months(
+  val result = monthsB(
     annualSalary,
     portionSaved,
     totalCost,

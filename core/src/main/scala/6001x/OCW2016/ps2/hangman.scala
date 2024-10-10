@@ -1,10 +1,10 @@
 type Word = String
 
-val WORDLISTFILENAME = "words.txt"
-val STORYFILENAME = "story.txt"
-val LOWER = "abcdefghijklmnopqrstuvwxyz"
-val UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-val VOWELS = "aeiou"
+val WORDLISTFILENAME1 = "words.txt"
+val STORYFILENAME1 = "story.txt"
+val LOWER1 = "abcdefghijklmnopqrstuvwxyz"
+val UPPER1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+val VOWELS1 = "aeiou"
 
 // Hangman Game
 // -----------------------------------
@@ -12,7 +12,7 @@ val VOWELS = "aeiou"
 // You don't need to understand this helper code,
 // but you will have to know how to use the functions
 // (so be sure to read the docstrings!)
-def loadWords(fileName: String) =
+def loadWords1(fileName: String) =
   println("Loading word list from file...")
 
   Using.resource(fromResource(fileName)): inFile =>
@@ -50,7 +50,7 @@ def getAvailableLetters(lettersGuessed: List[Char]) =
   // lettersGuessed: list (of letters), which letters have been guessed so far
   // returns: string (of letters), comprised of letters that represents which
   //   letters have not yet been guessed.
-  LOWER.filter(!lettersGuessed.contains(_)).mkString
+  LOWER1.filter(!lettersGuessed.contains(_)).mkString
 
 def hangman(secretWord: Word) =
   // secretWord: string, the secret word to guess.
@@ -86,7 +86,7 @@ def hangman(secretWord: Word) =
 
       val guess = readLine("Please guess a letter: ")(0)
 
-      if !(LOWER + UPPER).contains(guess) then
+      if !(LOWER1 + UPPER1).contains(guess) then
         if warningsLeft > 0 then
           warningsLeft -= 1
           println("Oops! That is not a valid letter.")
@@ -110,7 +110,7 @@ def hangman(secretWord: Word) =
       else if !secretWord.contains(guess) then
         lettersGuessed = guess :: lettersGuessed
         guessesSoFar = getGuessedWord(secretWord, lettersGuessed)
-        if VOWELS.contains(guess) then guessesLeft -= 2
+        if VOWELS1.contains(guess) then guessesLeft -= 2
         else guessesLeft -= 1
         println(s"Oops! That letter is not in my word: ${guessesSoFar}")
       else
@@ -188,7 +188,7 @@ def hangmanWithHints(secretWord: Word, wordList: List[Word]) =
 
       val guess = readLine("Please guess a letter: ")(0)
 
-      if !(LOWER + UPPER).contains(guess) then
+      if !(LOWER1 + UPPER1).contains(guess) then
         if guess == '*' then
           println("Possible word matches are:")
           showPossibleMatches(guessesSoFar, wordList)
@@ -213,7 +213,7 @@ def hangmanWithHints(secretWord: Word, wordList: List[Word]) =
       else if !secretWord.contains(guess) then
         lettersGuessed = guess :: lettersGuessed
         guessesSoFar = getGuessedWord(secretWord, lettersGuessed)
-        if VOWELS.contains(guess) then guessesLeft -= 2
+        if VOWELS1.contains(guess) then guessesLeft -= 2
         else guessesLeft -= 1
         println(s"Oops! That letter is not in my word: ${guessesSoFar}")
       else
@@ -245,7 +245,7 @@ def tests =
 @main
 def playHangman =
   tests
-  // val wordList = loadWords(WORDLISTFILENAME)
+  // val wordList = loadWords1(WORDLISTFILENAME1)
   // val secretWord = chooseWord(wordList)
   // hangman(secretWord)
   // hangmanWithHints(secretWord, wordList)

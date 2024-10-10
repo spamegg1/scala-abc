@@ -87,7 +87,7 @@ def optimalSavingRate(
     println(s"Best savings rate: ${(portionRes / 10000)}")
     println(s"Steps in bisection search: $stepsRes")
 
-def tests(investRate: Double, semiRaise: Double, downPay: Double): Unit =
+def testC(investRate: Double, semiRaise: Double, downPay: Double): Unit =
   val (left, right, portion, steps) = (0, 10000, 5000, 1)
 
   assert(savings(150000, 5000, investRate, semiRaise) == 283387.20615677064)
@@ -131,6 +131,6 @@ def ps1c =
   val INVESTRATE = 0.04
   val TOTAL_COST = 1000000
   val DOWNPAY = TOTAL_COST * 0.25
-  tests(INVESTRATE, SEMIRAISE, DOWNPAY)
+  testC(INVESTRATE, SEMIRAISE, DOWNPAY)
   // SALARY = readLine("Enter the starting salary: ").toDouble
   // optimalSavingRate(SALARY, INVESTRATE, SEMIRAISE, DOWNPAY)

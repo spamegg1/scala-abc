@@ -1,4 +1,4 @@
-def months(
+def monthsA(
     salary: Int,
     save: Double,
     total: Int,
@@ -26,14 +26,14 @@ def months(
 
   month
 
-def test =
-  assert(months(120000, 0.1, 1000000, 0.25, 0.04) == 183)
-  assert(months(80000, 0.15, 500000, 0.25, 0.04) == 105)
+def testA =
+  assert(monthsA(120000, 0.1, 1000000, 0.25, 0.04) == 183)
+  assert(monthsA(80000, 0.15, 500000, 0.25, 0.04) == 105)
   println("Tests pass.")
 
 @main
 def ps1a =
-  test
+  testA
 
   val portionDownPay = 0.25
   val annualRate = 0.04
@@ -45,7 +45,7 @@ def ps1a =
 
   val totalCost: Int = readLine("Enter the cost of your dream home: ").toInt
 
-  val result = months(
+  val result = monthsA(
     annualSalary,
     portionSaved,
     totalCost,
