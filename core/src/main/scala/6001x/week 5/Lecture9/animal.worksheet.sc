@@ -1,6 +1,3 @@
-import util.Random.nextFloat
-import math.abs
-
 class Animal(var age: Int, var name: Option[String] = None):
   def getAge = age
   def getName = name
@@ -23,30 +20,29 @@ class Person(age: Int, name: Option[String] = None) extends Animal(age, name):
   override def toString: String = s"person: ${name.getOrElse("")}: ${age}"
 
   def addFriend(friendName: String) =
-    if !friends.contains(friendName) then
-      friends = friendName :: friends
+    if !friends.contains(friendName) then friends = friendName :: friends
 
   def ageDiff(other: Person) =
     val diff = this.getAge - other.getAge
     val msg = if diff > 0 then "older" else "younger"
     val thisName = name.getOrElse("this")
     val otherName = other.name.getOrElse("other")
-    println(s"${thisName} is ${abs(diff)} years ${msg} than ${otherName}")
+    println(s"${thisName} is ${math.abs(diff)} years ${msg} than ${otherName}")
 end Person
 
 class Student(age: Int, name: Option[String], var major: Option[String] = None)
-  extends Person(age, name):
+    extends Person(age, name):
 
   def changeMajor(newMajor: Option[String]) = major = newMajor
   override def toString: String =
     s"student: ${name.getOrElse("")}: ${age}: ${major.getOrElse("")}"
   override def speak =
-    val r = nextFloat()
+    val r = scala.util.Random.nextFloat()
     val msg =
-      if      r < 0.25 then "i have homework"
-      else if r < 0.5  then "i need sleep"
+      if r < 0.25 then "i have homework"
+      else if r < 0.5 then "i need sleep"
       else if r < 0.75 then "i should eat"
-      else                  "i am watching tv"
+      else "i am watching tv"
     println(msg)
 
 val blob = Animal(1)

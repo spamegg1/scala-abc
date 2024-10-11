@@ -9,28 +9,21 @@ def mergeSort[T](L: List[T], compare: (T, T) => Boolean): List[T] =
     val right = mergeSort(L.drop(middle), compare)
     merge(left, right, compare)
 
-
 def merge[T](left: List[T], right: List[T], compare: (T, T) => Boolean): List[T] =
   var result = Buffer[T]()
   var (i, j) = (0, 0)
 
-  while
-    i < left.length && j < right.length
-  do
+  while i < left.length && j < right.length do
     if compare(left(i), right(j)) then
       result += left(i)
       i += 1
     else
       result += right(j)
       j += 1
-  while
-    i < left.length
-  do
+  while i < left.length do
     result += left(i)
     i += 1
-  while
-    j < right.length
-  do
+  while j < right.length do
     result += right(j)
     j += 1
 

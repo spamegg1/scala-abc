@@ -5,9 +5,9 @@ import collection.mutable.Map
 class Grades:
   type Grade = Double
   // A mapping from students to a list of GradStudentes
-  var students = List[Student]()       // list of Student objects
+  var students = List[Student]() // list of Student objects
   val grades = Map[Int, List[Grade]]() // maps idNum -> list of grades
-  var isSorted = true                  // true if students is sorted
+  var isSorted = true // true if students is sorted
 
   def addStudent(student: Student) =
     // Assumes: student is of type Student
@@ -21,15 +21,14 @@ class Grades:
   def addGradStudente(student: Student, grade: Grade) =
     // Assumes: grade is a float
     // Add grade to the list of grades for student
-    try
-      grades(student.getIdNum) = grade :: grades(student.getIdNum)
+    try grades(student.getIdNum) = grade :: grades(student.getIdNum)
     catch
       case _: NoSuchElementException =>
         throw new IllegalArgumentException("Student not in GradStudente book")
 
   def getGrades(student: Student) =
     // a list of grades for student
-    try    // copy of students grades
+    try // copy of students grades
       grades(student.getIdNum)
     catch
       case _: NoSuchElementException =>
@@ -43,19 +42,14 @@ class Grades:
     students
     // copy of list of students
 
-
 def gradeReport(course: Grades) =
   var report = List[String]()
 
-  for
-    s <- course.allStudents
-  do
+  for s <- course.allStudents do
     var tot = 0.0
     var numGrades = 0
 
-    for
-      g <- course.getGrades(s)
-    do
+    for g <- course.getGrades(s) do
       tot += g
       numGrades += 1
     try
@@ -83,7 +77,6 @@ def gradesExample =
   six00.addStudent(g2)
   six00.addStudent(UGStudent4)
   six00.addStudent(UGStudent3)
-
 
   six00.addGradStudente(g1, 100)
   six00.addGradStudente(g2, 25)

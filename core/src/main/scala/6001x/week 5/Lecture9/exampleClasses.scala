@@ -1,6 +1,3 @@
-import util.Random.nextDouble
-import math.abs
-
 class Animal(var age: Int, var name: Option[String] = None):
   def getAge = age
   def getName = name
@@ -23,28 +20,27 @@ class Person(age: Int, name: Option[String] = None) extends Animal(age, name):
     println(s"${name} is ${diff} years ${comp} than ${other.name}")
   override def toString = s"person: ${name}: ${age}"
 
-
 class Student(
-  age: Int,
-  name: Option[String] = None,
-  var major: Option[String] = None
+    age: Int,
+    name: Option[String] = None,
+    var major: Option[String] = None
 ) extends Person(age, name):
   def changeMajor(newMajor: Option[String]) = major = newMajor
   override def speak =
-    val r = nextDouble
+    val r = util.Random.nextDouble
     val msg =
-      if      r < 0.25 then "i have homework"
-      else if r < 0.5  then "i need sleep"
+      if r < 0.25 then "i have homework"
+      else if r < 0.5 then "i need sleep"
       else if r < 0.75 then "i should eat"
-      else                  "i am watching tv"
+      else "i am watching tv"
     println(msg)
   override def toString = s"student: ${name}: ${age} :${major}"
 
 class Rabbit(
-  age: Int,
-  name: Option[String] = None,
-  parent1: Option[Rabbit] = None,
-  parent2: Option[Rabbit] = None
+    age: Int,
+    name: Option[String] = None,
+    parent1: Option[Rabbit] = None,
+    parent2: Option[Rabbit] = None
 ) extends Animal(age, name):
 
   val id = Rabbit.tag
