@@ -1,3 +1,5 @@
+package curriculum
+
 type Word = String
 
 val WORDLISTFILENAME1 = "words.txt"

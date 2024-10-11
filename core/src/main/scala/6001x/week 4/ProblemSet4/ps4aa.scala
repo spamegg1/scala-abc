@@ -1,4 +1,7 @@
-type MyHand = Map[Char, Int]
+package curriculum
+package ps4
+
+type Hand = Map[Char, Int]
 
 val VOWELS = "aeiou"
 val CONSON = "bcdfghjklmnpqrstvwxyz"
@@ -46,7 +49,7 @@ def loadWords4a =
   println(s"${wordList.length} words loaded.")
   wordList
 
-def getFreqMapps4(word: String): MyHand =
+def getFreqMapps4(word: String): Hand =
   // Returns a dictionary where the keys are elements of the sequence
   // and the values are integer counts, for the number of times that
   // an element is repeated in the sequence.
@@ -72,10 +75,10 @@ def getWordScoreps4(word: String, n: Int) =
   score2 + (if len == n then BONUSPT else 0)
 
 // Problem 2: Make sure you understand how this function works and what it does!
-def displayMyHand(hand: MyHand) =
+def displayHand(hand: Hand) =
   // Displays the letters currently in the hand.
   // For example:
-  // >>> displayMyHand({"a":1, "x":2, "l":3, "e":1})
+  // >>> displayHand({"a":1, "x":2, "l":3, "e":1})
   // Should println out something like:
   //     a x x l l l e
   // The order of the letters is unimportant.
@@ -88,10 +91,10 @@ def displayMyHand(hand: MyHand) =
 //
 // Problem 2: Make sure you understand how this function works and what it does!
 
-def dealMyHand(num: Int): MyHand =
+def dealHand(num: Int): Hand =
   // Returns a random hand containing num lowercase letters.
   // At least num/3 the letters in the hand should be VOWELS.
-  // MyHands are represented as dictionaries. The keys are
+  // Hands are represented as dictionaries. The keys are
   // letters and the values are the number of times the
   // particular letter is repeated in that hand.
   // num: int >= 0
@@ -105,7 +108,7 @@ def dealMyHand(num: Int): MyHand =
   getFreqMapps4(vowels.mkString + cons.mkString)
 
 // Problem 2: Update a hand by removing letters
-def updateMyHand(hand: MyHand, word: String): MyHand =
+def updateHand(hand: Hand, word: String): Hand =
   // Assumes that "hand" has all the letters in word.
   // In other words, this assumes that however many times
   // a letter appears in "word", "hand" has at least as
@@ -119,7 +122,7 @@ def updateMyHand(hand: MyHand, word: String): MyHand =
   hand.map((char, count) => (char, count - word.count(_ == char)))
 
 // Problem 3: Test word validity
-def isValidWordps4(word: String, hand: MyHand, wordList: List[String]) =
+def isValidWordps4(word: String, hand: Hand, wordList: List[String]) =
   // Returns True if word is in the wordList and is entirely
   // composed of letters in the hand. Otherwise, returns False.
   // Does not mutate hand or wordList.
@@ -130,13 +133,13 @@ def isValidWordps4(word: String, hand: MyHand, wordList: List[String]) =
     word.forall(letter => word.count(_ == letter) <= hand.getOrElse(letter, 0))
 
 // Problem 4: Playing a hand
-def calculateMyHandlen(hand: MyHand) =
+def calculateHandlen(hand: Hand) =
   // Returns the length (number of letters) in the current hand.
   // hand: dictionary (string-> int)
   // returns: integer
   hand.values.sum
 
-def playMyHand(hand: MyHand, wordList: List[String], n: Int) =
+def playHand(hand: Hand, wordList: List[String], n: Int) =
   // Allows the user to play the given hand, as follows:
   // * The hand is displayed.
   // * The user may input a word or a single period (the string ".")
@@ -155,13 +158,13 @@ def playMyHand(hand: MyHand, wordList: List[String], n: Int) =
   //   n: integer (HANDSIZ; i.e., hand size required for additional points)
   // Keep track of the total score
   var score = 0
-  var newMyHand = hand
+  var newHand = hand
 
   // As long as there are still letters left in the hand:
   boundary:
-    while calculateMyHandlen(newMyHand) > 0 do
+    while calculateHandlen(newHand) > 0 do
       // Display the hand
-      displayMyHand(newMyHand)
+      displayHand(newHand)
 
       // Ask user for input
       val word = readLine("Enter word, or a . to indicate that you are finished: ")
@@ -174,7 +177,7 @@ def playMyHand(hand: MyHand, wordList: List[String], n: Int) =
       // Otherwise (the input is not a single period):
       else
       // If the word is not valid:
-      if !isValidWordps4(word, newMyHand, wordList) then
+      if !isValidWordps4(word, newHand, wordList) then
         // Reject invalid word (println message followed by a blank line)
         println("Invalid word, please try again.")
       // Otherwise (the word is valid):
@@ -186,11 +189,11 @@ def playMyHand(hand: MyHand, wordList: List[String], n: Int) =
         println(s"${word} earned ${wordScore} points.")
         println(s"Total: ${score} points")
         // Update the hand
-        newMyHand = updateMyHand(newMyHand, word)
+        newHand = updateHand(newHand, word)
 
   // Game is over (user entered a "." or ran out of letters), so tell user
   // the total score
-  if calculateMyHandlen(newMyHand) == 0 then
+  if calculateHandlen(newHand) == 0 then
     println(s"Ran out of letters. Total score: ${score} points.")
   else println(s"Goodbye! Total score: ${score} points.")
 
@@ -204,9 +207,9 @@ def playGameps4(wordList: List[String]): Unit =
   //   * If the user inputs anything else, tell them their input was invalid.
   // 2) When done playing the hand, repeat from step 1
   // Keep track of last hand played
-  var lastMyHand = Map[Char, Int]()
+  var lastHand = Map[Char, Int]()
   var command = ""
-  var newMyHand = Map[Char, Int]()
+  var newHand = Map[Char, Int]()
 
   while true do
     // Ask user for input
@@ -215,7 +218,7 @@ def playGameps4(wordList: List[String]): Unit =
     )
 
     // If no hand has been played, impossible to replay last hand
-    while command == "r" && lastMyHand.isEmpty do
+    while command == "r" && lastHand.isEmpty do
       println("You have not played a hand yet.")
       println("Please play a new hand first!")
       command = readLine(
@@ -224,14 +227,14 @@ def playGameps4(wordList: List[String]): Unit =
 
     // If user inputs "n", play a new random hand
     if command == "n" then
-      newMyHand = dealMyHand(HANDSIZ)
-      // update lastMyHand
-      lastMyHand = newMyHand
+      newHand = dealHand(HANDSIZ)
+      // update lastHand
+      lastHand = newHand
       // play
-      playMyHand(newMyHand, wordList, HANDSIZ)
+      playHand(newHand, wordList, HANDSIZ)
 
     // If user inputs "r", play last hand again
-    if command == "r" then playMyHand(lastMyHand, wordList, HANDSIZ)
+    if command == "r" then playHand(lastHand, wordList, HANDSIZ)
 
     // If user inputs "e", exit the game
     if command == "e" then return

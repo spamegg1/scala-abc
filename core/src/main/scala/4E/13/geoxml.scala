@@ -1,3 +1,5 @@
+package curriculum
+
 // Extracting Data from XML
 
 // In this assignment you will write a Python program somewhat similar to

@@ -1,3 +1,5 @@
+package curriculum
+
 //  Exploring the HyperText Transport Protocol
 
 // You are to retrieve the following document using the HTTP protocol in a way

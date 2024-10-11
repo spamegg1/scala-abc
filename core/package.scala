@@ -1,3 +1,5 @@
+package curriculum
+
 // These are just like imports, but available everywhere in the project.
 // They cut down on repeated imports in dozens of files.
 // Does not work in worksheets (they are outside project scope).

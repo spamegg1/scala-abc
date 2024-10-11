@@ -1,3 +1,6 @@
+package curriculum
+package ps2
+
 @main
 def pset2Problem2 =
   // balance is: float

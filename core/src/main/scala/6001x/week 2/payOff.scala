@@ -1,3 +1,5 @@
+package curriculum
+
 def creditBalance(
     balance: Double,
     annualInterestRate: Double,

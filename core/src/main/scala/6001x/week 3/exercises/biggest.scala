@@ -1,3 +1,5 @@
+package curriculum
+
 // Consider the following sequence of expressions:
 // animals = { 'a': ['aardvark'], 'b': ['baboon'], 'c': ['coati']}
 // animals['d'] = ['donkey']

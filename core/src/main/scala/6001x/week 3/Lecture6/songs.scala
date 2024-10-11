@@ -1,3 +1,5 @@
+package curriculum
+
 def lyricsToFrequencies(lyrics: List[String]) =
   val myDict = MMap[String, Int]()
   for word <- lyrics do

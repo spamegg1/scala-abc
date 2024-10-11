@@ -1,3 +1,5 @@
+package curriculum
+
 // Calling a JSON API
 // In this assignment you will write a Python program somewhat similar to
 // http://www.py4e.com/code3/geojson.py. The program will prompt for a location,

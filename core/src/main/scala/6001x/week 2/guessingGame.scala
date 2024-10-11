@@ -1,3 +1,5 @@
+package curriculum
+
 def guessingGame(lowerBound: Int, upperBound: Int) =
   // Play a number guessing game with the computer.
 

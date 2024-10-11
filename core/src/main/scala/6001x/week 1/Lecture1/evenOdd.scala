@@ -1,3 +1,5 @@
+package curriculum
+
 @main
 def evenOdd =
   val x = readLine("Enter an integer: ").toInt

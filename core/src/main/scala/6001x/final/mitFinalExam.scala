@@ -1,3 +1,5 @@
+package curriculum
+
 def isTriangular(k: Int) =
   /** k, a positive integer returns true if k is triangular and false if not
     */
@@ -6,16 +8,14 @@ def isTriangular(k: Int) =
   var nextAddition = 1
   var result = false
 
-  while nextTriangular <= k
-  do
+  while nextTriangular <= k do
     nextTriangular += nextAddition
     nextAddition += 1
     if k == nextTriangular then result = true
   result
 
 def testIsTriangular =
-  /** Tests the isTriangular function.
-    */
+  /** Tests the isTriangular function. */
   assert(isTriangular(1))
   assert(!isTriangular(2))
   assert(isTriangular(3))

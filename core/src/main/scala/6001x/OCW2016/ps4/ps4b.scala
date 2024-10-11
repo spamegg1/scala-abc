@@ -1,3 +1,5 @@
+package curriculum
+
 val WORDLISTFILENAME = "words.txt"
 val STORYFILENAME = "story.txt"
 val LOWER = "abcdefghijklmnopqrstuvwxyz"

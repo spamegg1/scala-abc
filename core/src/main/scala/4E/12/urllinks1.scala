@@ -1,3 +1,5 @@
+package curriculum
+
 // Following Links in Python
 
 // In this assignment you will write a Python program that expands on

@@ -1,3 +1,5 @@
+package curriculum
+
 @main
 def readDataRev1 =
   val fileName = "hello.txt"
@@ -7,7 +9,9 @@ def readDataRev1 =
   try
     for line <- file.getLines
     do data += line
-  catch case _: IOException => println(s"cannot open ${fileName}")
+  catch
+    case _: AccessDeniedException => println(s"cannot open ${fileName}")
+    case _: IOException           => println(s"cannot open ${fileName}")
   finally file.close() // close file even if fail
 
   val gradesData = ArrayBuffer[(String, List[String])]()

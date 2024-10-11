@@ -1,3 +1,5 @@
+package curriculum
+
 // Scraping Numbers from HTML using BeautifulSoup
 // In this assignment you will write a Python program similar to
 // http://www.py4e.com/code3/urllink2.py.

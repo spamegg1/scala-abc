@@ -1,3 +1,5 @@
+package curriculum
+
 // 8.4 Open the file romeo.txt and read it line by line.
 // For each line, split the line into a words of words using the split() method.
 // The program should build a words of words.

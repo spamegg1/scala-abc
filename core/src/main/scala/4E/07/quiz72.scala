@@ -1,3 +1,5 @@
+package curriculum
+
 // 7.2 Write a program that prompts for a file name,
 // then opens that file and reads through the file,
 // looking for lines of the form:
@@ -16,18 +18,17 @@
 
 // Desired output:
 // Average spam confidence: 0.7507185185185187
-import scala.io.Source.fromResource
-import util.Using
+@main
+def quiz72 =
+  var total = 0.0
+  var count = 0
 
-var total = 0.0
-var count = 0
+  Using(fromResource("mbox-short.txt")): file =>
+    for
+      line <- file.getLines
+      if line.startsWith("X-DSPAM-Confidence:")
+    do
+      total += line.drop(line.length - 6).toDouble
+      count += 1
 
-Using(fromResource("mbox-short.txt")): file =>
-  for
-    line <- file.getLines
-    if line.startsWith("X-DSPAM-Confidence:")
-  do
-    total += line.drop(line.length - 6).toDouble
-    count += 1
-
-s"Average spam confidence: ${total / count}"
+  println(s"Average spam confidence: ${total / count}")

@@ -1,3 +1,5 @@
+package curriculum
+
 // Finding Numbers in a Haystack
 
 // In this assignment you will read through and parse a file with text and

@@ -1,3 +1,5 @@
+package curriculum
+
 def uniqueValues(aDict: Map[Char, Int]) =
   /** aDict: a dictionary that maps to integer values. returns: a list Returns a list,
     * consisting of keys in aDict that map to unique integer values. If no key maps to a

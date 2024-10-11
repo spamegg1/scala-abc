@@ -1,3 +1,5 @@
+package curriculum
+
 def getPermutations(sequence: String): List[String] =
   /** Enumerate all permutations of a given string sequence (string): an arbitrary string
     * to permute. Assume that it is a non-empty string. You MUST use recursion for this

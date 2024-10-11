@@ -1,3 +1,5 @@
+package curriculum
+
 val WORDFILE = "words.txt"
 val LOWERCASE = "abcdefghijklmnopqrstuvwxyz"
 val UPPERCASE = LOWERCASE.toUpperCase

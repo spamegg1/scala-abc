@@ -1,3 +1,5 @@
+package curriculum
+
 @main
 def readingData =
   val data = ArrayBuffer[String]()

@@ -1,3 +1,5 @@
+package curriculum
+
 // you may find these constants helpful
 val VOWELSLOWER4 = "aeiou"
 val VOWELSUPPER4 = "AEIOU"

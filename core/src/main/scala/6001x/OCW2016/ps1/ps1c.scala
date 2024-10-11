@@ -1,3 +1,5 @@
+package curriculum
+
 def savings(
     start: Double,
     portion: Int,

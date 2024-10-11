@@ -1,3 +1,5 @@
+package curriculum
+
 class IntSet(vals: ArrayBuffer[Int] = ArrayBuffer()):
   def insert(e: Int) = if !vals.contains(e) then vals.addOne(e)
   def member(e: Int) = vals contains e

@@ -1,3 +1,5 @@
+package curriculum
+
 var calls = 0
 
 def fibCounted(n: Long): Long =

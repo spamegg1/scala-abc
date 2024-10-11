@@ -1,3 +1,5 @@
+package curriculum
+
 // 5.2 Write a program that repeatedly prompts a user
 // for integer numbers until the user enters 'done'.
 // Once 'done' is entered, print out the largest and smallest of the numbers.

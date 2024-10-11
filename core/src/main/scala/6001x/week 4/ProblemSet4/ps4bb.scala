@@ -1,3 +1,6 @@
+package curriculum
+package ps4
+
 // Computer chooses a word
 def compChooseWord(hand: Hand, wordList: List[String], n: Int): Option[String] =
   // Given a hand and a wordList, find the word that gives
@@ -127,7 +130,7 @@ def computerPlayGame(wordList: List[String]): Unit =
     var newHand = Map[Char, Int]()
     if command == "n" then
       // deal new random hand
-      newHand = dealMyHand(HANDSIZE)
+      newHand = dealHand(HANDSIZE)
 
       // update lastHand
       lastHand = newHand

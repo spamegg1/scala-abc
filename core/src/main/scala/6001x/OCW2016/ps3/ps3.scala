@@ -1,3 +1,5 @@
+package curriculum
+
 type Hand = Map[Char, Int]
 type Words = List[String]
 

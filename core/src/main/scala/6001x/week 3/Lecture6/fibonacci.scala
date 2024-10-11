@@ -1,3 +1,5 @@
+package curriculum
+
 def fib(n: Long): Long =
   if n == 1 then 1
   else if n == 2 then 2

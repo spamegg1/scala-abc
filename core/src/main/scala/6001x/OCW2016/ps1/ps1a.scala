@@ -1,3 +1,5 @@
+package curriculum
+
 def monthsA(
     salary: Int,
     save: Double,

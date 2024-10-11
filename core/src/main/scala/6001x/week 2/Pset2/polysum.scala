@@ -1,3 +1,6 @@
+package curriculum
+package ps2
+
 def polySum(sides: Int, sideLength: Double) =
   // Returns the sum of the area and the square of the perimeter of
   // a regular polygon.

@@ -1,3 +1,6 @@
+package curriculum
+package ps2
+
 @main
 def pset2Problem3 =
   // Test case 1

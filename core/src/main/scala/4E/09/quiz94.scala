@@ -1,3 +1,5 @@
+package curriculum
+
 // 9.4 Write a program to read through the mbox-short.txt and
 // figure out who has sent the greatest number of mail messages.
 // The program looks for 'From ' lines and takes the second word
