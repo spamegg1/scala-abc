@@ -24,7 +24,7 @@ def creditBalance1(
     month += 1
 
   // Don't forget to round answer to two decimal places
-  round(newBalance, 2)
+  newBalance.round(2)
 
 @main
 def testCreditBalance1 =

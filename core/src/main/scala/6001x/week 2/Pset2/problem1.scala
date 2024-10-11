@@ -35,6 +35,5 @@ def ps2Problem1 =
     balance = unpaidBalance + monthlyInterestRate * unpaidBalance
     month += 1
 
-  // Don't forget to round answer to two decimal places
-  balance = round(balance, 2)
+  balance = balance.round(2) // Don't forget to round answer to two decimal places
   println(s"Remaining balance: ${balance}") // 361.61

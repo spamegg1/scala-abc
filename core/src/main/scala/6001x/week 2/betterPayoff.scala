@@ -43,8 +43,8 @@ def minMonthlyPayoff2(balance: Double, annualInterestRate: Double) =
     else right = result
     result = (left + right) / 2
 
-  // println(s"Lowest payment: ${result}")
-  round(result, 2)
+  println(s"Lowest payment: ${result}")
+  result.round(2)
 end minMonthlyPayoff2
 
 @main

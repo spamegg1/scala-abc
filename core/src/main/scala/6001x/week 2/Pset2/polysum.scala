@@ -10,7 +10,7 @@ def polySum(sides: Int, sideLength: Double) =
   val perimeterSquared = math.pow(sides * sideLength, 2)
 
   // Return the sum of area and perimeterSquared, rounded to 4 decimal places
-  round(area + perimeterSquared, 4)
+  (area + perimeterSquared).round(4)
 
 @main
 def pset2PolySum = println(polySum(7, 2)) // 210.5356

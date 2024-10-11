@@ -28,4 +28,4 @@ def pset2Problem3 =
     else right = monthlyPayment
     monthlyPayment = (left + right) / 2
 
-  println(s"Lowest payment: ${round(monthlyPayment, 2)}") // 90325.03
+  println(s"Lowest payment: ${monthlyPayment.round(2)}") // 90325.03

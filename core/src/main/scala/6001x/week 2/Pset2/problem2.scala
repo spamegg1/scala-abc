@@ -46,7 +46,7 @@ def pset2Problem2 =
         attempt = unpaidBalance + monthlyInterestRate * unpaidBalance
         month += 1
 
-      attempt = round(attempt, 2)
+      attempt = attempt.round(2)
 
       if attempt == 0 then break()
       if attempt > 0 then left = monthlyPayment

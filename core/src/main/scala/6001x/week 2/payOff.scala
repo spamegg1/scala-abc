@@ -14,16 +14,14 @@ def creditBalance(
   var month = 0
   var newBalance = balance
 
-  while month < 12
-  do
+  while month < 12 do
     val unpaidBalance = newBalance - monthlyPayment
-
     // The bank charges interest each month on unpaid balance
     newBalance = unpaidBalance + (annualInterestRate / 12.0) * unpaidBalance
     month += 1
 
   // Don't forget to round answer to two decimal places
-  round(newBalance, 2)
+  newBalance.round(2)
 end creditBalance
 
 @main

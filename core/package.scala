@@ -3,6 +3,7 @@
 // Does not work in worksheets (they are outside project scope).
 // Think of it as an addition to scala.Prelude.
 export java.io.{FileNotFoundException, IOException}
+export java.nio.file.AccessDeniedException
 export net.ruippeixotog.scalascraper.browser.JsoupBrowser
 export net.ruippeixotog.scalascraper.dsl.DSL.{deepFunctorOps, Extract, RichHtmlExtractor}
 export scala.collection.mutable.{Map => MMap, ArrayBuffer}
@@ -14,5 +15,6 @@ export spray.json.{DefaultJsonProtocol, enrichString, JsObject}, DefaultJsonProt
 export sttp.client4.{DefaultSyncBackend, basicRequest, UriContext}
 
 // some commonly repeated utility functions.
-def round(double: Double, places: Int): Double =
-  BigDecimal(double).setScale(places, BigDecimal.RoundingMode.HALF_EVEN).toDouble
+extension (double: Double)
+  def round(places: Int): Double =
+    BigDecimal(double).setScale(places, BigDecimal.RoundingMode.HALF_EVEN).toDouble
