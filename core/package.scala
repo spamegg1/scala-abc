@@ -2,11 +2,12 @@
 // They cut down on repeated imports in dozens of files.
 // Does not work in worksheets (they are outside project scope).
 // Think of it as an addition to scala.Prelude.
+export java.io.{FileNotFoundException, IOException}
 export net.ruippeixotog.scalascraper.browser.JsoupBrowser
 export net.ruippeixotog.scalascraper.dsl.DSL.{deepFunctorOps, Extract, RichHtmlExtractor}
 export scala.collection.mutable.{Map => MMap, ArrayBuffer}
 export scala.io.StdIn.readLine
-export scala.io.Source.fromResource
+export scala.io.Source.{fromResource}
 export scala.util.{boundary, Using, Random}, boundary.break
 export scala.xml.XML
 export spray.json.{DefaultJsonProtocol, enrichString, JsObject}, DefaultJsonProtocol.*

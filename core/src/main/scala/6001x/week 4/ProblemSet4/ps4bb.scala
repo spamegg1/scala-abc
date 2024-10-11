@@ -1,10 +1,3 @@
-package MIT6001x.ps4
-
-import util.Random.between
-import scala.io.Source.fromResource
-import scala.io.StdIn.readLine
-import util.control.Breaks.*
-
 // Computer chooses a word
 def compChooseWord(hand: Hand, wordList: List[String], n: Int): Option[String] =
   // Given a hand and a wordList, find the word that gives
@@ -43,9 +36,8 @@ def compPlayHand(hand: Hand, wordList: List[String], n: Int) =
   var newHand = hand
 
   // As long as there are still letters left in the hand:
-  breakable(
-    while calculateHandlen(newHand) > 0
-    do
+  boundary:
+    while calculateHandlen(newHand) > 0 do
       // Display the hand
       displayHand(newHand)
       // computer"s word
@@ -53,7 +45,7 @@ def compPlayHand(hand: Hand, wordList: List[String], n: Int) =
       // If the input is a single period:
       if wordOpt == None then
         // End the game (break out of the loop)
-        break
+        break()
 
       // Otherwise (the input is not a single period):
       else
@@ -61,19 +53,16 @@ def compPlayHand(hand: Hand, wordList: List[String], n: Int) =
         // If the word is not valid:
         if !isValidWord(word, hand, wordList) then
           println("This is a terrible error! I need to check my own code!")
-          break
+          break()
         // Otherwise (the word is valid):
         else
           // Tell the user how many points the word earned,
           // and the updated total score
           val score = getWordScore(word, n)
           totalScore += score
-          println(
-            s"${word} earned ${score} points. Total: ${totalScore} points"
-          )
+          println(s"${word} earned ${score} points. Total: ${totalScore} points")
           // Update hand and show the updated hand to the user
           newHand = updateHand(newHand, word)
-  )
 
   // Game is over (user entered a "." or ran out of letters), so tell user the total score
   println(s"Total score: ${totalScore} points.")
@@ -101,8 +90,7 @@ def computerPlayGame(wordList: List[String]): Unit =
   var lastHand = Map[Char, Int]()
   var command = ""
 
-  while true
-  do
+  while true do
     // Ask user to input "n" or "r" or "e"
     command = readLine(
       "Enter n to deal a new hand, r to replay the last hand, or e to end game: "
@@ -110,16 +98,14 @@ def computerPlayGame(wordList: List[String]): Unit =
 
     // If user inputs anything that"s not "n", "r", or "e",
     // keep asking them again
-    while !List("n", "r", "e").contains(command)
-    do
+    while !List("n", "r", "e").contains(command) do
       println("Invalid command.")
       command = readLine(
         "Enter n to deal a new hand, r to replay the last hand, or e to end game: "
       )
 
     // If no hand has been played, impossible to replay last hand
-    while command == "r" && lastHand.isEmpty
-    do
+    while command == "r" && lastHand.isEmpty do
       println("You have not played a hand yet.")
       println("Please play a new hand first!")
       command = readLine(
@@ -130,23 +116,18 @@ def computerPlayGame(wordList: List[String]): Unit =
     if command == "e" then return
 
     // Ask the user to input a "u" or a "c"
-    var player = readLine(
-      "Enter u to have yourself play, c to have the computer play: "
-    )
+    var player = readLine("Enter u to have yourself play, c to have the computer play: ")
 
     // If the user inputs anything that"s not "c" or "u",
     // keep asking them again
-    while !List("u", "c").contains(player)
-    do
+    while !List("u", "c").contains(player) do
       println("Invalid command.")
-      player = readLine(
-        "Enter u to have yourself play, c to have the computer play: "
-      )
+      player = readLine("Enter u to have yourself play, c to have the computer play: ")
 
     var newHand = Map[Char, Int]()
     if command == "n" then
       // deal new random hand
-      newHand = dealHand(HANDSIZE)
+      newHand = dealMyHand(HANDSIZE)
 
       // update lastHand
       lastHand = newHand
@@ -160,5 +141,5 @@ def computerPlayGame(wordList: List[String]): Unit =
       compPlayHand(newHand, wordList, HANDSIZE)
 
 @main def computerScrabble =
-  val wordList = loadWords
+  val wordList = loadWords4a
   computerPlayGame(wordList)

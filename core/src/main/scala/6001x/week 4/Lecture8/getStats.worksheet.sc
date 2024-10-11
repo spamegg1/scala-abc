@@ -1,18 +1,12 @@
-// def avg(grades: List[Double]) =
-//   try
-//     grades.sum.toInt / grades.length
-//   catch
-//     case _: ArithmeticException =>
-//       println("no grades data")
-//       0.0
 def avg(grades: List[Double]) =
-  grades.sum / grades.length
+  try grades.sum.toInt / grades.length
+  catch
+    case _: ArithmeticException =>
+      println("no grades data")
+      0.0
 
 def getStats(classList: List[(List[String], List[Double])]) =
-  for
-    (names, grades) <- classList
-  yield
-    (names, grades, avg(grades))
+  for (names, grades) <- classList yield (names, grades, avg(grades))
 
 val testGrades = List(
   (List("peter", "parker"), List(10.0, 5.0, 85.0)),

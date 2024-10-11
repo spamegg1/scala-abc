@@ -17,21 +17,21 @@ def loadDict =
     println(s"${lines.length} words loaded.")
     lines
 
-def chooseWord(wordList: List[String]) =
+def chooseWordps3(wordList: List[String]) =
   // wordlist (list): list of words (strings)
   // Returns a word from wordlist at random
   wordList(Random.between(0, wordList.length))
 
 // end of helper code
 
-def isWordGuessed(secretWord: String, lettersGuessed: List[Char]) =
+def isWordGuessedps3(secretWord: String, lettersGuessed: List[Char]) =
   // SECRETWORD: string, the word the user is guessing
   // lettersGuessed: list, what letters have been guessed so far
   // returns: boolean, True if all letters of SECRETWORD are in lettersGuessed;
   //                   False otherwise
   secretWord.forall(lettersGuessed.contains)
 
-def getGuessedWord(secretWord: String, lettersGuessed: List[Char]) =
+def getGuessedWordps3(secretWord: String, lettersGuessed: List[Char]) =
   // secretWord: string, the word the user is guessing
   // lettersGuessed: list, what letters have been guessed so far
   // returns: string, comprised of letters and underscores that represents
@@ -41,7 +41,7 @@ def getGuessedWord(secretWord: String, lettersGuessed: List[Char]) =
     if lettersGuessed.contains(letter) then result += letter else result += "_ "
   result
 
-def getAvailableLetters(lettersGuessed: List[Char]) =
+def getAvailableLettersps3(lettersGuessed: List[Char]) =
   // lettersGuessed: list, what letters have been guessed so far
   // returns: string, comprised of letters that represents what letters have
   // not yet been guessed.
@@ -50,9 +50,9 @@ def getAvailableLetters(lettersGuessed: List[Char]) =
   do if !lettersGuessed.contains(letter) then result += letter
   result
 
-def hangman(secretWord: String) =
+def hangmanps3(secretWord: String) =
   // secretWord: string, the secret word to guess.
-  // Starts up an interactive game of Hangman.
+  // Starts up an interactive game of hangmanps3.
   // * At the start of the game, let the user know how many
   //   letters the secretWord contains.
   // * Ask the user to supply one guess (i.e. letter) per round.
@@ -62,7 +62,7 @@ def hangman(secretWord: String) =
   //   partially guessed word so far, as well as letters that the
   //   user has not yet guessed.
   // Follows the other limitations detailed in the problem write-up.
-  println("Welcome to the game, Hangman!")
+  println("Welcome to the game, hangmanps3!")
   println(s"I am thinking of a word that is ${secretWord.length} letters long.")
 
   var mistakesMade = 0
@@ -72,20 +72,20 @@ def hangman(secretWord: String) =
     while mistakesMade < 8 do
       println("-------------")
       println(s"You have ${8 - mistakesMade} guesses left.")
-      val availableLetters = getAvailableLetters(lettersGuessed)
+      val availableLetters = getAvailableLettersps3(lettersGuessed)
       println(s"Available letters: ${availableLetters}")
 
       val guess = readLine("Please guess a letter: ")
-      var soFar = getGuessedWord(secretWord, lettersGuessed)
+      var soFar = getGuessedWordps3(secretWord, lettersGuessed)
 
       if lettersGuessed.contains(guess) then
         println(s"Oops! You've already guessed that letter: ${soFar}")
       else
         lettersGuessed = guess(0) :: lettersGuessed
         if secretWord.contains(guess) then
-          soFar = getGuessedWord(secretWord, lettersGuessed)
+          soFar = getGuessedWordps3(secretWord, lettersGuessed)
           println(s"Good guess: ${soFar}")
-          if isWordGuessed(secretWord, lettersGuessed) then
+          if isWordGuessedps3(secretWord, lettersGuessed) then
             println("-------------")
             println("Congratulations, you won!")
             break()
@@ -98,12 +98,12 @@ def hangman(secretWord: String) =
               s"Sorry, you ran out of guesses. The word was ${secretWord}."
             )
 
-// When you"ve completed your hangman function, uncomment these two lines
+// When you"ve completed your hangmanps3 function, uncomment these two lines
 // and run this file to test! (hint: you might want to pick your own
 // SECRETWORD while you"re testing)
 // Load the list of words into the variable wordlist
 // so that it can be accessed from anywhere in the program
-@main def runHangman =
+@main def runhangmanps3 =
   val WORDLIST = loadDict
-  val SECRETWORD = chooseWord(WORDLIST)
-  hangman(SECRETWORD)
+  val SECRETWORD = chooseWordps3(WORDLIST)
+  hangmanps3(SECRETWORD)
