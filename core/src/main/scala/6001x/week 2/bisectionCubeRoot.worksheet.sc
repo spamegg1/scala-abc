@@ -1,5 +1,3 @@
-import math.*
-
 val EPSILON = 0.00000001
 
 def bisectionCubeRoot(cube: Double) =
@@ -15,21 +13,14 @@ def bisectionCubeRoot(cube: Double) =
     right = 0
 
   var guess = (right + left) / 2
-  var diff = pow(guess, 3) - cube
+  var diff = math.pow(guess, 3) - cube
 
-  while
-    abs(diff) >= EPSILON
-  do
-    if diff >= 0 then
-      right = guess
-    else
-      left = guess
+  while math.abs(diff) >= EPSILON do
+    if diff >= 0 then right = guess else left = guess
     guess = (right + left) / 2
-    diff = pow(guess, 3) - cube
+    diff = math.pow(guess, 3) - cube
 
-  if abs(diff) >= EPSILON then
-    println(s"failed ${pow(guess, 3)}")
-  else
-    print(s"succeeded: ${guess}")
+  if math.abs(diff) >= EPSILON then println(s"failed ${math.pow(guess, 3)}")
+  else print(s"succeeded: ${guess}")
 
 bisectionCubeRoot(-216.0)

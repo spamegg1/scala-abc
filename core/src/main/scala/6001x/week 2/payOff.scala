@@ -1,14 +1,7 @@
-import math.*
-import BigDecimal.RoundingMode.HALF_EVEN
-import util.control.Breaks.*
-
-def round(x: Double, n: Int): Double =
-  BigDecimal(x).setScale(n, HALF_EVEN).toDouble
-
 def creditBalance(
-  balance: Double,
-  annualInterestRate: Double,
-  monthlyPayment: Double
+    balance: Double,
+    annualInterestRate: Double,
+    monthlyPayment: Double
 ) =
   // balance is: float
   // annualInterestRate is: float
@@ -21,8 +14,7 @@ def creditBalance(
   var month = 0
   var newBalance = balance
 
-  while
-    month < 12
+  while month < 12
   do
     val unpaidBalance = newBalance - monthlyPayment
 
@@ -32,62 +24,57 @@ def creditBalance(
 
   // Don't forget to round answer to two decimal places
   round(newBalance, 2)
+end creditBalance
 
+@main
+def testCreditBalance =
+  // Test Case 1:
+  // val balance = 3329.0
+  // val annualInterestRate = 0.2
+  // Result Your Code Should Generate:
+  // -------------------
+  // Lowest Payment: 310
 
-// Test Case 1:
-// val balance = 3329.0
-// val annualInterestRate = 0.2
-// Result Your Code Should Generate:
-// -------------------
-// Lowest Payment: 310
+  // Test Case 2:
+  val balance = 4773.0
+  val annualInterestRate = 0.2
+  // Result Your Code Should Generate:
+  // -------------------
+  // Lowest Payment: 440
 
-// Test Case 2:
-val balance = 4773.0
-val annualInterestRate = 0.2
-// Result Your Code Should Generate:
-// -------------------
-// Lowest Payment: 440
+  // Test Case 3:
+  // val  balance = 3926.0
+  // val annualInterestRate = 0.2
+  // Result Your Code Should Generate:
+  // -------------------
+  // Lowest Payment: 360
 
-// Test Case 3:
-// val  balance = 3926.0
-// val annualInterestRate = 0.2
-// Result Your Code Should Generate:
-// -------------------
-// Lowest Payment: 360
+  // Test Case 4:
+  // val balance = 794.0
+  // val annualInterestRate = 0.25
+  // Result Your Code Should Generate:
+  // -------------------
+  // Lowest Payment: 80
 
-// Test Case 4:
-// val balance = 794.0
-// val annualInterestRate = 0.25
-// Result Your Code Should Generate:
-// -------------------
-// Lowest Payment: 80
+  // Bisection search to find the minimum
+  // monthly payment that pays off balance
+  var left = 0.0
+  var right = balance
+  var result = (left + right) / 2
+  val epsilon = 10
+  var attempt = balance
 
-// Bisection search to find the minimum
-// monthly payment that pays off balance
-var left = 0.0
-var right = balance
-var result = (left + right) / 2
-val epsilon = 10
-var attempt = balance
+  boundary:
+    while math.abs(attempt) >= epsilon do
+      attempt = creditBalance(balance, annualInterestRate, result)
+      if attempt == 0 then break()
+      if attempt > 0 then left = result
+      else right = result
+      result = (left + right) / 2
 
-breakable(
-  while
-    abs(attempt) >= epsilon
-  do
-    attempt = creditBalance(balance, annualInterestRate, result)
-    if attempt == 0 then
-      break
-    if attempt > 0 then
-      left = result
-    else
-      right = result
-    result = (left + right) / 2
-)
-
-// This line of code rounds the result to a multiple of 10
-val resultInt = (result.toInt + 9) / 10 * 10
-println(s"Lowest payment: ${resultInt}")
-
+  // This line of code rounds the result to a multiple of 10
+  val resultInt = (result.toInt + 9) / 10 * 10
+  println(s"Lowest payment: ${resultInt}") // 440
 
 def minMonthlyPayoff(balance: Double, annualInterestRate: Double) =
   // balance is: float
@@ -102,22 +89,19 @@ def minMonthlyPayoff(balance: Double, annualInterestRate: Double) =
   var result = (left + right) / 2
   val epsilon = 1
 
-  while
-    abs(creditBalance(balance, annualInterestRate, result)) >= epsilon
-  do
-    val attempt = creditBalance(balance, annualInterestRate, result)
-    if attempt == 0 then
-      break
-    if attempt > 0 then
-      left = result
-    else
-      right = result
-    result = (left + right) / 2
+  boundary:
+    while math.abs(creditBalance(balance, annualInterestRate, result)) >= epsilon do
+      val attempt = creditBalance(balance, annualInterestRate, result)
+      if attempt == 0 then break()
+      if attempt > 0 then left = result
+      else right = result
+      result = (left + right) / 2
 
   // This line of code rounds the result to a multiple of 10
-  ceil(ceil(result) / 10) * 10
+  math.ceil(math.ceil(result) / 10) * 10
+end minMonthlyPayoff
 
-
+@main
 def testMinMonthlyPayoff =
   // Tests the minMonthlyPayoff function.
   assert(minMonthlyPayoff(3329, 0.2) == 310)
@@ -149,5 +133,3 @@ def testMinMonthlyPayoff =
   assert(minMonthlyPayoff(4211, 0.2) == 390)
   assert(minMonthlyPayoff(4142, 0.2) == 380)
   println("Tests pass!")
-
-testMinMonthlyPayoff

@@ -1,5 +1,3 @@
-import scala.io.StdIn.readLine
-
 def guessingGame(lowerBound: Int, upperBound: Int) =
   // Play a number guessing game with the computer.
 
@@ -15,8 +13,7 @@ def guessingGame(lowerBound: Int, upperBound: Int) =
       "Enter c to indicate I guessed correctly.\n"
   )
 
-  while command != "c"
-  do
+  while command != "c" do
     if !List("h", "l").contains(command) then
       println("Sorry, I did not understand your command. Enter h, l, or c.")
     else if command == "h" then

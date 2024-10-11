@@ -1,5 +1,3 @@
-import math.*
-
 def evalQuadratic(a: Double, b: Double, c: Double, x: Double) =
   // a, b, c: numerical values for the coefficients of a quadratic equation
   // x: numerical value at which to evaluate the quadratic.
