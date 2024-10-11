@@ -1,3 +1,6 @@
+package curriculum
+package ps3
+
 class PS3Suite extends munit.FunSuite:
   test("01. getWordScore"):
     val inputs: List[(String, Int)] = List(

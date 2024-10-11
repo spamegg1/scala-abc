@@ -14,8 +14,8 @@ def compChooseWord(hand: Hand, wordList: List[String], n: Int): Option[String] =
   // returns: string or None
   // Create new variable to store the maximum score seen so far (initially 0)
   wordList
-    .filter(word => isValidWord(word, hand, wordList))
-    .maxByOption(word => getWordScore(word, n))
+    .filter(word => isValidWordps4(word, hand, wordList))
+    .maxByOption(word => getWordScoreps4(word, n))
 
 // Computer plays a hand
 def compPlayHand(hand: Hand, wordList: List[String], n: Int) =
@@ -54,14 +54,14 @@ def compPlayHand(hand: Hand, wordList: List[String], n: Int) =
       else
         val word = wordOpt.get
         // If the word is not valid:
-        if !isValidWord(word, hand, wordList) then
+        if !isValidWordps4(word, hand, wordList) then
           println("This is a terrible error! I need to check my own code!")
           break()
         // Otherwise (the word is valid):
         else
           // Tell the user how many points the word earned,
           // and the updated total score
-          val score = getWordScore(word, n)
+          val score = getWordScoreps4(word, n)
           totalScore += score
           println(s"${word} earned ${score} points. Total: ${totalScore} points")
           // Update hand and show the updated hand to the user
@@ -130,7 +130,7 @@ def computerPlayGame(wordList: List[String]): Unit =
     var newHand = Map[Char, Int]()
     if command == "n" then
       // deal new random hand
-      newHand = dealHand(HANDSIZE)
+      newHand = dealHand(HANDSIZ)
 
       // update lastHand
       lastHand = newHand
@@ -138,10 +138,10 @@ def computerPlayGame(wordList: List[String]): Unit =
 
     if player == "u" then
       // call playHand
-      playHand(newHand, wordList, HANDSIZE)
+      playHand(newHand, wordList, HANDSIZ)
     else if player == "c" then
       // call compPlayHand
-      compPlayHand(newHand, wordList, HANDSIZE)
+      compPlayHand(newHand, wordList, HANDSIZ)
 
 @main def computerScrabble =
   val wordList = loadWords4a
