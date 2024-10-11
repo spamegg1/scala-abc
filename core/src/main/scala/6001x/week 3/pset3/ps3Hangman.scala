@@ -1,33 +1,26 @@
-package mit600x.w3.pset3
-
-import scala.io.Source.fromResource
-import scala.util.Random.between
-import scala.io.StdIn.readLine
-import scala.util.control.Breaks.*
-
-val WORDLISTFILENAME = "words.txt"
-val LOWER = "abcdefghijklmnopqrstuvwxyz"
-val UPPER = LOWER.toUpperCase
+val WORDFILE = "words.txt"
+val LOWERCASE = "abcdefghijklmnopqrstuvwxyz"
+val UPPERCASE = LOWERCASE.toUpperCase
 
 // Helper code
 // You don"t need to understand this helper code,
 // but you will have to know how to use the functions
 // (so be sure to read the docstrings!)
 
-def loadWords =
+def loadDict =
   // Returns a list of valid words. Words are strings of lowercase letters.
   // Depending on the size of the word list, this function may
   // take a while to finish.
   println("Loading word list from file...")
-  val infile = fromResource(WORDLISTFILENAME)
-  val lines = infile.mkString.split(" ").toList
-  println(s"${lines.length} words loaded.")
-  lines
+  Using.resource(fromResource(WORDFILE)): infile =>
+    val lines = infile.mkString.split(" ").toList
+    println(s"${lines.length} words loaded.")
+    lines
 
 def chooseWord(wordList: List[String]) =
   // wordlist (list): list of words (strings)
   // Returns a word from wordlist at random
-  wordList(between(0, wordList.length))
+  wordList(Random.between(0, wordList.length))
 
 // end of helper code
 
@@ -36,7 +29,7 @@ def isWordGuessed(secretWord: String, lettersGuessed: List[Char]) =
   // lettersGuessed: list, what letters have been guessed so far
   // returns: boolean, True if all letters of SECRETWORD are in lettersGuessed;
   //                   False otherwise
-  secretWord.forall(char => lettersGuessed.contains(char))
+  secretWord.forall(lettersGuessed.contains)
 
 def getGuessedWord(secretWord: String, lettersGuessed: List[Char]) =
   // secretWord: string, the word the user is guessing
@@ -44,10 +37,8 @@ def getGuessedWord(secretWord: String, lettersGuessed: List[Char]) =
   // returns: string, comprised of letters and underscores that represents
   //   what letters in secretWord have been guessed so far.
   var result = ""
-  for letter <- secretWord
-  do
-    if lettersGuessed.contains(letter) then result += letter
-    else result += "_ "
+  for letter <- secretWord do
+    if lettersGuessed.contains(letter) then result += letter else result += "_ "
   result
 
 def getAvailableLetters(lettersGuessed: List[Char]) =
@@ -55,7 +46,7 @@ def getAvailableLetters(lettersGuessed: List[Char]) =
   // returns: string, comprised of letters that represents what letters have
   // not yet been guessed.
   var result = ""
-  for letter <- LOWER
+  for letter <- LOWERCASE
   do if !lettersGuessed.contains(letter) then result += letter
   result
 
@@ -77,9 +68,8 @@ def hangman(secretWord: String) =
   var mistakesMade = 0
   var lettersGuessed = List[Char]()
 
-  breakable(
-    while mistakesMade < 8
-    do
+  boundary:
+    while mistakesMade < 8 do
       println("-------------")
       println(s"You have ${8 - mistakesMade} guesses left.")
       val availableLetters = getAvailableLetters(lettersGuessed)
@@ -98,7 +88,7 @@ def hangman(secretWord: String) =
           if isWordGuessed(secretWord, lettersGuessed) then
             println("-------------")
             println("Congratulations, you won!")
-            break
+            break()
         else
           println(s"Oops! That letter is not in my word: ${soFar}")
           mistakesMade += 1
@@ -107,14 +97,13 @@ def hangman(secretWord: String) =
             println(
               s"Sorry, you ran out of guesses. The word was ${secretWord}."
             )
-  )
 
 // When you"ve completed your hangman function, uncomment these two lines
 // and run this file to test! (hint: you might want to pick your own
 // SECRETWORD while you"re testing)
 // Load the list of words into the variable wordlist
 // so that it can be accessed from anywhere in the program
-@main def playHangman =
-  val WORDLIST = loadWords
+@main def runHangman =
+  val WORDLIST = loadDict
   val SECRETWORD = chooseWord(WORDLIST)
   hangman(SECRETWORD)

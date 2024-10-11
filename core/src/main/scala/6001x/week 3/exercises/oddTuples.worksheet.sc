@@ -10,13 +10,8 @@ def oddTuples(aTup: Tuple) =
   // returns: tuple, every other element of aTup.
   // Your Code Here
   val array = aTup.toArray
-  val odds =
-    for
-      i <- 0 until array.length by 2
-    yield
-      array(i)
+  val odds = for i <- 0 until array.length by 2 yield array(i)
   Tuple.fromArray(odds.toArray)
-
 
 assert(oddTuples((13, 11, 17, 20, 8, 8, 8)) == (13, 17, 8, 8))
 assert(oddTuples((0, 12, 1, 19, 9, 8, 0, 17, 12, 18)) == (0, 1, 9, 0, 12))

@@ -2,14 +2,10 @@ def howMany(aDict: Map[AnyVal, List[AnyVal]]) =
   // aDict: A dictionary, where all the values are lists.
   // returns: int, how many values are in the dictionary.
   var result = 0
-  for
-    value <- aDict.values
-  do
-    result += value.length
+  for value <- aDict.values do result += value.length
   result
 
-
-def biggest(aDict: Map[AnyVal, List[AnyVal]]) =
+def biggest(aDict: Map[AnyVal, List[AnyVal]]): Option[AnyVal] =
   // aDict: A dictionary, where all the values are lists.
   // returns: The key with the largest number of values associated with it
   if aDict.values.isEmpty then None

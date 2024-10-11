@@ -16,10 +16,7 @@ def howMany[S, T](aDict: Map[S, List[T]]): Int =
   // returns: int, how many values are in the dictionary.
   // Your Code Here
   var result = 0
-  for
-    thing <- aDict.values
-  do
-    result += thing.size
+  for thing <- aDict.values do result += thing.size
   result
 
 // TESTING
