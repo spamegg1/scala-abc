@@ -1,4 +1,5 @@
 package curriculum
+package py4e
 
 // 7.2 Write a program that prompts for a file name,
 // then opens that file and reads through the file,

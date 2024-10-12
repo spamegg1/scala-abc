@@ -1,4 +1,6 @@
 package curriculum
+package mit6001x
+package ocw2016
 package ps3
 
 class PS3Suite extends munit.FunSuite:

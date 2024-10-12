@@ -1,3 +1,6 @@
+package curriculum
+package mit6001x
+
 // Suppose we rewrite the FancyDivide function to use a helper function.
 def fancyDivide(listOfNums: List[Int], index: Int) =
   val denom = listOfNums(index)

@@ -1,4 +1,5 @@
 package curriculum
+package mit6001x
 
 @main
 def evenOdd =

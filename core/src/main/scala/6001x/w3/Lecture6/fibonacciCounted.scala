@@ -1,4 +1,5 @@
 package curriculum
+package mit6001x
 
 var calls = 0
 

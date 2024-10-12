@@ -1,3 +1,6 @@
+package curriculum
+package mit6001x
+
 // Consider the following function definition:
 def badFact(n: Int): Int = // n >= 0
   if n == 0 then 1 // changed this from n to 1

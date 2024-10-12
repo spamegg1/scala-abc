@@ -1,4 +1,5 @@
 package curriculum
+package py4e
 
 // 5.2 Write a program that repeatedly prompts a user
 // for integer numbers until the user enters 'done'.

@@ -1,4 +1,7 @@
-package MIT6001x.person
+package curriculum
+package mit6001x
+package w5
+package lec10
 
 object MITPerson:
   var nextIdNum: Int = 0 // next ID number to assign

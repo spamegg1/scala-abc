@@ -1,4 +1,5 @@
 package curriculum
+package mit6001x
 
 // Consider the following sequence of expressions:
 // animals = { 'a': ['aardvark'], 'b': ['baboon'], 'c': ['coati']}
@@ -30,11 +31,8 @@ def biggest[S, T](aDict: MMap[S, Array[T]]): Option[S] =
 // TESTING
 @main
 def testBiggest =
-  val animals = MMap(
-    'a' -> Array("aardvark"),
-    'b' -> Array("baboon"),
-    'c' -> Array("coati")
-  )
+  val animals =
+    MMap('a' -> Array("aardvark"), 'b' -> Array("baboon"), 'c' -> Array("coati"))
 
   animals += 'd' -> Array("donkey")
   animals('d').appended("dog")

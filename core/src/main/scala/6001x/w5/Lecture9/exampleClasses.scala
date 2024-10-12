@@ -1,3 +1,8 @@
+package curriculum
+package mit6001x
+package w5
+package lec09
+
 class Animal(var age: Int, var name: Option[String] = None):
   def getAge = age
   def getName = name

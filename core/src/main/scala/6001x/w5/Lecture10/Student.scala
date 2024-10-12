@@ -1,4 +1,7 @@
-package MIT6001x.person
+package curriculum
+package mit6001x
+package w5
+package lec10
 
 class Student(name: String) extends MITPerson(name)
 

@@ -1,3 +1,6 @@
+package curriculum
+package py4e
+
 // To get credit for this assignment, perform the instructions below and upload
 // your SQLite3 database here:
 // (Must have a .sqlite suffix)

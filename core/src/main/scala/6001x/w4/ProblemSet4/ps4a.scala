@@ -1,65 +1,9 @@
 package curriculum
+package mit6001x
 package ps4
 
-type Hand = Map[Char, Int]
-
-val VOWELS = "aeiou"
-val CONSON = "bcdfghjklmnpqrstvwxyz"
-val HANDSIZ = 7
-val FILE = "wordgame.txt"
-val BONUSPT = 50
-val SCRABBL = Map(
-  'a' -> 1,
-  'b' -> 3,
-  'c' -> 3,
-  'd' -> 2,
-  'e' -> 1,
-  'f' -> 4,
-  'g' -> 2,
-  'h' -> 4,
-  'i' -> 1,
-  'j' -> 8,
-  'k' -> 5,
-  'l' -> 1,
-  'm' -> 3,
-  'n' -> 1,
-  'o' -> 1,
-  'p' -> 3,
-  'q' -> 10,
-  'r' -> 1,
-  's' -> 1,
-  't' -> 1,
-  'u' -> 1,
-  'v' -> 4,
-  'w' -> 4,
-  'x' -> 8,
-  'y' -> 4,
-  'z' -> 10
-)
-
-def loadWords4a =
-  // Returns a list of valid words. Words are strings of lowercase letters.
-  // Depending on the size of the word list, this function may
-  // take a while to finish.
-  println("Loading word list from file...")
-  val inFile = fromResource(FILE)
-  val wordList = inFile.getLines
-    .map(_.toLowerCase)
-    .toList
-  println(s"${wordList.length} words loaded.")
-  wordList
-
-def getFreqMapps4(word: String): Hand =
-  // Returns a dictionary where the keys are elements of the sequence
-  // and the values are integer counts, for the number of times that
-  // an element is repeated in the sequence.
-  // word: string or list of chars
-  // return: dictionary
-  word
-    .groupMapReduce(identity)(_ => 1)(_ + _)
-
 // Problem 1: Scoring a word
-def getWordScoreps4(word: String, n: Int) =
+def getWordScore(word: String, n: Int) =
   // Returns the score for a word. Assumes the word is a valid word.
   // The score for a word is the sum of the points for letters in the
   // word, multiplied by the length of the word, PLUS 50 points if all num
@@ -70,27 +14,11 @@ def getWordScoreps4(word: String, n: Int) =
   // num: integer (HANDSIZ; i.e., hand size required for additional points)
   // returns: int >= 0
   val len = word.length
-  val score1 = word.map(char => SCRABBL(char)).sum
+  val score1 = word.map(char => SCRABBLE(char)).sum
   val score2 = score1 * len
-  score2 + (if len == n then BONUSPT else 0)
+  score2 + (if len == n then BONUS else 0)
 
 // Problem 2: Make sure you understand how this function works and what it does!
-def displayHand(hand: Hand) =
-  // Displays the letters currently in the hand.
-  // For example:
-  // >>> displayHand({"a":1, "x":2, "l":3, "e":1})
-  // Should println out something like:
-  //     a x x l l l e
-  // The order of the letters is unimportant.
-  // hand: dictionary (string -> int)
-  val letters =
-    for (letter, count) <- hand
-    yield s"${letter} " * count
-  println(s"Current hand: ${letters.mkString}")
-
-//
-// Problem 2: Make sure you understand how this function works and what it does!
-
 def dealHand(num: Int): Hand =
   // Returns a random hand containing num lowercase letters.
   // At least num/3 the letters in the hand should be VOWELS.
@@ -103,9 +31,9 @@ def dealHand(num: Int): Hand =
   val vowels = for _ <- 0 until numVowels yield VOWELS(Random.between(0, VOWELS.length))
   val cons =
     for _ <- numVowels until num
-    yield CONSON(Random.between(0, CONSON.length))
+    yield CONSONANTS(Random.between(0, CONSONANTS.length))
 
-  getFreqMapps4(vowels.mkString + cons.mkString)
+  getFreqMap(vowels.mkString + cons.mkString)
 
 // Problem 2: Update a hand by removing letters
 def updateHand(hand: Hand, word: String): Hand =
@@ -122,7 +50,7 @@ def updateHand(hand: Hand, word: String): Hand =
   hand.map((char, count) => (char, count - word.count(_ == char)))
 
 // Problem 3: Test word validity
-def isValidWordps4(word: String, hand: Hand, wordList: List[String]) =
+def isValidWord(word: String, hand: Hand, wordList: List[String]) =
   // Returns True if word is in the wordList and is entirely
   // composed of letters in the hand. Otherwise, returns False.
   // Does not mutate hand or wordList.
@@ -131,13 +59,6 @@ def isValidWordps4(word: String, hand: Hand, wordList: List[String]) =
   // wordList: list of lowercase strings
   wordList.contains(word) &&
     word.forall(letter => word.count(_ == letter) <= hand.getOrElse(letter, 0))
-
-// Problem 4: Playing a hand
-def calculateHandlen(hand: Hand) =
-  // Returns the length (number of letters) in the current hand.
-  // hand: dictionary (string-> int)
-  // returns: integer
-  hand.values.sum
 
 def playHand(hand: Hand, wordList: List[String], n: Int) =
   // Allows the user to play the given hand, as follows:
@@ -177,14 +98,14 @@ def playHand(hand: Hand, wordList: List[String], n: Int) =
       // Otherwise (the input is not a single period):
       else
       // If the word is not valid:
-      if !isValidWordps4(word, newHand, wordList) then
+      if !isValidWord(word, newHand, wordList) then
         // Reject invalid word (println message followed by a blank line)
         println("Invalid word, please try again.")
       // Otherwise (the word is valid):
       else
         // Tell the user how many points the word earned, and the
         // updated total score, in one line followed by a blank line
-        val wordScore = getWordScoreps4(word, n)
+        val wordScore = getWordScore(word, n)
         score += wordScore
         println(s"${word} earned ${wordScore} points.")
         println(s"Total: ${score} points")
@@ -198,7 +119,7 @@ def playHand(hand: Hand, wordList: List[String], n: Int) =
   else println(s"Goodbye! Total score: ${score} points.")
 
 // Problem 5: Playing a game
-def playGameps4(wordList: List[String]): Unit =
+def playGame(wordList: List[String]): Unit =
   // Allow the user to play an arbitrary number of hands.
   // 1) Asks the user to input "n" or "r" or "e".
   //   * If the user inputs "n", let the user play a new (random) hand.
@@ -227,14 +148,14 @@ def playGameps4(wordList: List[String]): Unit =
 
     // If user inputs "n", play a new random hand
     if command == "n" then
-      newHand = dealHand(HANDSIZ)
+      newHand = dealHand(HANDSIZE)
       // update lastHand
       lastHand = newHand
       // play
-      playHand(newHand, wordList, HANDSIZ)
+      playHand(newHand, wordList, HANDSIZE)
 
     // If user inputs "r", play last hand again
-    if command == "r" then playHand(lastHand, wordList, HANDSIZ)
+    if command == "r" then playHand(lastHand, wordList, HANDSIZE)
 
     // If user inputs "e", exit the game
     if command == "e" then return
@@ -243,6 +164,6 @@ def playGameps4(wordList: List[String]): Unit =
     if !List("n", "r", "e").contains(command) then println("Invalid command.")
 
 // Build data structures used for entire session and play game
-@main def playScrabbleps4 =
-  val wordList = loadWords4a
-  playGameps4(wordList)
+@main def playScrabble =
+  val wordList = loadWords(WORDLISTFILENAME)
+  playGame(wordList)

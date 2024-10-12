@@ -1,4 +1,5 @@
 package curriculum
+package mit6001x
 
 def fib(n: Long): Long =
   if n == 1 then 1

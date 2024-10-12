@@ -1,72 +1,7 @@
 package curriculum
+package mit6001x
+package ocw2016
 package ps3
-
-type Hand = Map[Char, Int]
-type Words = List[String]
-
-val VOWELS3 = "aeiou"
-val CONSONANTS = "bcdfghjklmnpqrstvwxyz"
-val HANDSIZE = 10
-val VOWELRATIO = 3
-val WORDLISTFILENAME3 = "wordgame.txt"
-val BONUS = 50
-
-val SCRABBLE = Map(
-  'a' -> 1,
-  'b' -> 3,
-  'c' -> 3,
-  'd' -> 2,
-  'e' -> 1,
-  'f' -> 4,
-  'g' -> 2,
-  'h' -> 4,
-  'i' -> 1,
-  'j' -> 8,
-  'k' -> 5,
-  'l' -> 1,
-  'm' -> 3,
-  'n' -> 1,
-  'o' -> 1,
-  'p' -> 3,
-  'q' -> 10,
-  'r' -> 1,
-  's' -> 1,
-  't' -> 1,
-  'u' -> 1,
-  'v' -> 4,
-  'w' -> 4,
-  'x' -> 8,
-  'y' -> 4,
-  'z' -> 10,
-  '*' -> 0
-)
-
-// Helper code
-// (you don't need to understand this helper code)
-def loadWords3(fileName: String) =
-  /** fileName (string) = the name of the file containing the list of words to load
-    * Returns: a list of valid words. Words are strings of lowercase letters. Depending on
-    * the size of the word list, this function may take a while to finish.
-    */
-  println("Loading word list from file...")
-  Using.resource(fromResource(fileName)): inFile =>
-    val wordList = inFile.getLines.map(_.toLowerCase).toList
-    println(s"${wordList.length} words loaded.")
-    wordList
-
-def getFreqMap(word: String) =
-  // Returns a dictionary where the keys are elements of the sequence
-  // and the values are integer counts, for the number of times that
-  // an element is repeated in the sequence.
-  // sequence: string or list
-  // return: dictionary
-  word.toLowerCase
-    .groupBy(identity)
-    .view
-    .mapValues(_.length)
-    .toMap
-
-// (end of helper code)
 
 // Problem #1: Scoring a word
 def getWordScore(word: String, num: Int): Int =
@@ -93,18 +28,6 @@ def getWordScore(word: String, num: Int): Int =
   first * second
 
 // Make sure you understand how this function works and what it does!
-def displayHand(hand: Hand): Unit =
-  // Displays the letters currently in the hand.
-  // For example:
-  //     display_hand({"a":1, "x":2, "l":3, "e":1})
-  // Should print out something like:
-  //     a x x l l l e
-  // The order of the letters is unimportant.
-  // hand: dictionary (string -> int)
-  val letters: Iterable[String] = for (letter, count) <- hand yield s"$letter " * count
-  println(s"Current hand: ${letters.mkString}")
-
-// Make sure you understand how this function works and what it does!
 // You will need to modify this for Problem #4.
 def dealHand(handSize: Int, numVowels: Int): Hand =
   // Returns a random hand containing n lowercase letters.
@@ -116,7 +39,7 @@ def dealHand(handSize: Int, numVowels: Int): Hand =
   // n: int >= 0
   // returns: dictionary (string -> int)
   val vowels: Iterable[Char] =
-    for _ <- 1 to numVowels yield VOWELS3(Random.between(0, VOWELS3.size))
+    for _ <- 1 to numVowels yield VOWELS(Random.between(0, VOWELS.size))
 
   val consonants: Iterable[Char] =
     for _ <- numVowels + 1 to handSize
@@ -159,13 +82,6 @@ def isValidWord(word: String, hand: Hand, wordList: Words): Boolean =
   val wordIsInHand: Boolean = wordLower.forall: char =>
     hand.contains(char) && wordHand(char) <= hand(char)
   wordIsInHand && wordList.contains(wordLower)
-
-// Problem #5: Playing a hand
-def calculateHandlen(hand: Hand) =
-  // Returns the length (number of letters) in the current hand.
-  // hand: dictionary (string-> int)
-  // returns: integer
-  hand.values.sum
 
 def playHand(hand: Hand, words: Words, num: Int): Unit =
   // Allows the user to play the given hand, as follows:
@@ -244,7 +160,7 @@ def substituteHand(hand: Hand, letter: Char) =
 
   if !hand.contains(letter) then hand
   else
-    val availableLetters = for l <- VOWELS3 + CONSONANTS if !hand.contains(l) yield l
+    val availableLetters = for l <- VOWELS + CONSONANTS if !hand.contains(l) yield l
     hand.updated(letter, availableLetters(Random.nextInt(availableLetters.length)))
 
 def playGame(words: Words, handSize: Int, vowelRatio: Int): Unit =
@@ -293,5 +209,5 @@ def playGame(words: Words, handSize: Int, vowelRatio: Int): Unit =
 // Do not remove the "if __name__ == "__main__":" line - this code is executed
 // when the program is run directly, instead of through an import statement
 @main def playWordGame =
-  val wordList = loadWords3(WORDLISTFILENAME3)
+  val wordList = loadWords(WORDGAMEFILENAME)
   playGame(wordList, HANDSIZE, VOWELRATIO)

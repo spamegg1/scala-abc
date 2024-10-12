@@ -1,4 +1,5 @@
 package curriculum
+package mit6001x
 package ps4
 
 // Computer chooses a word
@@ -14,8 +15,8 @@ def compChooseWord(hand: Hand, wordList: List[String], n: Int): Option[String] =
   // returns: string or None
   // Create new variable to store the maximum score seen so far (initially 0)
   wordList
-    .filter(word => isValidWordps4(word, hand, wordList))
-    .maxByOption(word => getWordScoreps4(word, n))
+    .filter(word => isValidWord(word, hand, wordList))
+    .maxByOption(word => getWordScore(word, n))
 
 // Computer plays a hand
 def compPlayHand(hand: Hand, wordList: List[String], n: Int) =
@@ -54,14 +55,14 @@ def compPlayHand(hand: Hand, wordList: List[String], n: Int) =
       else
         val word = wordOpt.get
         // If the word is not valid:
-        if !isValidWordps4(word, hand, wordList) then
+        if !isValidWord(word, hand, wordList) then
           println("This is a terrible error! I need to check my own code!")
           break()
         // Otherwise (the word is valid):
         else
           // Tell the user how many points the word earned,
           // and the updated total score
-          val score = getWordScoreps4(word, n)
+          val score = getWordScore(word, n)
           totalScore += score
           println(s"${word} earned ${score} points. Total: ${totalScore} points")
           // Update hand and show the updated hand to the user
@@ -130,7 +131,7 @@ def computerPlayGame(wordList: List[String]): Unit =
     var newHand = Map[Char, Int]()
     if command == "n" then
       // deal new random hand
-      newHand = dealHand(HANDSIZ)
+      newHand = dealHand(HANDSIZE)
 
       // update lastHand
       lastHand = newHand
@@ -138,11 +139,11 @@ def computerPlayGame(wordList: List[String]): Unit =
 
     if player == "u" then
       // call playHand
-      playHand(newHand, wordList, HANDSIZ)
+      playHand(newHand, wordList, HANDSIZE)
     else if player == "c" then
       // call compPlayHand
-      compPlayHand(newHand, wordList, HANDSIZ)
+      compPlayHand(newHand, wordList, HANDSIZE)
 
 @main def computerScrabble =
-  val wordList = loadWords4a
+  val wordList = loadWords(WORDLISTFILENAME)
   computerPlayGame(wordList)

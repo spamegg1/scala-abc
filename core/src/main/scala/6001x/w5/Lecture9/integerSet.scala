@@ -1,4 +1,5 @@
 package curriculum
+package mit6001x
 
 class IntSet(vals: ArrayBuffer[Int] = ArrayBuffer()):
   def insert(e: Int) = if !vals.contains(e) then vals.addOne(e)

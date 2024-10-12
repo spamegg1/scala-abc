@@ -1,4 +1,7 @@
-package MIT6001x.person
+package curriculum
+package mit6001x
+package w5
+package lec10
 
 class UG(name: String, classYear: Int) extends MITPerson(name):
   def getClass = classYear

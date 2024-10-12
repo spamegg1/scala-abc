@@ -1,4 +1,5 @@
 package curriculum
+package mit6001x
 
 def guessingGame(lowerBound: Int, upperBound: Int) =
   // Play a number guessing game with the computer.

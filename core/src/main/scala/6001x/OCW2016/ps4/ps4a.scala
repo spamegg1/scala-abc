@@ -1,4 +1,6 @@
 package curriculum
+package mit6001x
+package ocw2016
 
 def getPermutations(sequence: String): List[String] =
   /** Enumerate all permutations of a given string sequence (string): an arbitrary string

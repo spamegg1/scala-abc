@@ -1,3 +1,6 @@
+package curriculum
+package mit6001x
+
 def fancyDivide1(numbers: Array[Int], index: Int) =
   try
     val denom = numbers(index)

@@ -1,4 +1,7 @@
-package MIT6001x.person
+package curriculum
+package mit6001x
+package w5
+package lec10
 
 class Professor(name: String, department: String) extends MITPerson(name):
   override def speak(utterance: String) =

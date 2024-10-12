@@ -1,3 +1,6 @@
+import scala.io.Source.fromResource
+import scala.util.Using
+
 case class Point(x: Int, y: Int) extends Ordered[Point]:
   def compare(that: Point): Int =
     (this.x compare that.x, this.y compare that.y) match
@@ -118,6 +121,8 @@ val level =
     |.....ooEoo
     |......ooo.""".stripMargin
 
-val grid = stringToGrid(level)
-val level2 = grid.toString
-level == level2
+// val grid = stringToGrid(level)
+// val level2 = grid.toString
+// level == level2
+
+// Using.resource(fromResource("story.txt"))(file => file.mkString)

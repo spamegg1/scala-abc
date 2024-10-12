@@ -1,4 +1,5 @@
 package curriculum
+package py4e
 
 // 3.1 Write a program to prompt the user for hours and rate per hour
 // using input to compute gross pay.

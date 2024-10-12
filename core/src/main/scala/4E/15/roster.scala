@@ -1,3 +1,6 @@
+package curriculum
+package py4e
+
 // To get credit for this assignment, perform the instructions below and enter
 // the code you get here:
 // (Hint: starts with XYZZY41616)

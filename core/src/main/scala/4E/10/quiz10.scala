@@ -1,4 +1,5 @@
 package curriculum
+package py4e
 
 // 10.2 Write a program to read through the mbox-short.txt and
 // figure out the distribution by hour of the day for each of the messages.

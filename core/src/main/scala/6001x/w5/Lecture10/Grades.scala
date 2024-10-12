@@ -1,12 +1,13 @@
-package MIT6001x.person
-
-import collection.mutable.Map
+package curriculum
+package mit6001x
+package w5
+package lec10
 
 class Grades:
   type Grade = Double
   // A mapping from students to a list of GradStudentes
   var students = List[Student]() // list of Student objects
-  val grades = Map[Int, List[Grade]]() // maps idNum -> list of grades
+  val grades = MMap[Int, List[Grade]]() // maps idNum -> list of grades
   var isSorted = true // true if students is sorted
 
   def addStudent(student: Student) =

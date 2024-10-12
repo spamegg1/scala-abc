@@ -1,4 +1,5 @@
 package curriculum
+package py4e
 
 // Calling a JSON API
 // In this assignment you will write a Python program somewhat similar to

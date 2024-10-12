@@ -1,4 +1,5 @@
 package curriculum
+package py4e
 
 // Scraping Numbers from HTML using BeautifulSoup
 // In this assignment you will write a Python program similar to

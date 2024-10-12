@@ -1,5 +1,5 @@
 package curriculum
-package ps2
+package mit6001x
 
 @main
 def ps2Problem1 =

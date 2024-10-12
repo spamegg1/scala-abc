@@ -1,4 +1,5 @@
 package curriculum
+package mit6001x
 
 def uniqueValues(aDict: Map[Char, Int]) =
   /** aDict: a dictionary that maps to integer values. returns: a list Returns a list,

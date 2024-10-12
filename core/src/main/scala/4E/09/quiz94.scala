@@ -1,4 +1,5 @@
 package curriculum
+package py4e
 
 // 9.4 Write a program to read through the mbox-short.txt and
 // figure out who has sent the greatest number of mail messages.

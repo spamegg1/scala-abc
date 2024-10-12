@@ -1,58 +1,6 @@
 package curriculum
-
-type Word = String
-
-val WORDLISTFILENAME1 = "words.txt"
-val STORYFILENAME1 = "story.txt"
-val LOWER1 = "abcdefghijklmnopqrstuvwxyz"
-val UPPER1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-val VOWELS1 = "aeiou"
-
-// Hangman Game
-// -----------------------------------
-// Helper code
-// You don't need to understand this helper code,
-// but you will have to know how to use the functions
-// (so be sure to read the docstrings!)
-def loadWords1(fileName: String) =
-  println("Loading word list from file...")
-
-  Using.resource(fromResource(fileName)): inFile =>
-    val wordList = inFile.mkString.split(" ").toList
-    println(s"${wordList.length} words loaded.")
-    wordList
-
-def chooseWord(wordList: List[Word]) =
-  // wordList (list): list of words (strings)
-  // Returns a word from wordList at random
-  wordList(Random.between(0, wordList.length))
-
-// end of helper code
-
-def isWordGuessed(secretWord: Word, lettersGuessed: List[Char]) =
-  // secretWord: string, the word the user is guessing;
-  //   assumes all letters are lowercase
-  // lettersGuessed: list (of letters),
-  //   which letters have been guessed so far;
-  //   assumes that all letters are lowercase
-  // returns: boolean, True if all the letters of secretWord are in lettersGuessed;
-  //   False otherwise
-  secretWord.forall(lettersGuessed.contains)
-
-def getGuessedWord(secretWord: Word, lettersGuessed: List[Char]) =
-  // secretWord: string, the word the user is guessing
-  // lettersGuessed: list (of letters), which letters have been guessed so far
-  // returns: string, comprised of letters, underscores (_), and spaces that
-  //   represents which letters in secretWord have been guessed so far.
-  secretWord
-    .map(char => if lettersGuessed.contains(char) then char else "_ ")
-    .mkString
-
-def getAvailableLetters(lettersGuessed: List[Char]) =
-  // lettersGuessed: list (of letters), which letters have been guessed so far
-  // returns: string (of letters), comprised of letters that represents which
-  //   letters have not yet been guessed.
-  LOWER1.filter(!lettersGuessed.contains(_)).mkString
+package mit6001x
+package ocw2016
 
 def hangman(secretWord: Word) =
   // secretWord: string, the secret word to guess.
@@ -88,7 +36,7 @@ def hangman(secretWord: Word) =
 
       val guess = readLine("Please guess a letter: ")(0)
 
-      if !(LOWER1 + UPPER1).contains(guess) then
+      if !(LOWER + UPPER).contains(guess) then
         if warningsLeft > 0 then
           warningsLeft -= 1
           println("Oops! That is not a valid letter.")
@@ -112,7 +60,7 @@ def hangman(secretWord: Word) =
       else if !secretWord.contains(guess) then
         lettersGuessed = guess :: lettersGuessed
         guessesSoFar = getGuessedWord(secretWord, lettersGuessed)
-        if VOWELS1.contains(guess) then guessesLeft -= 2
+        if VOWELS.contains(guess) then guessesLeft -= 2
         else guessesLeft -= 1
         println(s"Oops! That letter is not in my word: ${guessesSoFar}")
       else
@@ -190,7 +138,7 @@ def hangmanWithHints(secretWord: Word, wordList: List[Word]) =
 
       val guess = readLine("Please guess a letter: ")(0)
 
-      if !(LOWER1 + UPPER1).contains(guess) then
+      if !(LOWER + UPPER).contains(guess) then
         if guess == '*' then
           println("Possible word matches are:")
           showPossibleMatches(guessesSoFar, wordList)
@@ -215,7 +163,7 @@ def hangmanWithHints(secretWord: Word, wordList: List[Word]) =
       else if !secretWord.contains(guess) then
         lettersGuessed = guess :: lettersGuessed
         guessesSoFar = getGuessedWord(secretWord, lettersGuessed)
-        if VOWELS1.contains(guess) then guessesLeft -= 2
+        if VOWELS.contains(guess) then guessesLeft -= 2
         else guessesLeft -= 1
         println(s"Oops! That letter is not in my word: ${guessesSoFar}")
       else
@@ -236,7 +184,7 @@ def hangmanWithHints(secretWord: Word, wordList: List[Word]) =
 // lines above that were used to run the hangman function, and then uncomment
 // these two lines and run this file to test!
 // Hint: You might want to pick your own secretWord while you're testing.
-def tests =
+def hangmanTests =
   assert(!matchWithGaps("te_ t", "tact"))
   assert(matchWithGaps("ta_ t", "tact"))
   assert(!matchWithGaps("a_ ple", "apple"))
@@ -246,8 +194,8 @@ def tests =
 
 @main
 def playHangman =
-  tests
-  // val wordList = loadWords1(WORDLISTFILENAME1)
-  // val secretWord = chooseWord(wordList)
+  hangmanTests
+  val wordList = loadWords(WORDLISTFILENAME)
+  val secretWord = chooseWord(wordList)
   // hangman(secretWord)
-  // hangmanWithHints(secretWord, wordList)
+  hangmanWithHints(secretWord, wordList)

@@ -1,4 +1,5 @@
 package curriculum
+package mit6001x
 
 def lyricsToFrequencies(lyrics: List[String]) =
   val myDict = MMap[String, Int]()

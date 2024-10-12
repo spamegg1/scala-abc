@@ -1,3 +1,7 @@
+package curriculum
+package mit6001x
+package ocw2016
+
 trait Ps1CInterface:
   def savings36(
       startSalary: Double,

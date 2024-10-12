@@ -1,6 +1,9 @@
-package MIT6001x.person
+package curriculum
+package mit6001x
+package w5
+package lec10
 
-import java.time.*
+import java.time.{LocalDate, Period} // need to figure this out!
 
 class Person(name: String):
   var birthday: Option[LocalDate] = None
@@ -22,7 +25,7 @@ class Person(name: String):
   def compare(other: Person) =
     // True if this name is lexicographically
     // less than other's name, and False otherwise
-    if   getLastName == other.getLastName
+    if getLastName == other.getLastName
     then getName < other.getName
     else lastName < other.getLastName
 

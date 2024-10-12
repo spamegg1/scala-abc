@@ -1,5 +1,5 @@
 package curriculum
-package ps2
+package mit6001x
 
 def polySum(sides: Int, sideLength: Double) =
   // Returns the sum of the area and the square of the perimeter of

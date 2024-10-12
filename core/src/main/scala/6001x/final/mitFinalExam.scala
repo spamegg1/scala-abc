@@ -1,4 +1,5 @@
 package curriculum
+package mit6001x
 
 def isTriangular(k: Int) =
   /** k, a positive integer returns true if k is triangular and false if not

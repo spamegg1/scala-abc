@@ -1,4 +1,5 @@
 package curriculum
+package py4e
 
 // Finding Numbers in a Haystack
 
