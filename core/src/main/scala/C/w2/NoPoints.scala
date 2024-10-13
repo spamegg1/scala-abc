@@ -1,4 +1,6 @@
-package C.w2
+package curriculum
+package plc
+package w7
 
 object NoPoints extends GeoVal:
   def shift(dx: Double, dy: Double): GeoVal = this
@@ -7,5 +9,3 @@ object NoPoints extends GeoVal:
   def intersectLine(line: Line): GeoVal = this
   def intersectVerticalLine(vLine: VerticalLine): GeoVal = this
   def intersectWithSegmentAsLineResult(that: LineSegment): GeoVal = this
-
-end NoPoints

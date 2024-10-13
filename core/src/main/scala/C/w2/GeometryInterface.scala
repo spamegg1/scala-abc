@@ -1,10 +1,10 @@
-package C.w2
+package curriculum
+package plc
+package w7
 
-/** This is an outline of hw7 structure. I added "Interface" to all the names to
-  * avoid name clashes. Also added "abstract" modifier to classes to leave them
-  * unimplemented.
+/** This is an outline of hw7 structure. I added "Interface" to all the names to avoid
+  * name clashes. Also added "abstract" modifier to classes to leave them unimplemented.
   */
-
 trait GeoInterface:
   def preprocessProg: GeoInterface
   def evalProg(env: Map[String, GeoValInterface]): GeoValInterface

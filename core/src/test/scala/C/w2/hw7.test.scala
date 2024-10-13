@@ -1,4 +1,6 @@
-package C.w2
+package curriculum
+package plc
+package w7
 
 class HW7Suite extends munit.FunSuite:
   /*  constants for testing */

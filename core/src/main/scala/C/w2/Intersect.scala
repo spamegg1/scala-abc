@@ -1,4 +1,6 @@
-package C.w2
+package curriculum
+package plc
+package w7
 
 class Intersect(e1: Geometry, e2: Geometry) extends GeoExp:
   def evalProg(env: Map[String, GeoVal]): GeoVal =

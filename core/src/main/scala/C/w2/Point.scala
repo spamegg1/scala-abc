@@ -1,4 +1,6 @@
-package C.w2
+package curriculum
+package plc
+package w7
 
 class Point(var x: Double, var y: Double) extends GeoVal:
   def shift(dx: Double, dy: Double): GeoVal = Point(x + dx, y + dy)
@@ -10,9 +12,6 @@ class Point(var x: Double, var y: Double) extends GeoVal:
   def intersectVerticalLine(vLine: VerticalLine): GeoVal =
     if GeoVal.realClose(x, vLine.x) then this else NoPoints
   def intersectWithSegmentAsLineResult(seg: LineSegment): GeoVal =
-    if GeoVal.inBetween(x, seg.x1, seg.x2) &&
-      GeoVal.inBetween(y, seg.y1, seg.y2)
-    then this
+    if GeoVal.inBetween(x, seg.x1, seg.x2) && GeoVal.inBetween(y, seg.y1, seg.y2) then
+      this
     else NoPoints
-
-end Point

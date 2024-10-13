@@ -1,4 +1,6 @@
-package C.w2
+package curriculum
+package plc
+package w7
 
 /*  these two need to be implemented by both GeoVal and GeoExp */
 trait Geometry:

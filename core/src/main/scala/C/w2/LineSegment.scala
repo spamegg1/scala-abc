@@ -1,4 +1,6 @@
-package C.w2
+package curriculum
+package plc
+package w7
 
 class LineSegment(
     var x1: Double,
@@ -40,5 +42,3 @@ class LineSegment(
       else if a.x2 < b.x1 then NoPoints // disjoint
       else if b.x2 < a.x2 then b // b inside a
       else LineSegment(b.x1, b.y1, a.x2, a.y2) // overlapping
-
-end LineSegment

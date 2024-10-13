@@ -1,4 +1,6 @@
-package C.w2
+package curriculum
+package plc
+package w7
 
 class VerticalLine(var x: Double) extends GeoVal:
   def shift(dx: Double, dy: Double): GeoVal = VerticalLine(x + dx)
@@ -8,5 +10,3 @@ class VerticalLine(var x: Double) extends GeoVal:
   def intersectVerticalLine(vLine: VerticalLine): GeoVal =
     if GeoVal.realClose(x, vLine.x) then this else NoPoints
   def intersectWithSegmentAsLineResult(that: LineSegment): GeoVal = that
-
-end VerticalLine

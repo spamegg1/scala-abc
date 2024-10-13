@@ -1,4 +1,6 @@
-package B.w1
+package curriculum
+package plb
+package w4
 
 /*
     Int Int Int -> List
@@ -8,8 +10,7 @@ package B.w1
  */
 def sequence(low: Int, high: Int, stride: Int): List[Int] =
   require(stride > 0)
-  if high < low then Nil
-  else low :: sequence(low + stride, high, stride)
+  if high < low then Nil else low :: sequence(low + stride, high, stride)
 
 /*
     (String List) String -> (String List)
@@ -35,8 +36,7 @@ def listNthMod[T](xs: List[T], n: Int): T =
  */
 def streamForNSteps(stream: LazyList[Int], n: Int): List[Int] =
   require(0 <= n)
-  if n == 0 then Nil
-  else stream.head :: streamForNSteps(stream.tail, n - 1)
+  if n == 0 then Nil else stream.head :: streamForNSteps(stream.tail, n - 1)
 
 /*
     -> Stream

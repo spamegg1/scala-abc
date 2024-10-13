@@ -1,8 +1,8 @@
-package B.w2
+package curriculum
+package plb
+package w5
 
 class HW5Suite extends munit.FunSuite:
-  import MUPL.*
-
   /* basic MUPL function */
   val muplFun = Fun(None, "x", Add(Var("x"), Integer(7)))
 
@@ -27,8 +27,7 @@ class HW5Suite extends munit.FunSuite:
   val nestedList = Apair(muplList, Apair(muplList, Aunit))
 
   /* same list with "add 7" mapped over it */
-  val plusSeven =
-    Apair(Integer(8), Apair(Integer(9), Apair(Integer(10), Aunit)))
+  val plusSeven = Apair(Integer(8), Apair(Integer(9), Apair(Integer(10), Aunit)))
 
   /* for convenience */
   val emptyEnv = Map[String, MUPL]()

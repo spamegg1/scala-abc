@@ -1,4 +1,6 @@
-package C.w2
+package curriculum
+package plc
+package w7
 
 class Line(var m: Double, var b: Double) extends GeoVal:
   def shift(dx: Double, dy: Double): GeoVal = Line(m, b + dy - m * dx)
@@ -15,5 +17,3 @@ class Line(var m: Double, var b: Double) extends GeoVal:
   def intersectVerticalLine(vLine: VerticalLine): GeoVal =
     Point(vLine.x, m * vLine.x + b)
   def intersectWithSegmentAsLineResult(that: LineSegment): GeoVal = that
-
-end Line

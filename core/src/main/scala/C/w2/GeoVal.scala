@@ -1,4 +1,6 @@
-package C.w2
+package curriculum
+package plc
+package w7
 
 /*  companion object for useful helper methods */
 object GeoVal:
@@ -19,8 +21,7 @@ object GeoVal:
       x2: Double,
       y2: Double
   ): GeoVal =
-    if realClose(x1, x2)
-    then VerticalLine(x1)
+    if realClose(x1, x2) then VerticalLine(x1)
     else
       val m = (y2 - y1) / (x2 - x1)
       val b = y1 - m * x1
