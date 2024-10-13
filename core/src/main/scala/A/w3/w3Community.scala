@@ -1,4 +1,6 @@
-package A.w3
+package curriculum
+package pla
+package w3
 
 /*
 1.  Write a function
@@ -23,9 +25,7 @@ def composeOpt[S, T, U](f: T => Option[U])(g: S => Option[T])(s: S): Option[U] =
     In effect, it will remove all factors of 2 from its argument.
  */
 def doUntil[T](f: T => T)(pred: T => Boolean)(x: T): T =
-  if pred(x)
-  then doUntil(f)(pred)(f(x))
-  else x
+  if pred(x) then doUntil(f)(pred)(f(x)) else x
 
 /* 3.
     Use doUntil to implement factorial.
@@ -44,8 +44,7 @@ def factorial(n: Int): Int =
     that given a function f and an zeroial value x,
     applies f to x until f(x) = x.
  */
-def fixedPoint[T](f: T => T)(zero: T): T =
-  doUntil(f)(x => f(x) != x)(zero)
+def fixedPoint[T](f: T => T)(zero: T): T = doUntil(f)(x => f(x) != x)(zero)
 
 /*
 5.  Write a function
@@ -96,9 +95,7 @@ def partition[T](f: T => Boolean)(lst: List[T]): (List[T], List[T]) =
     case Nil => (Nil, Nil)
     case x :: xs =>
       val (first, second) = partition(f)(xs)
-      if f(x)
-      then (x :: first, second)
-      else (first, x :: second)
+      if f(x) then (x :: first, second) else (first, x :: second)
 
 /*
 9.  Write a function
@@ -163,8 +160,7 @@ def myFoldLeft2[T, S](zero: S)(f: (T, S) => S)(lst: List[T]): S =
 enum Tree[+T]:
   case Leaf
   case Node[T](value: T, left: Tree[T], right: Tree[T]) extends Tree[T]
-
-import Tree.*
+export Tree.*
 
 /* Apply function f to the Internal Nodes only, and recurse */
 def treeMap[T](f: T => T)(tree: Tree[T]): Tree[T] = tree match
@@ -175,8 +171,7 @@ def treeFilter[T](f: T => Boolean)(tree: Tree[T]): Tree[T] =
   tree match
     case Leaf => Leaf
     case Node(v, l, r) =>
-      if f(v) then Node(v, treeFilter(f)(l), treeFilter(f)(r))
-      else Leaf
+      if f(v) then Node(v, treeFilter(f)(l), treeFilter(f)(r)) else Leaf
 
 def treeFold[T](f: (T, T, T) => T)(acc: T)(tree: Tree[T]): T =
   tree match

@@ -1,16 +1,16 @@
-package A.w2
+package curriculum
+package pla
+package w2
 
 /* COMMUNITY PROBLEMS FOR WEEK 3 */
-
-/* Problem 1 - 4 */
 type StudentId = Int
 type Grade = Int /* must be in 0 to 100 range */
 case class FinalGrade(id: StudentId, grade: Option[Grade])
 enum PassFail:
   case Pass, Fail
+export PassFail.*
 
-import PassFail.*
-
+/* Problem 1 - 4 */
 def passOrFail(finalGrade: FinalGrade): PassFail =
   finalGrade.grade match
     case Some(i) => if i >= 75 then Pass else Fail
@@ -40,12 +40,11 @@ def numberMisgraded(grades: List[(PassFail, FinalGrade)]): Int =
 enum Tree[+T]:
   case Leaf
   case Node[T](value: T, left: Tree[T], right: Tree[T]) extends Tree[T]
+export Tree.*
 
 enum Flag:
   case LeaveMeAlone, PruneMe
-
-import Flag.*
-import Tree.*
+export Flag.*
 
 def treeHeight[T](t: Tree[T]): Int = t match
   case Leaf          => 0
@@ -66,10 +65,9 @@ def gardener(t: Tree[Flag]): Tree[Flag] = t match
 enum Nat:
   case Zero
   case Succ(n: Nat)
+export Nat.*
 
 class Negative extends Exception
-
-import Nat.*
 
 def isPositive(nat: Nat): Boolean = nat match
   case Zero    => false
@@ -113,8 +111,7 @@ enum IntSet:
   case Range(from: Int, to: Int)
   case Union(s1: IntSet, s2: IntSet)
   case Intersection(s1: IntSet, s2: IntSet)
-
-import IntSet.*
+export IntSet.*
 
 /* Helper functions used */
 def doesInclude(xs: List[Int], n: Int): Boolean = xs match

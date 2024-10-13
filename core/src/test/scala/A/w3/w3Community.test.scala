@@ -1,4 +1,6 @@
-package A.w3
+package curriculum
+package pla
+package w3
 
 class Week2CommunitySuite extends munit.FunSuite:
   test("01. composeOpt"):

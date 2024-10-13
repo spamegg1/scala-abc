@@ -1,7 +1,8 @@
-package A.w1
+package curriculum
+package pla
+package w1
 
 /* COMMUNITY PROBLEMS FOR WEEK 1 */
-
 /* 1.
 Write a function
     alternate: List[Int] => Int
@@ -28,10 +29,8 @@ def minMaxHelper(
     maxSoFar: Int
 ): (Int, Int) =
   if numbers.isEmpty then (minSoFar, maxSoFar)
-  else if numbers.head < minSoFar
-  then minMaxHelper(numbers.tail, numbers.head, maxSoFar)
-  else if numbers.head > maxSoFar
-  then minMaxHelper(numbers.tail, minSoFar, numbers.head)
+  else if numbers.head < minSoFar then minMaxHelper(numbers.tail, numbers.head, maxSoFar)
+  else if numbers.head > maxSoFar then minMaxHelper(numbers.tail, minSoFar, numbers.head)
   else minMaxHelper(numbers.tail, minSoFar, maxSoFar)
 
 def minMax(numbers: List[Int]): (Int, Int) =
@@ -47,9 +46,7 @@ of the partial sums of those numbers. For example
 def cumsum(numbers: List[Int]): List[Int] =
   if numbers.isEmpty then Nil
   else if numbers.tail.isEmpty then numbers
-  else
-    numbers.head ::
-      cumsum((numbers.head + numbers.tail.head) :: numbers.tail.tail)
+  else numbers.head :: cumsum((numbers.head + numbers.tail.head) :: numbers.tail.tail)
 
 /* 4.
 Write a function
@@ -61,9 +58,8 @@ Note that the name is given as an option,
 so if it is None then replace the dots with "you".
  */
 def greeting(name: Option[String]): String =
-  if name.isDefined
-  then "Hello there, " + name.get + "!"
-  else "Hello there, you!"
+  val realName = if name.isDefined then name.get else "you"
+  s"Hello there, $realName!"
 
 /* 5.
 Write a function
@@ -74,14 +70,11 @@ indicated by the second list. For example:
     repeat(List(1, 2, 3), List(4, 0, 3)) = List(1, 1, 1, 1, 3, 3, 3)
  */
 def repeatHelper(number: Int, count: Int): List[Int] =
-  if count == 0 then Nil
-  else number :: repeatHelper(number, count - 1)
+  if count == 0 then Nil else number :: repeatHelper(number, count - 1)
 
 def myRepeat(numbers: List[Int], counts: List[Int]): List[Int] =
   if numbers.isEmpty then Nil
-  else
-    repeatHelper(numbers.head, counts.head) ++
-      myRepeat(numbers.tail, counts.tail)
+  else repeatHelper(numbers.head, counts.head) ++ myRepeat(numbers.tail, counts.tail)
 
 /* 6.
 Write a function
@@ -91,9 +84,7 @@ that given two "optional" Integers, adds them if they are both present
 or returns None if at least one of the two arguments is None.
  */
 def addOpt(int1: Option[Int], int2: Option[Int]): Option[Int] =
-  if int1.isDefined && int2.isDefined
-  then Some(int1.get + int2.get)
-  else None
+  if int1.isDefined && int2.isDefined then Some(int1.get + int2.get) else None
 
 /* 7.
 Write a function
@@ -106,8 +97,7 @@ all None or the list is empty, the function should return None.
  */
 def addAllOptHelper(numbers: List[Option[Int]]): Int =
   if numbers.isEmpty then 0
-  else if numbers.head.isDefined
-  then addAllOptHelper(numbers.tail) + numbers.head.get
+  else if numbers.head.isDefined then addAllOptHelper(numbers.tail) + numbers.head.get
   else addAllOptHelper(numbers.tail)
 
 def addAllOpt(numbers: List[Option[Int]]): Option[Int] =
@@ -122,9 +112,9 @@ returns true if there is at least one of them that is true
 otherwise returns false.
 (If the list is empty it should return false because there is no true.)
  */
-def any(booleans: List[Boolean]): Boolean =
-  if booleans.isEmpty then false
-  else booleans.head || any(booleans.tail)
+def any(booleans: List[Boolean]): Boolean = booleans match
+  case head :: next => head || any(next)
+  case Nil          => false
 
 /* 9.
 Write a function
@@ -134,8 +124,7 @@ otherwise returns false.
 (If the list is empty it should return true because there is no false.)
  */
 def all(booleans: List[Boolean]): Boolean =
-  if booleans.isEmpty then true
-  else booleans.head && all(booleans.tail)
+  booleans.isEmpty || (booleans.head && all(booleans.tail))
 
 /* 10.
 Write a function
@@ -195,9 +184,7 @@ when the original lists have the same length,
 and None if they do not.
  */
 def zipOpt(nums1: List[Int], nums2: List[Int]): Option[List[(Int, Int)]] =
-  if nums1.length == nums2.length
-  then Some(myZip(nums1, nums2))
-  else None
+  if nums1.length == nums2.length then Some(myZip(nums1, nums2)) else None
 
 /* 13.
 Write a function
@@ -209,10 +196,8 @@ If it finds a match with corresponding number i, then it returns Some i.
 If it does not, it returns None.
  */
 def lookup(strints: List[(String, Int)], s2: String): Option[Int] =
-  if strints.isEmpty
-  then None
-  else if strints.head._1 == s2
-  then Some(strints.head._2)
+  if strints.isEmpty then None
+  else if strints.head._1 == s2 then Some(strints.head._2)
   else lookup(strints.tail, s2)
 
 /* 14.
@@ -232,8 +217,7 @@ def splitUp(numbers: List[Int]): (List[Int], List[Int]) =
     val listPair = splitUp(numbers.tail)
     val pos = listPair._1
     val neg = listPair._2
-    if numbers.head < 0
-    then (pos, (numbers.head) :: neg)
+    if numbers.head < 0 then (pos, (numbers.head) :: neg)
     else ((numbers.head) :: pos, neg)
 
 /* 15.
@@ -248,8 +232,7 @@ def mySplitAt(numbers: List[Int], threshold: Int): (List[Int], List[Int]) =
     val listPair = mySplitAt((numbers.tail), threshold)
     val bigger = listPair._1
     val smaller = listPair._2
-    if numbers.head < threshold
-    then (bigger, (numbers.head) :: smaller)
+    if numbers.head < threshold then (bigger, (numbers.head) :: smaller)
     else ((numbers.head) :: bigger, smaller)
 
 /* 16.
@@ -279,10 +262,8 @@ and merges them Into one sorted list. For example:
     sortedMerge (List(1, 4, 7), List(5, 8, 9)) = List(1, 4, 5, 7, 8, 9)
  */
 def sortedMerge(nums1: List[Int], nums2: List[Int]): List[Int] =
-  if nums1.isEmpty || nums2.isEmpty
-  then nums1 ++ nums2
-  else if nums1.head < nums2.head
-  then nums1.head :: sortedMerge(nums1.tail, nums2)
+  if nums1.isEmpty || nums2.isEmpty then nums1 ++ nums2
+  else if nums1.head < nums2.head then nums1.head :: sortedMerge(nums1.tail, nums2)
   else nums2.head :: sortedMerge(nums1, nums2.tail)
 
 /* 19.
@@ -380,8 +361,7 @@ def factorizeHelper(current: Int, divisor: Int): List[(Int, Int)] =
 
   /* if we found no divisors up to sqrt of current, then it's prime!
       This is computationally advantageous only for really large primes */
-  if realDiv > math.sqrt(realCur)
-  then List((current, 1))
+  if realDiv > math.sqrt(realCur) then List((current, 1))
   else
     val factors = fullDivide(divisor, current)
     val quotient = factors._2
@@ -391,8 +371,7 @@ def factorizeHelper(current: Int, divisor: Int): List[(Int, Int)] =
     else (divisor, power) :: factorizeHelper(quotient, divisor + 1)
 
 def factorize(number: Int): List[(Int, Int)] =
-  if number == 1 then Nil
-  else factorizeHelper(number, 2)
+  if number == 1 then Nil else factorizeHelper(number, 2)
 
 /* 24.
 Write a function

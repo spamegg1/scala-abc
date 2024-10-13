@@ -1,9 +1,6 @@
-package A.w2
-
-import org.scalacheck.{Gen, Test, Prop}
-import org.scalacheck.Prop.forAll
-
-import Suit.*, Rank.*, Color.*, Move.*
+package curriculum
+package pla
+package w2
 
 class HW2ChallengeSuite extends munit.FunSuite:
   test("01. scoreChallenge"):

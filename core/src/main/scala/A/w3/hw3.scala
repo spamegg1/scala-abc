@@ -1,4 +1,6 @@
-package A.w3
+package curriculum
+package pla
+package w3
 
 class NoAnswer extends Exception
 
@@ -9,14 +11,14 @@ enum Pattern:
   case ConstP(i: Int)
   case TupleP(pl: List[Pattern])
   case ConstructorP(s: String, p: Pattern)
+export Pattern.*
 
 enum Value:
   case Const(i: Int)
   case Unit
   case Tuple(vl: List[Value])
   case Constructor(s: String, v: Value)
-
-import Pattern.*, Value.*
+export Value.*
 
 def g(f1: Unit => Int)(f2: String => Int)(p: Pattern): Int =
   val r: Pattern => Int = g(f1)(f2)
@@ -45,19 +47,16 @@ def longestStringHelper(f: (Int, Int) => Boolean): List[String] => String =
   _.foldLeft("")((x, y) => if f(x.size, y.size) then x else y)
 
 /*  returns longest string in list, "" if empty, earliest in case of tie  */
-val longestString3: List[String] => String =
-  longestStringHelper((x, y) => x > y)
+val longestString3: List[String] => String = longestStringHelper((x, y) => x > y)
 
 /* returns longest string in list, "" if list is empty, latest in case of tie */
-val longestString4: List[String] => String =
-  longestStringHelper((x, y) => y < x)
+val longestString4: List[String] => String = longestStringHelper((x, y) => y < x)
 
 /*  returns longest string in list that begins with uppercase,
  *  "" if there are no such strings
  *  returns earliest longest string in case of tie
  *  assumes all strings in list have at least 1 character  */
-val longestCapitalized: List[String] => String =
-  longestString1 compose onlyCapitals
+val longestCapitalized: List[String] => String = longestString1 compose onlyCapitals
 
 /*  returns string in reverse  */
 val revString: String => String = _.reverse
@@ -83,8 +82,7 @@ val countWildcards: Pattern => Int = g(_ => 1)(_ => 0)
 
 val countWildAndVariableLengths: Pattern => Int = g(_ => 1)(_.size)
 
-def countSomeVar(s: String, p: Pattern): Int =
-  g(_ => 0)(x => if x == s then 1 else 0)(p)
+def countSomeVar(s: String, p: Pattern): Int = g(_ => 0)(x => if x == s then 1 else 0)(p)
 
 def checkPat(p: Pattern): Boolean =
   /* returns list of strings occurring in variables in pattern */
@@ -112,9 +110,7 @@ def patMatch(vp: (Value, Pattern)): Option[List[(String, Value)]] =
     case (Unit, UnitP)         => Some(Nil)
     case (Const(i), ConstP(j)) => if i == j then Some(Nil) else None
     case (Tuple(vs), TupleP(ps)) =>
-      if vs.length == ps.length
-      then allAnswers(patMatch)(vs.zip(ps))
-      else None
+      if vs.length == ps.length then allAnswers(patMatch)(vs.zip(ps)) else None
     case (Constructor(s1, valu), ConstructorP(s2, pat)) =>
       if s1 == s2 then patMatch(valu, pat) else None
     case (_, _) => None

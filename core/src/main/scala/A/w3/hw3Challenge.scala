@@ -1,4 +1,6 @@
-package A.w3
+package curriculum
+package pla
+package w3
 
 // enum Pattern:
 //   case Wildcard
@@ -20,10 +22,9 @@ enum Typ:
   case IntT
   case TupleT(tl: List[Typ])
   case DataType(s: String)
+export Typ.*
 
 type Triple = (String, String, Typ)
-
-import Pattern.*, Value.*, Typ.*
 
 /*  Checks if two Typs have a common Type.  */
 def compatible(s: Typ, t: Typ): Boolean = (s, t) match
@@ -44,17 +45,14 @@ def p2t(triples: List[Triple])(p: Pattern): Option[Typ] = p match
   case ConstP(_)   => Some(IntT)
   case TupleP(lst) =>
     val converted = lst map p2t(triples)
-    if converted forall (_.isDefined)
-    then Some(TupleT(converted map (_.get)))
-    else None
+    if converted forall (_.isDefined) then Some(TupleT(converted map (_.get))) else None
   case ConstructorP(str, pat) =>
     val lookup = triples find (_._1 == str)
     (lookup, p2t(triples)(pat)) match
       case (None, _) => None // could not find str in metadata
       case (_, None) => None // pat fails to convert
       case (Some(_, s2, t1), Some(t2)) =>
-        if compatible(t1, t2)
-        then Some(DataType(s2))
+        if compatible(t1, t2) then Some(DataType(s2))
         else None // pat incompatible with metadata
 
 /* Merges two Typs to their common Typ. Assumes the Typs are compatible. */
@@ -73,13 +71,11 @@ def merge(s: Option[Typ], t: Option[Typ]): Option[Typ] =
     case (None, _) => None
     case (_, None) => None
     case (Some(s1), Some(t1)) =>
-      if compatible(s1, t1)
-      then Some(coalesce(s1, t1))
-      else None
+      if compatible(s1, t1) then Some(coalesce(s1, t1)) else None
 
 /* Assumes the list of patterns is not empty. */
 def typecheckPatterns(ts: List[Triple], pats: List[Pattern]): Option[Typ] =
   pats map p2t(ts) match // convert all pats to Typs
     case t :: Nil => t
     case t :: ts  => ts.foldLeft(t)(merge)
-    case _ => None // to satisfy exhaustivity. This case should not happen
+    case _        => None // to satisfy exhaustivity. This case should not happen

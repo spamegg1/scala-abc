@@ -1,4 +1,6 @@
-package A.w1
+package curriculum
+package pla
+package w1
 
 def insertHelper(x: Int, xs: List[Int]): List[Int] =
   if xs.isEmpty then List(x)
@@ -6,8 +8,7 @@ def insertHelper(x: Int, xs: List[Int]): List[Int] =
   else xs.head :: insertHelper(x, xs.tail)
 
 def insertSort(xs: List[Int]): List[Int] =
-  if xs.isEmpty
-  then xs
+  if xs.isEmpty then xs
   else insertHelper(xs.head, xs.tail)
 
 def removeDuplicates(xs: List[Int]): List[Int] =
@@ -24,8 +25,7 @@ def datesInMonthsChallenge(dates: List[Date], months: List[Int]): List[Date] =
   datesInMonths(dates, removeDuplicates(months))
 
 def getNthInt(xs: List[Int], n: Int): Int =
-  if n == 1
-  then xs.head
+  if n == 1 then xs.head
   else getNthInt(xs.tail, n - 1)
 
 def reasonableDate(date: Date): Boolean =

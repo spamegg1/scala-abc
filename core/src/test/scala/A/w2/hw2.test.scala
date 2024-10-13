@@ -1,8 +1,8 @@
-package A.w2
+package curriculum
+package pla
+package w2
 
 class HW2Suite extends munit.FunSuite:
-  import Suit.*, Rank.*, Color.*, Move.*
-
   test("01. allExceptOption"):
     val inputs: List[(String, List[String])] = List(
       ("hello", List("hello"))

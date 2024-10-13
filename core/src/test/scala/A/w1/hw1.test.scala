@@ -1,4 +1,6 @@
-package A.w1
+package curriculum
+package pla
+package w1
 
 class HW1Suite extends munit.FunSuite:
   test("01. isOlder"):

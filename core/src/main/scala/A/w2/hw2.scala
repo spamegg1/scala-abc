@@ -1,4 +1,6 @@
-package A.w2
+package curriculum
+package pla
+package w2
 
 def spam(x: Int) = x
 
@@ -57,6 +59,7 @@ def similarNames(lst: List[List[String]], name: Fullname): List[Fullname] =
    they can be listed on the same line separated with commas: */
 enum Suit:
   case Clubs, Diamonds, Hearts, Spades
+export Suit.*
 
 /* If one of the enum cases takes parameters, separate lines are required: */
 enum Rank:
@@ -65,21 +68,21 @@ enum Rank:
   case King
   case Ace
   case Num(i: Int) // assume it is always used with values 2, 3, ..., 10
+export Rank.*
 
 /* a type alias */
 type Card = (Suit, Rank)
 
 enum Color:
   case Red, Black
+export Color.*
 
 enum Move:
   case Discard(c: Card)
   case Draw
+export Move.*
 
 class IllegalMove extends Exception
-
-/* enum cases require importing */
-import Suit.*, Rank.*, Color.*, Move.*
 
 /*  returns color of card  */
 def cardColor(card: Card): Color =

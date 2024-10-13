@@ -1,8 +1,8 @@
-package A.w3
+package curriculum
+package pla
+package w3
 
 class HW3ChallengeSuite extends munit.FunSuite:
-  import Pattern.*, Value.*, Typ.*
-
   /* test input data for typecheckPatterns() */
   val inp01: (List[Triple], List[Pattern]) = (Nil, Nil)
   val inp02: (List[Triple], List[Pattern]) = (List(("a", "a", Anything)), Nil)

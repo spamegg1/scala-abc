@@ -1,8 +1,8 @@
-package A.w2
+package curriculum
+package pla
+package w2
 
 class Week2CommunitySuite extends munit.FunSuite:
-  import Flag.*, IntSet.*, Tree.*, PassFail.*, Nat.*
-
   test("01. passOrFail"):
     val inputs: List[FinalGrade] = List(
       FinalGrade(id = 10, grade = Some(20))

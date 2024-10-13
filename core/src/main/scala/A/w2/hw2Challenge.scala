@@ -1,6 +1,6 @@
-package A.w2
-
-import Suit.*, Rank.*, Color.*, Move.*
+package curriculum
+package pla
+package w2
 
 /*  helpers for scoreChallenge */
 def newSums(sums: List[Int], value: Int): List[Int] = sums match
@@ -57,9 +57,9 @@ def officiateChallenge(cards: List[Card], moves: List[Move], goal: Int): Int =
 /*  CAREFUL PLAYER  */
 type GameState = (List[Card], List[Card], Int, Int)
 
-/** Returns the next state after making a move. Checks if the move is possible.
-  * If not, returns input state. Checks if the move puts hand total above goal.
-  * If so, returns input state.
+/** Returns the next state after making a move. Checks if the move is possible. If not,
+  * returns input state. Checks if the move puts hand total above goal. If so, returns
+  * input state.
   */
 def nextState(st: GameState)(move: Move): GameState =
   val (hand, deck, goal, scr) = st
@@ -76,8 +76,8 @@ def nextState(st: GameState)(move: Move): GameState =
         (newHand, deck, goal, score(newHand, goal))
       else st
 
-/** Checks if it's possible to draw without going over goal. This applies only
-  * when goal - sum_cards(hand) <= 10.
+/** Checks if it's possible to draw without going over goal. This applies only when goal -
+  * sum_cards(hand) <= 10.
   */
 def possibleToDraw(st: GameState): Boolean =
   val (hand, deck, goal, _) = st

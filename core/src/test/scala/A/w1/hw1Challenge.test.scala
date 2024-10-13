@@ -1,4 +1,6 @@
-package A.w1
+package curriculum
+package pla
+package w1
 
 class HW1ChallengeSuite extends munit.FunSuite:
   def check[T, S](inputs: List[T], expected: List[S], fun: T => S): Unit =

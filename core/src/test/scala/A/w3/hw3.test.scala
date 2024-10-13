@@ -1,8 +1,8 @@
-package A.w3
+package curriculum
+package pla
+package w3
 
 class HW3Suite extends munit.FunSuite:
-  import Pattern.*, Value.*
-
   test("01. onlyCapitals"):
     val inputs: List[List[String]] = List(
       List("hello", "Spam", "egg")
