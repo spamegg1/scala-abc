@@ -1,4 +1,4 @@
-//> using scala 3.5.1
+//> using scala 3.5.2
 //> using platform jvm native
 //> using nativeVersion 0.5.5
 //> using resourceDir ./src/main/resources
