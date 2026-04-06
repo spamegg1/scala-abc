@@ -5,6 +5,7 @@ import doodle.image.Image.Elements.*
 import doodle.image.examples.ColorWheel
 import doodle.image.examples.Flowers
 import doodle.syntax.all.*
+import doodle.reactor.syntax.all.animateWithFrame
 import doodle.java2d.*
 import doodle.reactor.Reactor
 import cats.effect.unsafe.implicits.global

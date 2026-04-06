@@ -3,6 +3,7 @@ import doodle.core.Color.*
 import doodle.image.Image
 import doodle.image.Image.Elements.*
 import doodle.syntax.all.*
+import doodle.reactor.syntax.all.animateWithFrame
 import doodle.java2d.*
 import doodle.reactor.Reactor
 import cats.effect.unsafe.implicits.global

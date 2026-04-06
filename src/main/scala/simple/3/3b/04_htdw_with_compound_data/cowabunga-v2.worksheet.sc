@@ -5,6 +5,7 @@ import doodle.image.Image.Elements.*
 import doodle.syntax.all.*
 import doodle.java2d.*
 import doodle.reactor.Reactor
+import doodle.reactor.syntax.all.animateWithFrame
 import cats.effect.unsafe.implicits.global
 import concurrent.duration.FiniteDuration
 
