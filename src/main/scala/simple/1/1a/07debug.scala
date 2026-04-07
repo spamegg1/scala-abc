@@ -1,3 +1,4 @@
+package curriculum
 package simple.`1`.`1a`
 
 @main
