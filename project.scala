@@ -1,5 +1,6 @@
 //> using scala 3.8.3
 //> using platform jvm native
+//> using jvm 24
 //> using nativeVersion 0.5.10
 //> using resourceDir ./src/main/resources
 //> using test.resourceDir ./test/main/resources
