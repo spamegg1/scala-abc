@@ -1,12 +1,11 @@
 //> using scala 3.8.3
 //> using platform jvm native
-//> using jvm 24
 //> using nativeVersion 0.5.10
 //> using resourceDir ./src/main/resources
 //> using test.resourceDir ./test/main/resources
 //> using toolkit 0.9.2
 //> using dep org.scala-lang.modules::scala-parallel-collections::1.2.0
-//> using dep org.scalafx::scalafx:26.0.0-R38
+//> using dep org.scalafx::scalafx:24.0.0-R35
 //> using dep org.creativescala::doodle:0.34.0
 //> using dep net.ruippeixotog::scala-scraper:3.2.0
 //> using dep io.spray::spray-json:1.3.6
