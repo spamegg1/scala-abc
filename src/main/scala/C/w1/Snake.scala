@@ -47,15 +47,13 @@ object Snake:
       f.x < 0 || f.x >= 600 || f.y < 0 || f.y >= 600 || s.tail.contains(f)
 
 object State:
-  import Constants.Size
-
   val init = State(Snake.init, Food.random)
 
   def square(xr: Double, yr: Double, color: Color) = new Rectangle:
     x = xr
     y = yr
-    width = Size
-    height = Size
+    width = Constants.Size
+    height = Constants.Size
     fill = color
 end State
 
@@ -80,7 +78,7 @@ end State
 
 object SnakeFx extends JFXApp3:
   @annotation.nowarn
-  def controls(dir: IntegerProperty)(key: KeyEvent) =
+  def controls(dir: IntegerProperty)(key: KeyEvent): Unit =
     key.getCode() match
       case KeyCode.Up    => dir.value = 1
       case KeyCode.Down  => dir.value = 2
@@ -109,7 +107,7 @@ object SnakeFx extends JFXApp3:
       scene = new Scene:
         fill = White
         content = state.value.rectangles
-        onKeyPressed = key => controls(direction)(key)
+        onKeyPressed = controls(direction)
         state.onChange:
           Platform.runLater:
             content = state.value.rectangles

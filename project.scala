@@ -4,7 +4,7 @@
 //> using resourceDir ./src/main/resources
 //> using test.resourceDir ./test/main/resources
 //> using toolkit 0.9.2
-//> using options -Wconf:msg=classpath:s -Wconf:msg=pure:s
+//> using options -Wconf:id=E222:s
 //> using dep org.scala-lang.modules::scala-parallel-collections::1.2.0
 //> using dep org.scalafx::scalafx:24.0.0-R35
 //> using dep org.creativescala::doodle:0.34.0
