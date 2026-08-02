@@ -1,25 +1,38 @@
 package C.w1
 
-type Pos       = (x: Double, y: Double)
-type Points    = Seq[Pos]
-type Rotation  = Seq[Pos]
-type Rotations = Seq[Rotation]
-
+/** A piece (tetromino) on the screen and its various methods to rotate, move, etc.
+  *
+  * @param points
+  *   Sequence of positions on the Tetris screen that are occupied by this piece.
+  */
 case class Piece(points: Points):
-  val rot1: Rotation       = points.map((x, y) => (-y, x))
-  val rot2: Rotation       = points.map((x, y) => (-x, -y))
-  val rot3: Rotation       = points.map((x, y) => (y, -x))
-  val rotations: Rotations = Seq(points, rot1, rot2, rot3).distinct
+  val rotations  = Piece.rotations(points)
+  val numOfRots  = rotations.length
+  var basePos    = (x = 5, y = 0)
+  var moved      = true
+  var rotIndex   = util.Random.nextInt(numOfRots)
+  def currentRot = rotations(rotIndex)
 
-  var basePos: Pos = (x = 5.0, y = 0.0)
-  var moved        = true
-  var rotIndex     = scala.util.Random.nextInt(4)
+  def move(dx: Int, dy: Int, dr: Int, board: Board): Boolean =
+    moved = true
+    val index     = (rotIndex + dr) % numOfRots
+    val potential = rotations(index)
+    potential.foreach: (x, y) =>
+      val pos: Pos = (x = x + dx + basePos.x, y = y + dy + basePos.y)
+      if !board.emptyAt(pos) then moved = false
+    if moved then
+      basePos = (basePos.x + dx, basePos.y + dy)
+      rotIndex = (rotIndex + dr) % numOfRots
+    moved
+  end move
 
+  def dropByOne(board: Board): Unit = moved = move(0, 1, 0, board)
+end Piece
+
+/** Methods for pieces that are uniform and do not depend on a particular instance. */
 object Piece:
-  val Sq   = Piece(Seq((0, 0), (1, 0), (0, 1), (1, 1)))
-  val T    = Piece(Seq((0, 0), (-1, 0), (1, 0), (0, -1)))
-  val Long = Piece(Seq((0, 0), (-1, 0), (1, 0), (2, 0)))
-  val L    = Piece(Seq((0, 0), (0, -1), (0, 1), (1, 1)))
-  val LInv = Piece(Seq((0, 0), (0, -1), (0, 1), (-1, 1)))
-  val S    = Piece(Seq((0, 0), (-1, 0), (0, -1), (1, -1)))
-  val Z    = Piece(Seq((0, 0), (1, 0), (0, -1), (-1, -1)))
+  def rotations(points: Points): Rotations =
+    val rot1 = points.map((x, y) => (-y, x))
+    val rot2 = points.map((x, y) => (-x, -y))
+    val rot3 = points.map((x, y) => (y, -x))
+    Seq(points, rot1, rot2, rot3).distinct

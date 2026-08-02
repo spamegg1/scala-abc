@@ -1,3 +1,4 @@
 package C.w1
 
-case class Board(pieces: List[Piece])
+case class Board(pieces: List[Piece]):
+  def emptyAt(pos: Pos) = true
