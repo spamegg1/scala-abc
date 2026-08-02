@@ -12,11 +12,6 @@ import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.Random
 
-object Constants:
-  val Width     = 600
-  val Height    = 1200
-  val SleepTime = 100
-
 case class State(x: Int):
   def newState                    = this
   def rectangles: List[Rectangle] = Nil
