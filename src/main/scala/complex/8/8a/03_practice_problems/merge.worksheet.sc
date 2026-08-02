@@ -39,8 +39,8 @@ merge(List(0, 2, 4, 6), List(1, 3, 5)) == List(0, 1, 2, 3, 4, 5, 6)
 def merge(list1: List[Int], list2: List[Int]): List[Int] =
   (list1, list2) match
     // case (Nil, Nil) => Nil // redundant case!
-    case (Nil, _) => list2
-    case (_, Nil) => list1
+    case (Nil, _)                         => list2
+    case (_, Nil)                         => list1
     case (head1 :: next1, head2 :: next2) =>
       if head1 <= head2
       then head1 :: merge(next1, list2)

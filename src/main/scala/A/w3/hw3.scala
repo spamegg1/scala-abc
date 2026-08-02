@@ -63,7 +63,7 @@ val revString: String => String = _.reverse
 
 /*  applies f to list elts until a Some(v) results. Else throws NoAnswer. */
 def firstAnswer[T, S](f: T => Option[S])(lst: List[T]): S = lst match
-  case Nil => throw new NoAnswer
+  case Nil     => throw new NoAnswer
   case t :: ts =>
     f(t) match
       case None    => firstAnswer(f)(ts)
@@ -71,7 +71,7 @@ def firstAnswer[T, S](f: T => Option[S])(lst: List[T]): S = lst match
 
 def allAnswers[T, S](f: T => Option[List[S]])(lst: List[T]): Option[List[S]] =
   lst match
-    case Nil => Some(Nil)
+    case Nil     => Some(Nil)
     case t :: ts =>
       (f(t), allAnswers(f)(ts)) match
         case (_, None)            => None
@@ -105,10 +105,10 @@ def checkPat(p: Pattern): Boolean =
 def patMatch(vp: (Value, Pattern)): Option[List[(String, Value)]] =
   val (v, p) = vp
   (v, p) match
-    case (_, Wildcard)         => Some(Nil)
-    case (_, Variable(str))    => Some(List((str, v)))
-    case (Unit, UnitP)         => Some(Nil)
-    case (Const(i), ConstP(j)) => if i == j then Some(Nil) else None
+    case (_, Wildcard)           => Some(Nil)
+    case (_, Variable(str))      => Some(List((str, v)))
+    case (Unit, UnitP)           => Some(Nil)
+    case (Const(i), ConstP(j))   => if i == j then Some(Nil) else None
     case (Tuple(vs), TupleP(ps)) =>
       if vs.length == ps.length then allAnswers(patMatch)(vs.zip(ps)) else None
     case (Constructor(s1, valu), ConstructorP(s2, pat)) =>

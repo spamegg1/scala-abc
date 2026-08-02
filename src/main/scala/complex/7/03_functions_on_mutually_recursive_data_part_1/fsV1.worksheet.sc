@@ -14,9 +14,9 @@ import Element.*
 val file1 = File("file1", 1)
 val file2 = File("file2", 2)
 val file3 = File("file3", 3)
-val dir1 = Directory("dir1", List(file1, file2))
-val dir2 = Directory("dir2", List(file3))
-val dir3 = Directory("dir3", List(dir1, dir2))
+val dir1  = Directory("dir1", List(file1, file2))
+val dir2  = Directory("dir2", List(file3))
+val dir3  = Directory("dir3", List(dir1, dir2))
 
 def fnForElement(element: Element) = element match
   case File(name, data)         => ??? // name, data

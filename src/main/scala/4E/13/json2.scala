@@ -60,10 +60,10 @@ def json2 =
   // val sample = uri"http://py4e-data.dr-chuck.net/comments_42.json"
   val url = uri"http://py4e-data.dr-chuck.net/comments_1129915.json"
 
-  val client = DefaultSyncBackend()
-  val request = basicRequest.get(url)
+  val client   = DefaultSyncBackend()
+  val request  = basicRequest.get(url)
   val response = client.send(request)
-  val body = response.body.getOrElse("")
+  val body     = response.body.getOrElse("")
 
   val jsObject = body.parseJson.asJsObject
   val mapJsVal = jsObject.fields
@@ -73,7 +73,7 @@ def json2 =
   var total = 0
 
   for obj <- comments do
-    val jsObj = obj.fields
+    val jsObj    = obj.fields
     val objCount = jsObj("count").convertTo[Int]
     total += objCount
     count += 1

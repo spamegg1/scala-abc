@@ -14,7 +14,7 @@ val cityName2 = "Vancouver"
 
 // template
 def fnForCityName(cityName: CityName) = ???
-  // cityName.???
+// cityName.???
 
 // Template rules used:              For the first part of the course
 //   atomic non-distinct: String     we want you to list the template

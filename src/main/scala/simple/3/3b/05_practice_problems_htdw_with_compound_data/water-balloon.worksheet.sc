@@ -33,12 +33,12 @@ val WATERBALLOON = Image.triangle(50, 50).fillColor(lightBlue)
 
 // Constants
 
-val WIDTH = 600
-val HEIGHT = 300
-val LINEARSPEED = 2
+val WIDTH        = 600
+val HEIGHT       = 300
+val LINEARSPEED  = 2
 val ANGULARSPEED = 3.degrees // optional
-val TICKRATE = FiniteDuration(1, "seconds")
-val FRAME = Frame.default
+val TICKRATE     = FiniteDuration(1, "seconds")
+val FRAME        = Frame.default
   .withSize(WIDTH, HEIGHT)
   .withBackground(white)
   .withCenterAtOrigin
@@ -67,7 +67,7 @@ def main(balloon: Balloon): Unit =
     .init[Balloon](balloon)
     .withOnTick(advanceBalloon) // Balloon -> Balloon
     .withTickRate(TICKRATE)
-    .withRender(renderBalloon) // Balloon -> Image
+    .withRender(renderBalloon)   // Balloon -> Image
     .withOnMouseClick(handleKey) // Balloon KeyEvent -> Balloon
     .animateWithFrame(FRAME)
 

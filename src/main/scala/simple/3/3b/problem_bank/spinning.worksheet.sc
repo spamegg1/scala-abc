@@ -41,13 +41,13 @@ import doodle.image.syntax.all.*
 
 // a growing and rotating box
 // Constants:
-val WIDTH = 700
-val HEIGHT = 700
+val WIDTH         = 700
+val HEIGHT        = 700
 val ROTATIONSPEED = 30.degrees
-val GROWTHSPEED = 10
-val SQUARECOLOR = red
-val TICKRATE = FiniteDuration(100, "milliseconds")
-val FRAME = Frame.default
+val GROWTHSPEED   = 10
+val SQUARECOLOR   = red
+val TICKRATE      = FiniteDuration(100, "milliseconds")
+val FRAME         = Frame.default
   .withSize(WIDTH, HEIGHT)
   .withBackground(skyBlue)
   .withCenterAtOrigin
@@ -75,8 +75,8 @@ def fnForBox(box: Box) = ???
 def main(box: Box): Unit =
   Reactor
     .init[Box](box)
-    .withOnTick(advanceBox) // grass -> grass
-    .withRender(renderBox) // grass -> Image
+    .withOnTick(advanceBox)     // grass -> grass
+    .withRender(renderBox)      // grass -> Image
     .withOnMouseClick(resetBox) // Point grass -> grass
     .withTickRate(TICKRATE)
     .animateWithFrame(FRAME)

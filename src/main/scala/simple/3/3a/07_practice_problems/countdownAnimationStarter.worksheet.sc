@@ -7,7 +7,6 @@ import doodle.java2d.*
 import doodle.reactor.Reactor
 import cats.effect.unsafe.implicits.global
 
-
 // PROBLEM:
 // Design an animation of a simple countdown.
 // Your program should display a simple countdown, that starts at ten, and

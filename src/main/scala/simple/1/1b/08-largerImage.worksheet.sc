@@ -27,4 +27,3 @@ largerImage(rectangle1, rectangle2)
 
 def largerImage(i1: Rectangle, i2: Rectangle): Boolean =
   i1.w > i2.w && i1.h > i2.h
-

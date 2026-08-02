@@ -18,7 +18,7 @@ enum Nat:
 
 import Nat.*
 
-val nat0 = Zero // 0
+val nat0 = Zero       // 0
 val nat1 = Succ(nat0) // 1
 val nat2 = Succ(nat1) // 2
 val nat3 = Succ(nat2) // 3
@@ -97,11 +97,11 @@ mult(nat3, nat2) == nat6
 
 // def mult(nat1: Nat, nat2: Nat): Nat = Zero // stub
 def mult(nat1: Nat, nat2: Nat): Nat = (nat1, nat2) match
-  case (Zero, Zero)    => Zero
-  case (Zero, Succ(n)) => Zero
-  case (Succ(n), Zero) => Zero
+  case (Zero, Zero)       => Zero
+  case (Zero, Succ(n))    => Zero
+  case (Succ(n), Zero)    => Zero
   case (Succ(n), Succ(m)) =>
     val product = mult(n, m)
-    val addN = add(product, n)
-    val addM = add(addN, m)
+    val addN    = add(product, n)
+    val addM    = add(addN, m)
     Succ(addM)

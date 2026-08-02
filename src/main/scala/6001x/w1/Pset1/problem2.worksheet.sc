@@ -6,7 +6,7 @@
 val s = "azcbobobegghaklbo"
 
 var occurrences = 0
-var start = 0
+var start       = 0
 
 while start < s.length do
   val index = s.drop(start).indexOf("bob")

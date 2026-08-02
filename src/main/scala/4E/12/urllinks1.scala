@@ -54,19 +54,19 @@ package py4e
 
 @main
 def urllinks1 =
-  val count = 7 // 4
+  val count    = 7  // 4
   val position = 18 // 3
-  val browser = JsoupBrowser()
+  val browser  = JsoupBrowser()
 
   // var url = "http://py4e-data.dr-chuck.net/known_by_Fikret.html"
   var url = "http://py4e-data.dr-chuck.net/known_by_Rimal.html"
   println(s"Retrieving: $url")
   var document = browser.get(url)
-  var i = 0
+  var i        = 0
 
   while i < count do
     val anchors = document >> Extract.elementList("a")
-    val links = anchors.map(_ >> Extract.attr("href"))
+    val links   = anchors.map(_ >> Extract.attr("href"))
 
     url = links(position - 1)
     println(s"Retrieving: ${url}")

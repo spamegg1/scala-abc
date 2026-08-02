@@ -29,11 +29,11 @@ def getNthInt(xs: List[Int], n: Int): Int =
   else getNthInt(xs.tail, n - 1)
 
 def reasonableDate(date: Date): Boolean =
-  val year = date._1
-  val month = date._2
-  val day = date._3
-  val leap = year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)
-  val febLen = if leap then 29 else 28
+  val year    = date._1
+  val month   = date._2
+  val day     = date._3
+  val leap    = year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)
+  val febLen  = if leap then 29 else 28
   val lengths = List(31, febLen, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
 
   year > 0 &&

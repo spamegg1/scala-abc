@@ -25,12 +25,12 @@ import doodle.image.syntax.all.*
 
 // Make it rain where we want it to.
 // Constants:
-val WIDTH = 300
-val HEIGHT = 300
-val SPEED = 10
-val DROP = Image.circle(20).scale(1, 3).fillColor(darkBlue)
+val WIDTH    = 300
+val HEIGHT   = 300
+val SPEED    = 10
+val DROP     = Image.circle(20).scale(1, 3).fillColor(darkBlue)
 val TICKRATE = FiniteDuration(100, "milliseconds")
-val FRAME = Frame.default
+val FRAME    = Frame.default
   .withSize(WIDTH, HEIGHT)
   .withBackground(skyBlue)
   .withCenterAtOrigin
@@ -70,8 +70,8 @@ def fnForDropList(dropList: List[Point]) = dropList match
 def main(drops: List[Point]): Unit =
   Reactor
     .init[List[Point]](drops)
-    .withOnTick(advanceDrops) // droplist -> droplist
-    .withRender(renderDrops) // droplist -> Image
+    .withOnTick(advanceDrops)  // droplist -> droplist
+    .withRender(renderDrops)   // droplist -> Image
     .withOnMouseClick(addDrop) // Point droplist -> droplist
     .withTickRate(TICKRATE)
     .animateWithFrame(FRAME)

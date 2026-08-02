@@ -62,7 +62,7 @@ def sierpinskiCarpet(depth: Int, size: Double): Image =
   if depth <= 0
   then block(size)
   else
-    val smaller = sierpinskiCarpet(depth - 1, size / 3.0)
+    val smaller    = sierpinskiCarpet(depth - 1, size / 3.0)
     val emptyBlock = smaller.strokeColor(white)
     // val emptyBlock = block(size / 3.0) // causes misalignment
     val row = smaller beside smaller beside smaller

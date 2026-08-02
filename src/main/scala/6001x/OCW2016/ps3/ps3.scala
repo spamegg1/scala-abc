@@ -21,10 +21,10 @@ def getWordScore(word: String, num: Int): Int =
   // word: string
   // n: int >= 0
   // returns: int >= 0
-  val len = word.length
+  val len       = word.length
   val wordLower = word.toLowerCase
-  val first = (for letter <- wordLower yield SCRABBLE(letter)).sum
-  val second = math.max(1, 7 * len - 3 * (num - len))
+  val first     = (for letter <- wordLower yield SCRABBLE(letter)).sum
+  val second    = math.max(1, 7 * len - 3 * (num - len))
   first * second
 
 // Make sure you understand how this function works and what it does!
@@ -61,7 +61,7 @@ def updateHand(hand: Hand, word: String): Hand =
   // word: string
   // hand: dictionary (string -> int)
   // returns: dictionary (string -> int)
-  val wordLower = word.toLowerCase
+  val wordLower          = word.toLowerCase
   val handFromWord: Hand = getFreqMap(wordLower)
   hand.map: (letter, count) =>
     handFromWord.get(letter) match
@@ -77,8 +77,8 @@ def isValidWord(word: String, hand: Hand, wordList: Words): Boolean =
   // hand: dictionary (string -> int)
   // word_list: list of lowercase strings
   // returns: boolean
-  val wordLower = word.toLowerCase
-  val wordHand: Hand = getFreqMap(wordLower)
+  val wordLower             = word.toLowerCase
+  val wordHand: Hand        = getFreqMap(wordLower)
   val wordIsInHand: Boolean = wordLower.forall: char =>
     hand.contains(char) && wordHand(char) <= hand(char)
   wordIsInHand && wordList.contains(wordLower)
@@ -119,7 +119,7 @@ def playHand(hand: Hand, words: Words, num: Int): Unit =
   // so tell user the total score
   // Return the total score as result of function
 
-  var score: Int = 0
+  var score: Int        = 0
   var currentHand: Hand = hand
   boundary:
     while calculateHandlen(currentHand) > 0 do
@@ -186,7 +186,7 @@ def playGame(words: Words, handSize: Int, vowelRatio: Int): Unit =
   // word_list: list of lowercase strings
 
   // Keep track of last hand played
-  var lastHand: Hand = Map()
+  var lastHand: Hand  = Map()
   var command: String = ""
 
   val msg = "Enter n to deal a new hand, r to replay last hand, or e to end the game: "

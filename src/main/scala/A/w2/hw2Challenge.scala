@@ -9,7 +9,7 @@ def newSums(sums: List[Int], value: Int): List[Int] = sums match
 
 def sumCardsChallenge(cards: List[Card]): List[Int] = cards match
   case Nil => List(0)
-  case _ =>
+  case _   =>
     def helper(cs: List[Card], acc: List[Int]): List[Int] = cs match
       case Nil            => acc
       case (_, Ace) :: ds => helper(ds, newSums(acc, 1) ::: newSums(acc, 11))
@@ -41,10 +41,10 @@ def stateChallenge(
     goal: Int
 ): Int =
   (deck, moves) match
-    case (_, Nil) => scoreChallenge(hand, goal)
+    case (_, Nil)              => scoreChallenge(hand, goal)
     case (_, Discard(c) :: ms) =>
       stateChallenge(removeCard(hand, c), deck, ms, goal)
-    case (Nil, Draw :: ms) => scoreChallenge(hand, goal)
+    case (Nil, Draw :: ms)     => scoreChallenge(hand, goal)
     case (c :: cs, Draw :: ms) =>
       if sumCardsChallenge(c :: hand) forall (_ > goal)
       then scoreChallenge(c :: hand, goal)
@@ -64,7 +64,7 @@ type GameState = (List[Card], List[Card], Int, Int)
 def nextState(st: GameState)(move: Move): GameState =
   val (hand, deck, goal, scr) = st
   (hand, deck, move) match
-    case (_, Nil, Draw) => st
+    case (_, Nil, Draw)     => st
     case (_, c :: cs, Draw) =>
       if sumCards(c :: hand) > goal
       then st
@@ -89,8 +89,8 @@ def possibleToDraw(st: GameState): Boolean =
 def possibleToDiscardThenDraw(st: GameState): Boolean =
   val (hand, deck, _, _) = st
   (hand, deck) match
-    case (_, Nil) => false // not possible to draw
-    case (Nil, _) => false // not possible to discard
+    case (_, Nil)           => false // not possible to draw
+    case (Nil, _)           => false // not possible to discard
     case (h :: hs, c :: cs) =>
       val discardStates: List[GameState] =
         hand map (card => nextState(st)(Discard(card)))
@@ -117,7 +117,7 @@ def discardThenDraw(st: GameState): (GameState, Card) =
 
 def carefulHelper(st: GameState): List[Move] =
   val (hand, deck, goal, scr) = st
-  val drawnState = nextState(st)(Draw)
+  val drawnState              = nextState(st)(Draw)
   if scr == 0 then Nil
   else if goal - sumCards(hand) > 10 || possibleToDraw(st) then
     if deck.nonEmpty then Draw :: carefulHelper(drawnState)

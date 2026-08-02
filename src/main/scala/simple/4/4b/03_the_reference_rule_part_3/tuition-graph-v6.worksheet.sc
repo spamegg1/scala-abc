@@ -26,11 +26,11 @@ import doodle.image.syntax.all.*
 //     the school with the lowest international student tuition.
 
 // Constants:
-val FONTSIZE = 24
+val FONTSIZE  = 24
 val FONTCOLOR = black
-val YSCALE = 0.01
-val BARWIDTH = 30
-val BARCOLOR = blue
+val YSCALE    = 0.01
+val BARWIDTH  = 30
+val BARCOLOR  = blue
 
 // Data definitions:
 case class School(name: String, tuition: Double):
@@ -76,7 +76,7 @@ def chart(schools: List[School]): Image = schools match
 // def makeBar(school: School): Image = Image.empty // stub
 def makeBar(school: School): Image =
   val name = Text(school.name)
-  val bar = Image
+  val bar  = Image
     .rectangle(BARWIDTH, school.tuition * YSCALE)
     .strokeColor(black)
     .fillColor(blue)
@@ -93,7 +93,7 @@ cheapest(schools2) == school2
 def cheapest(schools: List[School]): School = schools match
   // Change to base case test here, for this function
   // the base case is when the list has one element.
-  case head :: Nil => head
+  case head :: Nil  => head
   case head :: next =>
     val cheaper = cheapest(next)
     if head.tuition < cheaper.tuition

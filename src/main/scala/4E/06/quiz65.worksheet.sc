@@ -4,7 +4,7 @@
 // Desired output:
 // 0.8475
 
-val text = "X-DSPAM-Confidence:    0.8475"
+val text       = "X-DSPAM-Confidence:    0.8475"
 val colonIndex = text.indexOf(':')
 val numberText = text.drop(colonIndex + 1)
 numberText.toDouble

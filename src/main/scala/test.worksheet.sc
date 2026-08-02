@@ -44,9 +44,9 @@ case class Grid(
 case class Block(p1: Point, p2: Point):
   require(p1 <= p2)
 
-  def isStanding: Boolean = p1 == p2
+  def isStanding: Boolean   = p1 == p2
   def isHorizontal: Boolean = p1.y == p2.y
-  def isVertical: Boolean = p1.x == p2.x
+  def isVertical: Boolean   = p1.x == p2.x
 
   def possibleMoves: List[Block] =
     if isStanding then
@@ -83,8 +83,8 @@ case class State(grid: Grid, block: Block):
       .map(possible => Move(block, possible))
 
 def stringToGrid(terrain: String): Grid =
-  val lines = terrain.split("\n").toList // assume nonempty list
-  val width = lines.head.length
+  val lines  = terrain.split("\n").toList // assume nonempty list
+  val width  = lines.head.length
   val height = lines.length
 
   val start: Point =

@@ -31,7 +31,7 @@ val seat2 = SeatNumber(32)
 
 // Template
 def fnForSeatNumber(seat: SeatNumber) = ???
-  // seat.n ???
+// seat.n ???
 
 // Template rules used:
 // - atomic non-distinct: Natural[1,32]

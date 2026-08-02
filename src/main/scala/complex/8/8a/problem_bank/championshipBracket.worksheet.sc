@@ -143,8 +143,8 @@ orderedWins(scandalRiot3, List("Riot", "Capitals", "Phoenix"))
 // 4 cases simplified to 3
 def orderedWins(bracket: Bracket, teams: List[Team]): Boolean =
   (bracket, teams) match
-    case (_, Nil)        => true
-    case (FirstRound, _) => false
+    case (_, Nil)                                                          => true
+    case (FirstRound, _)                                                   => false
     case (Round(winner, loser, winnerBracket, loserBracket), head :: next) =>
       if head == loser
       then orderedWins(winnerBracket, next)

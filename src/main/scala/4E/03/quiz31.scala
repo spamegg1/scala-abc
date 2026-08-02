@@ -19,7 +19,7 @@ package py4e
 def complicatedPay =
   val hour = readLine("Enter Hours: ").toDouble
   val rate = readLine("Enter rate per hour: ").toDouble
-  val pay =
+  val pay  =
     if hour <= 40 then hour * rate
     else (hour - 40) * 1.5 * rate + 40 * rate
 

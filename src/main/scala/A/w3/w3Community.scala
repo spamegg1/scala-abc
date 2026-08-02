@@ -34,7 +34,7 @@ def factorial(n: Int): Int =
   // def nonzero(pair: (Int, Int)): Boolean = pair._1 != 0
   // def multiply(pair: (Int, Int)): (Int, Int) = (pair._1 - 1, pair._1 * pair._2)
   // doUntil(multiply)(nonzero)((n, 1))._2
-  val nonzero = (x: Int, _: Int) => x != 0
+  val nonzero  = (x: Int, _: Int) => x != 0
   val multiply = (x: Int, y: Int) => (x - 1, x * y)
   doUntil(multiply.tupled)(nonzero.tupled)(n, 1)._2
 
@@ -92,7 +92,7 @@ def myFoldRight[A, B](zero: B)(op: (A, B) => B)(lst: List[A]): B =
  */
 def partition[T](f: T => Boolean)(lst: List[T]): (List[T], List[T]) =
   lst match
-    case Nil => (Nil, Nil)
+    case Nil     => (Nil, Nil)
     case x :: xs =>
       val (first, second) = partition(f)(xs)
       if f(x) then (x :: first, second) else (first, x :: second)
@@ -118,7 +118,7 @@ def unfold[T, S](f: T => Option[(S, T)])(seed: T): List[S] =
  */
 def factorial2(n: Int): Int =
   val countdown = (n: Int) => if n == 0 then None else Some(n, n - 1)
-  val mult = (x: Int, y: Int) => x * y
+  val mult      = (x: Int, y: Int) => x * y
   myFoldRight(1)(mult)(unfold(countdown)(n))
 
 /*
@@ -169,7 +169,7 @@ def treeMap[T](f: T => T)(tree: Tree[T]): Tree[T] = tree match
 
 def treeFilter[T](f: T => Boolean)(tree: Tree[T]): Tree[T] =
   tree match
-    case Leaf => Leaf
+    case Leaf          => Leaf
     case Node(v, l, r) =>
       if f(v) then Node(v, treeFilter(f)(l), treeFilter(f)(r)) else Leaf
 

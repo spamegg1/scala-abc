@@ -12,24 +12,24 @@ import doodle.image.syntax.all.*
 
 // Growing Flowers
 // Constants
-val WIDTH = 800
-val HEIGHT = 600
-val MAXSIZE = 15
+val WIDTH    = 800
+val HEIGHT   = 600
+val MAXSIZE  = 15
 val TICKRATE = FiniteDuration(1, "seconds")
-val FRAME = Frame.default
+val FRAME    = Frame.default
   .withSize(WIDTH, HEIGHT)
   .withBackground(white)
   .withCenterAtOrigin
 val CENTERRADIUS = 2
-val CENTERCOLOR = yellow
-val PETALRADIUS = 15
-val PETALCOLOR = purple
-val PETALANGLE = 60.degrees
-val CENTER = Image.circle(CENTERRADIUS).fillColor(CENTERCOLOR)
-val PETAL1 = Image.circle(PETALRADIUS).fillColor(PETALCOLOR)
-val PETAL2 = PETAL1.rotate(PETALANGLE)
-val PETAL3 = PETAL2.rotate(PETALANGLE)
-val FLOWER = CENTER on PETAL1 on PETAL2 on PETAL3
+val CENTERCOLOR  = yellow
+val PETALRADIUS  = 15
+val PETALCOLOR   = purple
+val PETALANGLE   = 60.degrees
+val CENTER       = Image.circle(CENTERRADIUS).fillColor(CENTERCOLOR)
+val PETAL1       = Image.circle(PETALRADIUS).fillColor(PETALCOLOR)
+val PETAL2       = PETAL1.rotate(PETALANGLE)
+val PETAL3       = PETAL2.rotate(PETALANGLE)
+val FLOWER       = CENTER on PETAL1 on PETAL2 on PETAL3
 
 // Data Definitions
 case class Flower(x: Double, y: Double, size: Int):
@@ -61,7 +61,7 @@ def main(flower: Flower): Unit =
     .init[Flower](flower)
     .withOnTick(advanceFlower) // flower -> flower
     .withTickRate(TICKRATE)
-    .withRender(renderFlower) // flower -> Image
+    .withRender(renderFlower)    // flower -> Image
     .withOnMouseClick(handleKey) // Point flower -> flower
     .animateWithFrame(FRAME)
 

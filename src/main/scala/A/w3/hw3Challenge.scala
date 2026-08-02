@@ -49,8 +49,8 @@ def p2t(triples: List[Triple])(p: Pattern): Option[Typ] = p match
   case ConstructorP(str, pat) =>
     val lookup = triples find (_._1 == str)
     (lookup, p2t(triples)(pat)) match
-      case (None, _) => None // could not find str in metadata
-      case (_, None) => None // pat fails to convert
+      case (None, _)                   => None // could not find str in metadata
+      case (_, None)                   => None // pat fails to convert
       case (Some(_, s2, t1), Some(t2)) =>
         if compatible(t1, t2) then Some(DataType(s2))
         else None // pat incompatible with metadata
@@ -68,8 +68,8 @@ def coalesce(s: Typ, t: Typ): Typ = (s, t) match
 /* Merges two Typ Options. Checks if they are compatible. */
 def merge(s: Option[Typ], t: Option[Typ]): Option[Typ] =
   (s, t) match
-    case (None, _) => None
-    case (_, None) => None
+    case (None, _)            => None
+    case (_, None)            => None
     case (Some(s1), Some(t1)) =>
       if compatible(s1, t1) then Some(coalesce(s1, t1)) else None
 

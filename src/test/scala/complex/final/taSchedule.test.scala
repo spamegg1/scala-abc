@@ -2,9 +2,9 @@ package complex
 package finalExam
 
 class TAScheduleSuite extends munit.FunSuite:
-  val spam = TA("Spam", 2, List(Slot(1), Slot(3))) /*  set-up TAs for testing  */
-  val ham = TA("Ham", 1, List(Slot(3), Slot(4)))
-  val egg = TA("Egg", 1, List(Slot(2)))
+  val spam     = TA("Spam", 2, List(Slot(1), Slot(3))) /*  set-up TAs for testing  */
+  val ham      = TA("Ham", 1, List(Slot(3), Slot(4)))
+  val egg      = TA("Egg", 1, List(Slot(2)))
   val spammers = List(spam, ham, egg)
 
   test("01. solve"):

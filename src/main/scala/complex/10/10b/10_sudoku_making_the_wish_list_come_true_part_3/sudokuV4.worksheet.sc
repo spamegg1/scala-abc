@@ -36,9 +36,9 @@ type Unit = List[Pos]
 
 // Constants:
 val allVals = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
-val B = 0 // B stands for blank
-val bRow = List(B, B, B, B, B, B, B, B, B)
-val BD1 =
+val B       = 0 // B stands for blank
+val bRow    = List(B, B, B, B, B, B, B, B, B)
+val BD1     =
   bRow ::: bRow ::: bRow ::: bRow ::: bRow ::: bRow ::: bRow ::: bRow ::: bRow
 val BD2 =
   allVals ::: bRow ::: bRow ::: bRow ::: bRow ::: bRow ::: bRow ::: bRow ::: bRow

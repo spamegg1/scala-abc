@@ -13,7 +13,7 @@ def getWordScore(word: String, n: Int) =
   // word: string (lowercase letters)
   // num: integer (HANDSIZ; i.e., hand size required for additional points)
   // returns: int >= 0
-  val len = word.length
+  val len    = word.length
   val score1 = word.map(char => SCRABBLE(char)).sum
   val score2 = score1 * len
   score2 + (if len == n then BONUS else 0)
@@ -29,7 +29,7 @@ def dealHand(num: Int): Hand =
   // returns: dictionary (string -> int)
   val numVowels = num / 3
   val vowels = for _ <- 0 until numVowels yield VOWELS(Random.between(0, VOWELS.length))
-  val cons =
+  val cons   =
     for _ <- numVowels until num
     yield CONSONANTS(Random.between(0, CONSONANTS.length))
 
@@ -78,7 +78,7 @@ def playHand(hand: Hand, wordList: List[String], n: Int) =
   //   wordList: list of lowercase strings
   //   n: integer (HANDSIZ; i.e., hand size required for additional points)
   // Keep track of the total score
-  var score = 0
+  var score   = 0
   var newHand = hand
 
   // As long as there are still letters left in the hand:
@@ -97,20 +97,20 @@ def playHand(hand: Hand, wordList: List[String], n: Int) =
 
       // Otherwise (the input is not a single period):
       else
-      // If the word is not valid:
-      if !isValidWord(word, newHand, wordList) then
-        // Reject invalid word (println message followed by a blank line)
-        println("Invalid word, please try again.")
-      // Otherwise (the word is valid):
-      else
-        // Tell the user how many points the word earned, and the
-        // updated total score, in one line followed by a blank line
-        val wordScore = getWordScore(word, n)
-        score += wordScore
-        println(s"${word} earned ${wordScore} points.")
-        println(s"Total: ${score} points")
-        // Update the hand
-        newHand = updateHand(newHand, word)
+        // If the word is not valid:
+        if !isValidWord(word, newHand, wordList) then
+          // Reject invalid word (println message followed by a blank line)
+          println("Invalid word, please try again.")
+        // Otherwise (the word is valid):
+        else
+          // Tell the user how many points the word earned, and the
+          // updated total score, in one line followed by a blank line
+          val wordScore = getWordScore(word, n)
+          score += wordScore
+          println(s"${word} earned ${wordScore} points.")
+          println(s"Total: ${score} points")
+          // Update the hand
+          newHand = updateHand(newHand, word)
 
   // Game is over (user entered a "." or ran out of letters), so tell user
   // the total score
@@ -129,8 +129,8 @@ def playGame(wordList: List[String]): Unit =
   // 2) When done playing the hand, repeat from step 1
   // Keep track of last hand played
   var lastHand = Map[Char, Int]()
-  var command = ""
-  var newHand = Map[Char, Int]()
+  var command  = ""
+  var newHand  = Map[Char, Int]()
 
   while true do
     // Ask user for input

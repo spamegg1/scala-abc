@@ -61,9 +61,9 @@ def fnForTlColor(color: TlColor) = color match
 // TLColor -> TLColor
 // produce next color of traffic light
 
-nextTlColor(Red)    == Green
+nextTlColor(Red) == Green
 nextTlColor(Yellow) == Red
-nextTlColor(Green)  == Yellow
+nextTlColor(Green) == Yellow
 
 // def nextTlColor(c: TlColor) = Red // stub
 

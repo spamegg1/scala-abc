@@ -35,12 +35,12 @@ import doodle.image.syntax.all.*
 
 // Spinning Bears
 // Constants:
-val WIDTH = 600
-val HEIGHT = 700
-val SPEED = 30.degrees
+val WIDTH    = 600
+val HEIGHT   = 700
+val SPEED    = 30.degrees
 val TICKRATE = FiniteDuration(100, "milliseconds")
-val BEAR = Image.triangle(80, 40).fillColor(brown)
-val FRAME = Frame.default
+val BEAR     = Image.triangle(80, 40).fillColor(brown)
+val FRAME    = Frame.default
   .withSize(WIDTH, HEIGHT)
   .withBackground(skyBlue)
   .withCenterAtOrigin
@@ -84,8 +84,8 @@ def fnForBearList(bears: List[Bear]) = bears match
 def main(bears: List[Bear]): Unit =
   Reactor
     .init[List[Bear]](bears)
-    .withOnTick(spinBears) // List[Bear] -> List[Bear]
-    .withRender(renderBears) // List[Bear] -> Image
+    .withOnTick(spinBears)     // List[Bear] -> List[Bear]
+    .withRender(renderBears)   // List[Bear] -> Image
     .withOnMouseClick(addBear) // Point List[Bear] -> List[Bear]
     .withTickRate(TICKRATE)
     .animateWithFrame(FRAME)

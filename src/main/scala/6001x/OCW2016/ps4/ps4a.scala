@@ -16,7 +16,7 @@ def getPermutations(sequence: String): List[String] =
     val first = sequence.take(1)
     val perms = getPermutations(sequence.drop(1))
     for
-      perm <- perms
+      perm  <- perms
       index <- 0 to perm.length
       (left, right) = (perm.take(index), perm.drop(index))
     yield left + first + right
@@ -24,7 +24,7 @@ def getPermutations(sequence: String): List[String] =
 // TESTING
 @main
 def ps4a =
-  val exampleInput = "abc"
+  val exampleInput  = "abc"
   val exampleOutput = List("abc", "bac", "bca", "acb", "cab", "cba")
 
   println(s"Input: $exampleInput")

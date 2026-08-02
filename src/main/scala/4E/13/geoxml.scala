@@ -61,13 +61,13 @@ def geoxml =
   // val sample = uri"http://py4e-data.dr-chuck.net/comments_42.xml"
   val url = uri"http://py4e-data.dr-chuck.net/comments_1129914.xml"
 
-  val client = DefaultSyncBackend()
-  val request = basicRequest.get(url)
+  val client   = DefaultSyncBackend()
+  val request  = basicRequest.get(url)
   val response = client.send(request)
-  val body = response.body.getOrElse("")
+  val body     = response.body.getOrElse("")
 
   val bodyElem = XML.loadString(body)
-  val counts = bodyElem \ "comments" \ "comment" \ "count"
+  val counts   = bodyElem \ "comments" \ "comment" \ "count"
 
   var count = 0
   var total = 0

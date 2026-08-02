@@ -41,8 +41,7 @@ class HW2ChallengeSuite extends munit.FunSuite:
     goal - sumCards(hand) <= 10 ||
     (moves match
       case Nil     => false
-      case m :: ms => m == Draw
-    )
+      case m :: ms => m == Draw)
 
   /*  If a score of 0 is reached, there must be no more moves. */
   val prop3: Property = (st: GameState, moves: List[Move]) =>
@@ -56,8 +55,7 @@ class HW2ChallengeSuite extends munit.FunSuite:
     !possibleToDiscardThenDraw(st) ||
       (moves match
         case Discard(_) :: Draw :: ms => true
-        case _                        => false
-      )
+        case _                        => false)
 
   /*  play through all moves, check property at each state of game  */
   def checkProp(prop: Property, moves: List[Move], st: GameState): Boolean =
@@ -74,7 +72,7 @@ class HW2ChallengeSuite extends munit.FunSuite:
       rank <- rankGen
     yield (suit, rank)
   val deckGen: Gen[List[Card]] = Gen.containerOf[List, Card](cardGen)
-  val goalGen: Gen[Int] = Gen.choose(0, 100)
+  val goalGen: Gen[Int]        = Gen.choose(0, 100)
 
   /*  convert a Property to a Prop */
   def convert(p: Property): Prop = forAll(deckGen, goalGen): (deck, goal) =>

@@ -21,8 +21,8 @@ import cats.effect.unsafe.implicits.global
  */
 def makeTriangle(c: Color) = Triangle(400, 400).fillColor(c)
 
-val greenTri = makeTriangle(Color.green)
-val yellowTri = makeTriangle(Color.yellow)
+val greenTri     = makeTriangle(Color.green)
+val yellowTri    = makeTriangle(Color.yellow)
 val twoTriangles = yellowTri on (greenTri rotate 180.degrees)
 
 twoTriangles.draw()

@@ -40,7 +40,7 @@ def kochElements(
     val rAngle = angle - 90.degrees
 
     val third = length / 3.0
-    val edge = Vec.polar(third, angle)
+    val edge  = Vec.polar(third, angle)
 
     val mid1 = start + edge
     val mid2 = mid1 + edge.rotate(90.degrees)
@@ -54,8 +54,8 @@ def kochElements(
       kochElements(depth - 1, mid4, angle, third)
 
 def koch(depth: Int, length: Double): Image =
-  val origin = Point.cartesian(0, length / 6)
-  val element = PathElement.moveTo(origin)
+  val origin   = Point.cartesian(0, length / 6)
+  val element  = PathElement.moveTo(origin)
   val elements = element +: kochElements(depth, origin, 0.degrees, length)
   Image.path(OpenPath(elements.toList))
 

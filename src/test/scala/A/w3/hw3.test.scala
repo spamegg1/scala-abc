@@ -43,22 +43,22 @@ class HW3Suite extends munit.FunSuite:
       // add more functions here!
     )
     val hofs: List[List[String] => String] = funs map longestStringHelper
-    val inputs: List[List[String]] = List(
+    val inputs: List[List[String]]         = List(
       List("Spam", "egg"),
       List("hello", "spamegg")
       // add more test cases here!
     )
-    val applied: List[List[String]] = hofs map (hof => (inputs map hof))
+    val applied: List[List[String]]  = hofs map (hof => (inputs map hof))
     val expected: List[List[String]] = List(
       // this is for the first function in funs
       List(
-        "Spam", // this is for the first list in inputs
+        "Spam",   // this is for the first list in inputs
         "spamegg" // this is for the first list in inputs
         // add more outputs here if you add more inputs above!
       ),
       // this is for the second function in funs
       List(
-        "egg", // this is for the first list in inputs
+        "egg",    // this is for the first list in inputs
         "spamegg" // this is for the second list in inputs
         // add more outputs here if you add more inputs above!
       )
@@ -112,15 +112,16 @@ class HW3Suite extends munit.FunSuite:
 
   test("09. firstAnswer"):
     val funs: List[Int => Option[Int]] =
-      List(x => if x > 0 then Some(x) else None
-      // add more functions here!
+      List(x =>
+        if x > 0 then Some(x) else None
+        // add more functions here!
       )
     val hofs: List[List[Int] => Int] = funs map firstAnswer
-    val inputs: List[List[Int]] = List(
+    val inputs: List[List[Int]]      = List(
       List(-1, 0, 1)
       // add more test cases here!
     )
-    val applied: List[List[Int]] = hofs map (hof => (inputs map hof))
+    val applied: List[List[Int]]  = hofs map (hof => (inputs map hof))
     val expected: List[List[Int]] = List(
       // this is for the first function in funs
       List(
@@ -133,11 +134,12 @@ class HW3Suite extends munit.FunSuite:
 
   test("10. allAnswers"):
     val funs: List[Int => Option[List[Int]]] =
-      List(x => if x > 1 then Some(List(x, x + 1)) else None
-      // add more functions here!
+      List(x =>
+        if x > 1 then Some(List(x, x + 1)) else None
+        // add more functions here!
       )
     val hofs: List[List[Int] => Option[List[Int]]] = funs map allAnswers
-    val inputs: List[List[Int]] = List(
+    val inputs: List[List[Int]]                    = List(
       List(2, 3)
       // add more test cases here!
     )
@@ -238,7 +240,7 @@ class HW3Suite extends munit.FunSuite:
       List(UnitP)
       // add more test cases here!
     )
-    val inputs: List[(Value, List[Pattern])] = values zip patLists
+    val inputs: List[(Value, List[Pattern])]          = values zip patLists
     val expected: List[Option[List[(String, Value)]]] = List(
       Some(Nil)
       // add more test cases here!

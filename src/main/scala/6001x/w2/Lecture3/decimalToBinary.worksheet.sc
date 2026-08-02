@@ -1,4 +1,4 @@
-var num = 19
+var num   = 19
 var isNeg = false
 
 if num < 0 then

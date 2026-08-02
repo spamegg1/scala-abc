@@ -17,36 +17,36 @@ import scala.util.Random
 
 // Space Invaders
 // Constants:
-val WIDTH = 600
-val HEIGHT = 1000
-val BGCOLOR = skyBlue
+val WIDTH    = 600
+val HEIGHT   = 1000
+val BGCOLOR  = skyBlue
 val TICKRATE = FiniteDuration(50, "milliseconds")
-val FRAME = Frame.default
+val FRAME    = Frame.default
   .withSize(WIDTH, HEIGHT)
   .withBackground(BGCOLOR)
   .withTitle("Space Invaders")
   .withCenterAtOrigin
 
-val XSPEED = 5
-val YSPEED = 5
-val TANKSPEED = 10
+val XSPEED       = 5
+val YSPEED       = 5
+val TANKSPEED    = 10
 val MISSILESPEED = 20
-val HITRANGE = 10
-val INVADERATE = 4 // percent
-val SPEEDMIN = 2
-val SPEEDMAX = 5
+val HITRANGE     = 10
+val INVADERATE   = 4 // percent
+val SPEEDMIN     = 2
+val SPEEDMAX     = 5
 
-val FILLER = Image.rectangle(HITRANGE * 2, HITRANGE).strokeWidth(0)
+val FILLER  = Image.rectangle(HITRANGE * 2, HITRANGE).strokeWidth(0)
 val COCKPIT = Image.circle(HITRANGE).scale(1, 2).strokeColor(blue)
-val SAUCER = Image.circle(HITRANGE).scale(3, 1).fillColor(gray)
+val SAUCER  = Image.circle(HITRANGE).scale(3, 1).fillColor(gray)
 val INVADER = COCKPIT on (FILLER above SAUCER)
 
-val CENTER = Image.circle(4).scale(7, 2).fillColor(green)
+val CENTER  = Image.circle(4).scale(7, 2).fillColor(green)
 val OUTLINE = Image.circle(HITRANGE).scale(3, 1).fillColor(black)
-val GUN = Image.rectangle(3, HITRANGE).fillColor(green)
-val BODY = Image.rectangle(HITRANGE * 2, HITRANGE).fillColor(green)
+val GUN     = Image.rectangle(3, HITRANGE).fillColor(green)
+val BODY    = Image.rectangle(HITRANGE * 2, HITRANGE).fillColor(green)
 val FILLER2 = Image.rectangle(0, HITRANGE * 2).strokeWidth(0.0)
-val TANK = (FILLER2 above (CENTER on OUTLINE)) on (GUN above BODY)
+val TANK    = (FILLER2 above (CENTER on OUTLINE)) on (GUN above BODY)
 
 val MISSILE = Image.circle(HITRANGE).scale(1, 2).fillColor(red)
 
@@ -91,11 +91,11 @@ def fnForGameState(gs: GameState) = ???
 def game(gs: GameState): Unit =
   Reactor
     .init[GameState](gs)
-    .withOnTick(nextGameState) // GameState -> GameState
-    .withRender(renderGameState) // GameState -> Image
+    .withOnTick(nextGameState)     // GameState -> GameState
+    .withRender(renderGameState)   // GameState -> Image
     .withOnMouseClick(fireMissile) // Point GameState -> GameState
-    .withOnMouseMove(moveTank) // Point GameState => GameState
-    .withStop(gameOver) // GameState => Boolean
+    .withOnMouseMove(moveTank)     // Point GameState => GameState
+    .withStop(gameOver)            // GameState => Boolean
     .withTickRate(TICKRATE)
     .animateWithFrame(FRAME)
 
@@ -154,9 +154,9 @@ def nextGameState(gs: GameState): GameState =
 // generate a random invader
 def randomInvader = Invader(
   Random.between(-WIDTH / 2, WIDTH / 2), // random horizontal location
-  HEIGHT / 2, // top of screen
-  Random.between(SPEEDMIN, SPEEDMAX), // random horizontal speed (+/-)
-  -Random.between(SPEEDMIN, SPEEDMAX) // random vertical speed (negative)
+  HEIGHT / 2,                            // top of screen
+  Random.between(SPEEDMIN, SPEEDMAX),    // random horizontal speed (+/-)
+  -Random.between(SPEEDMIN, SPEEDMAX)    // random vertical speed (negative)
 )
 
 // ListOfInvader ListOfMissile -> ListOfInvader

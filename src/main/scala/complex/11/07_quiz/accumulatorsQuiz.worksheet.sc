@@ -46,9 +46,9 @@ isFibonacci(List(4, 5, 9, 14, 23))
 
 // def isFibonacci(list: List[Int]): Boolean = false // stub
 def isFibonacci(list: List[Int]): Boolean = list match
-  case Nil                 => true
-  case head :: Nil         => true
-  case head :: neck :: Nil => true
+  case Nil                              => true
+  case head :: Nil                      => true
+  case head :: neck :: Nil              => true
   case head :: neck :: shoulder :: tail =>
     (shoulder == head + neck) && isFibonacci(neck :: shoulder :: tail)
 
@@ -82,12 +82,12 @@ case class Region(
 )
 
 val VANCOUVER = Region("Vancouver", City, Nil)
-val VICTORIA = Region("Victoria", City, Nil)
-val BC = Region("British Columbia", Province, List(VANCOUVER, VICTORIA))
-val CALGARY = Region("Calgary", City, Nil)
-val EDMONTON = Region("Edmonton", City, Nil)
-val ALBERTA = Region("Alberta", Province, List(CALGARY, EDMONTON))
-val CANADA = Region("Canada", Country, List(BC, ALBERTA))
+val VICTORIA  = Region("Victoria", City, Nil)
+val BC        = Region("British Columbia", Province, List(VANCOUVER, VICTORIA))
+val CALGARY   = Region("Calgary", City, Nil)
+val EDMONTON  = Region("Edmonton", City, Nil)
+val ALBERTA   = Region("Alberta", Province, List(CALGARY, EDMONTON))
+val CANADA    = Region("Canada", Country, List(BC, ALBERTA))
 
 // Region -> Natural
 // produce number of regions within and including a given region

@@ -16,5 +16,5 @@ def fibEfficient(n: Long, d: MMap[Long, Long]): Long =
 @main
 def fibTest =
   val d = MMap(1L -> 1L, 2L -> 2L)
-  println(fib(10)) // "using fib"
+  println(fib(10))             // "using fib"
   println(fibEfficient(50, d)) // "using fibEfficient"

@@ -4,9 +4,9 @@ package w7
 
 class Line(var m: Double, var b: Double) extends GeoVal:
   def shift(dx: Double, dy: Double): GeoVal = Line(m, b + dy - m * dx)
-  def intersect(that: GeoVal): GeoVal = that `intersectLine` this
-  def intersectPoint(p: Point): GeoVal = p `intersectLine` this
-  def intersectLine(line: Line): GeoVal =
+  def intersect(that: GeoVal): GeoVal       = that `intersectLine` this
+  def intersectPoint(p: Point): GeoVal      = p `intersectLine` this
+  def intersectLine(line: Line): GeoVal     =
     if GeoVal.realClose(m, line.m) then
       if GeoVal.realClose(b, line.b) then this else NoPoints
     else // one point intersection

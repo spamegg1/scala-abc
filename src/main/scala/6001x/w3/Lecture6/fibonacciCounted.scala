@@ -24,6 +24,6 @@ def fibCountTest =
 
   calls = 0
 
-  val d = MMap(1L -> 1L, 2L -> 2L)
+  val d   = MMap(1L -> 1L, 2L -> 2L)
   val eff = fibEffCounted(10L, d)
   println(s"fibEffCounted function calls ${calls}") // 17

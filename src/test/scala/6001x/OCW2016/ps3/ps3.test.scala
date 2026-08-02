@@ -47,7 +47,7 @@ class PS3Suite extends munit.FunSuite:
     assertEquals(inputs map updateHand, expected)
 
   test("03. isValidWord"):
-    val wordList = loadWords(WORDLISTFILENAME)
+    val wordList                     = loadWords(WORDLISTFILENAME)
     val inputs: List[(String, Hand)] = List(
       (
         "hello",

@@ -23,7 +23,7 @@ def biggest[S, T](aDict: MMap[S, Array[T]]): Option[S] =
   // returns: The key with the largest number of values associated with it
   // Your Code Here
   var result: Option[S] = None
-  var biggestSoFar = 0
+  var biggestSoFar      = 0
 
   for (key -> value) <- aDict do if value.size > biggestSoFar then result = Some(key)
   result

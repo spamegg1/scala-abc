@@ -28,6 +28,6 @@ class ChirperSuite extends munit.FunSuite:
   )*/
 
   test("chirper test"):
-    val inputs: List[Any] = Nil
+    val inputs: List[Any]   = Nil
     val expected: List[Any] = Nil
     assertEquals(inputs, expected)

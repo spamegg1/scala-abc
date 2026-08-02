@@ -1,7 +1,7 @@
 // Returns true if given string is a palindrome
 def isPalindrome(string: String) =
   def toChars(s: String) =
-    val ss = s.toLowerCase()
+    val ss  = s.toLowerCase()
     var ans = ""
     for char <- ss do if char.isLetter then ans += char
     ans

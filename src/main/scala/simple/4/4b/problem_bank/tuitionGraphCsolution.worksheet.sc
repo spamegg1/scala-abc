@@ -1,7 +1,7 @@
 case class School(name: String, tuition: Double)
 
 def cheapest(schools: List[School]): School = schools match
-  case head :: Nil => head
+  case head :: Nil  => head
   case head :: next =>
     val rest = cheapest(next)
     if cheaper(head, rest)

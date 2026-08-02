@@ -10,13 +10,13 @@ import concurrent.duration.FiniteDuration
 
 // A cow, meandering back and forth across the screen.
 // Constants:
-val WIDTH = 400
-val HEIGHT = 200
-val CTRY = HEIGHT / 2
-val LCOW = Image.empty
-val RCOW = Image.empty
+val WIDTH    = 400
+val HEIGHT   = 200
+val CTRY     = HEIGHT / 2
+val LCOW     = Image.empty
+val RCOW     = Image.empty
 val TICKRATE = FiniteDuration(1, "seconds")
-val FRAME = Frame.default
+val FRAME    = Frame.default
   .withSize(WIDTH, HEIGHT)
   .withBackground(white)
   .withCenterAtOrigin

@@ -30,14 +30,14 @@ import concurrent.duration.FiniteDuration
 
 // A simple animated traffic light.
 // Constants:
-val WIDTH = 200
-val HEIGHT = 600
+val WIDTH    = 200
+val HEIGHT   = 600
 val TICKRATE = FiniteDuration(1, "seconds")
-val FRAME = Frame.default
+val FRAME    = Frame.default
   .withSize(WIDTH, HEIGHT)
   .withBackground(white)
   .withCenterAtOrigin
-val RADIUS = 200
+val RADIUS     = 200
 val BACKGROUND =
   Image
     .rectangle(1 * RADIUS, 3 * RADIUS)
@@ -47,16 +47,16 @@ def trafficLight(filled: Boolean, color: Color): Image =
   if filled then Image.circle(RADIUS).fillColor(color)
   else Image.circle(RADIUS).strokeColor(color)
 
-val REDON = trafficLight(true, red)
-val REDOFF = trafficLight(false, red)
-val YELLOWON = trafficLight(true, yellow)
+val REDON     = trafficLight(true, red)
+val REDOFF    = trafficLight(false, red)
+val YELLOWON  = trafficLight(true, yellow)
 val YELLOWOFF = trafficLight(false, yellow)
-val GREENON = trafficLight(true, green)
-val GREENOFF = trafficLight(false, green)
+val GREENON   = trafficLight(true, green)
+val GREENOFF  = trafficLight(false, green)
 
-val redOn = (REDON above YELLOWOFF above GREENOFF) on BACKGROUND
+val redOn    = (REDON above YELLOWOFF above GREENOFF) on BACKGROUND
 val yellowOn = (REDOFF above YELLOWON above GREENOFF) on BACKGROUND
-val greenOn = (REDOFF above YELLOWOFF above GREENON) on BACKGROUND
+val greenOn  = (REDOFF above YELLOWOFF above GREENON) on BACKGROUND
 
 // Data definitions:
 // Light is one of:

@@ -19,7 +19,5 @@ ensureQuestion("OK?") == "OK?"
 //     s + ???
 
 def ensureQuestion(s: String) =
-  if s.endsWith("?") then
-    s
-  else
-    s + "?"
+  if s.endsWith("?") then s
+  else s + "?"

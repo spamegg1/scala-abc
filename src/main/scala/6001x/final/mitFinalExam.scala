@@ -6,8 +6,8 @@ def isTriangular(k: Int) =
     */
   // YOUR CODE HERE
   var nextTriangular = 0
-  var nextAddition = 1
-  var result = false
+  var nextAddition   = 1
+  var result         = false
 
   while nextTriangular <= k do
     nextTriangular += nextAddition
@@ -172,7 +172,7 @@ case class Location(x: Double, y: Double):
     math.sqrt(xDist * xDist + yDist * yDist)
 
   def equals(other: Location) = x == other.x && y == other.y
-  override def toString = "<" + x.toString + "," + y.toString + ">"
+  override def toString       = "<" + x.toString + "," + y.toString + ">"
 
 class Campus(centerLoc: Location):
   override def toString = centerLoc.toString

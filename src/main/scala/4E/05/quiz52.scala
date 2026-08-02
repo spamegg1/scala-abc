@@ -15,7 +15,7 @@ package py4e
 
 @main
 def minMax =
-  var largest: Option[Int] = None
+  var largest: Option[Int]  = None
   var smallest: Option[Int] = None
 
   boundary:

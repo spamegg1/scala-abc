@@ -52,5 +52,5 @@ def rosterMatch(roster1: Roster, roster2: Roster): Boolean =
 def matches(roster1: Roster, roster2: Roster): List[Match] =
   (roster1, roster2) match
     case (Nil, Nil) => Nil
-    case _ =>
+    case _          =>
       Match(roster1.head, roster2.head) :: matches(roster1.tail, roster2.tail)

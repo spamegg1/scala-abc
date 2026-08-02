@@ -1,6 +1,6 @@
 val x = -4
 
-var ans = 0
+var ans      = 0
 var negative = false
 
 if x < 0 then negative = true

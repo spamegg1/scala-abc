@@ -15,7 +15,7 @@
 def longestSubstring(s: String): String =
   // Returns the longest substring in string
   var substring = s(0).toString
-  var longest = substring
+  var longest   = substring
 
   for i <- 1 until s.length do
     if s(i - 1) <= s(i) then

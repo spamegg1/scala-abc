@@ -11,7 +11,7 @@ def ps2Problem1 =
   // Remaining balance: 31.38
 
   // Test Case 2:
-  var balance = 484.0
+  var balance            = 484.0
   val annualInterestRate = 0.2
   val monthlyPaymentRate = 0.04
   // Result Your Code Should Generate Below:
@@ -32,7 +32,7 @@ def ps2Problem1 =
 
   while month <= 12 do
     val minimumMonthlyPayment = balance * monthlyPaymentRate
-    val unpaidBalance = balance - minimumMonthlyPayment
+    val unpaidBalance         = balance - minimumMonthlyPayment
 
     // The bank charges interest each month on unpaid balance
     balance = unpaidBalance + monthlyInterestRate * unpaidBalance

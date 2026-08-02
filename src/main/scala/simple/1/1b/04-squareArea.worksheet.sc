@@ -1,8 +1,6 @@
-/**
-  * DESIGN a function called area that consumes the length of one
-  * side of a square and produces the area of the square.
-  * Remember, when we say DESIGN, we mean follow the recipe.
-  * Leave behind commented out versions of the stub and template.
+/** DESIGN a function called area that consumes the length of one side of a square and
+  * produces the area of the square. Remember, when we say DESIGN, we mean follow the
+  * recipe. Leave behind commented out versions of the stub and template.
   */
 
 // Tests: do these first!
@@ -15,10 +13,11 @@ area(5) == 25
 
 // def area(side: Double): Double = 0.0 // stub
 
-/**
-  * produce area of square with given side length
+/** produce area of square with given side length
   *
-  * @param side length of one side of square
-  * @return area of square
+  * @param side
+  *   length of one side of square
+  * @return
+  *   area of square
   */
 def area(side: Double): Double = side * side

@@ -25,7 +25,7 @@ import Natural.*
 // case object Zero extends Natural
 // case class Successor(n: Natural) extends Natural
 
-val nat0 = Zero // 1
+val nat0 = Zero            // 1
 val nat1 = Successor(nat0) // 1
 val nat2 = Successor(nat1) // 2
 val nat3 = Successor(nat2) // 3

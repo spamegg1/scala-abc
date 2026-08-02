@@ -37,7 +37,7 @@ def compPlayHand(hand: Hand, wordList: List[String], n: Int) =
 
   // Keep track of the total score
   var totalScore = 0
-  var newHand = hand
+  var newHand    = hand
 
   // As long as there are still letters left in the hand:
   boundary:
@@ -92,7 +92,7 @@ def computerPlayGame(wordList: List[String]): Unit =
   // wordList: list (string)
   // Keep track of last hand played
   var lastHand = Map[Char, Int]()
-  var command = ""
+  var command  = ""
 
   while true do
     // Ask user to input "n" or "r" or "e"

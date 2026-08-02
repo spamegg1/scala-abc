@@ -215,8 +215,8 @@ def splitUp(numbers: List[Int]): (List[Int], List[Int]) =
   if numbers.isEmpty then (Nil, Nil)
   else
     val listPair = splitUp(numbers.tail)
-    val pos = listPair._1
-    val neg = listPair._2
+    val pos      = listPair._1
+    val neg      = listPair._2
     if numbers.head < 0 then (pos, (numbers.head) :: neg)
     else ((numbers.head) :: pos, neg)
 
@@ -230,8 +230,8 @@ def mySplitAt(numbers: List[Int], threshold: Int): (List[Int], List[Int]) =
   if numbers.isEmpty then (Nil, Nil)
   else
     val listPair = mySplitAt((numbers.tail), threshold)
-    val bigger = listPair._1
-    val smaller = listPair._2
+    val bigger   = listPair._1
+    val smaller  = listPair._2
     if numbers.head < threshold then (bigger, (numbers.head) :: smaller)
     else ((numbers.head) :: bigger, smaller)
 
@@ -281,8 +281,8 @@ are less than all the numbers in the other.)
 def qsort(numbers: List[Int]): List[Int] =
   if numbers.isEmpty then Nil
   else
-    val lists = mySplitAt(numbers.tail, numbers.head)
-    val bigger = lists._1
+    val lists   = mySplitAt(numbers.tail, numbers.head)
+    val bigger  = lists._1
     val smaller = lists._2
     qsort(smaller) ++ (numbers.head :: qsort(bigger))
     /* sortedMerge(qsort smaller, (numbers.head) :: qsort bigger) also works */
@@ -298,8 +298,8 @@ def divide(numbers: List[Int]): (List[Int], List[Int]) =
   if numbers.isEmpty then (Nil, Nil)
   else if numbers.tail.isEmpty then (numbers, Nil)
   else
-    val lists = divide(numbers.tail.tail)
-    val firsts = lists._1
+    val lists   = divide(numbers.tail.tail)
+    val firsts  = lists._1
     val seconds = lists._2
     (numbers.head :: firsts, numbers.tail.head :: seconds)
 
@@ -315,8 +315,8 @@ def notSoQuickSort(numbers: List[Int]): List[Int] =
   if numbers.isEmpty then Nil
   else if numbers.tail.isEmpty then numbers
   else
-    val lists = divide(numbers)
-    val firsts = lists._1
+    val lists   = divide(numbers)
+    val firsts  = lists._1
     val seconds = lists._2
     sortedMerge(notSoQuickSort(firsts), notSoQuickSort(seconds))
 
@@ -334,9 +334,9 @@ def fullDivide(pair: (Int, Int)): (Int, Int) =
   if pair._2 % pair._1 != 0 then (0, pair._2)
   else
     val quotient = pair._2 / pair._1
-    val rest = fullDivide(pair._1, quotient)
-    val power = rest._1
-    val divisor = rest._2
+    val rest     = fullDivide(pair._1, quotient)
+    val power    = rest._1
+    val divisor  = rest._2
     (1 + power, divisor)
 
 /* 23.
@@ -363,9 +363,9 @@ def factorizeHelper(current: Int, divisor: Int): List[(Int, Int)] =
       This is computationally advantageous only for really large primes */
   if realDiv > math.sqrt(realCur) then List((current, 1))
   else
-    val factors = fullDivide(divisor, current)
+    val factors  = fullDivide(divisor, current)
     val quotient = factors._2
-    val power = factors._1
+    val power    = factors._1
     if quotient == 1 then List((divisor, power))
     else if power == 0 then factorizeHelper(quotient, divisor + 1)
     else (divisor, power) :: factorizeHelper(quotient, divisor + 1)

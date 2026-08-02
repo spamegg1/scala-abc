@@ -8,8 +8,8 @@
 // produces true if some number in the list fits the predicate
 val positive = (x: Int) => x > 0
 val negative = (x: Int) => x < 0
-val even = (x: Int) => x % 2 == 0
-val odd = (x: Int) => x % 2 == 1
+val even     = (x: Int) => x % 2 == 0
+val odd      = (x: Int) => x % 2 == 1
 
 !somePred(positive)(Nil)
 somePred(positive)(List(1, 4, -1, 3))

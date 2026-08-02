@@ -4,7 +4,7 @@
 // For example, if s = 'azcbobobegghakl', your program should print:
 // Number of vowels: 5
 val VOWELS = "aeiou"
-val s = "azcbobobegghakl"
+val s      = "azcbobobegghakl"
 
 var vowels = 0
 for letter <- s do if VOWELS contains letter then vowels += 1

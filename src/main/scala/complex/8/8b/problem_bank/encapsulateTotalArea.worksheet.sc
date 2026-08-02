@@ -71,6 +71,6 @@ def totalArea(directory: Directory): Double =
   def totalDir(dir: Directory): Double =
     totalDirList(dir.subdirs) + totalImgList(dir.images)
   def totalDirList(dirList: List[Directory]): Double = dirList.map(totalDir).sum
-  def totalImgList(imgList: List[Image]): Double = imgList.map(_.area).sum
+  def totalImgList(imgList: List[Image]): Double     = imgList.map(_.area).sum
 
   totalDir(directory)

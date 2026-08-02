@@ -17,11 +17,11 @@ import doodle.image.syntax.all.*
 
 // Display the current mouse position, at the mouse position.
 // Constants:
-val WIDTH = 400
-val HEIGHT = 400
-val TEXTSIZE = 40
+val WIDTH     = 400
+val HEIGHT    = 400
+val TEXTSIZE  = 40
 val TEXTCOLOR = black
-val FRAME = Frame.default
+val FRAME     = Frame.default
   .withSize(WIDTH, HEIGHT)
   .withBackground(white)
   .withCenterAtOrigin
@@ -29,9 +29,9 @@ val FRAME = Frame.default
 // Data definitions:
 // Position is Point(x, y)
 // interp. position of mouse in pixels
-val ORIGIN = Point(0, 0) // origin
-val p1 = Point(10, 20)
-val p2 = Point(WIDTH / 2, HEIGHT / 2) // top right
+val ORIGIN = Point(0, 0)                  // origin
+val p1     = Point(10, 20)
+val p2     = Point(WIDTH / 2, HEIGHT / 2) // top right
 
 def fnForPoint(point: Point) = ???
 // ???(point.x, point.y)
@@ -46,7 +46,7 @@ def fnForPoint(point: Point) = ???
 def main(point: Point): Unit =
   Reactor
     .init[Point](point)
-    .withRender(renderPoint) // Point -> Image
+    .withRender(renderPoint)    // Point -> Image
     .withOnMouseMove(movePoint) // Point Point -> Point
     .animateWithFrame(FRAME)
 

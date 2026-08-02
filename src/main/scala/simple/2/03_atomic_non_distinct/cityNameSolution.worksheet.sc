@@ -17,4 +17,3 @@ val cityName2: CityName = "Vancouver"
 // Template rules used:              For the first part of the course
 //   - atomic non-distinct: String     we want you to list the template
 //                                   rules used after each template.
-

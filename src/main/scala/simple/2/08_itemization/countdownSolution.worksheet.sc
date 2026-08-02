@@ -30,7 +30,7 @@ import Countdown.*
 
 val countdown1 = NotYetStarted
 val countdown2 = SecondsLeft(10) // just started running
-val countdown3 = SecondsLeft(1) // almost over
+val countdown3 = SecondsLeft(1)  // almost over
 val countdown4 = Complete
 // val wrong = SecondsLeft(11) // IllegalArgumentException
 

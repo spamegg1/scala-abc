@@ -1,6 +1,6 @@
 val cube = -729
 
-var best = 0
+var best  = 0
 var guess = 0
 val bound = math.abs(cube)
 

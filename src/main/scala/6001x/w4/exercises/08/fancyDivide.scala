@@ -7,7 +7,7 @@ def fancyDivide1(numbers: Array[Int], index: Int) =
     for i <- 0 until numbers.length do numbers(i) /= denom
   catch
     case _: IndexOutOfBoundsException => println("fancyDivide1: -1")
-    case _ => println("fancyDivide1: 1")
+    case _                            => println("fancyDivide1: 1")
   finally println("fancyDivide1: 0")
 
 def fancyDivide2(numbers: Array[Int], index: Int): Unit =
@@ -16,8 +16,8 @@ def fancyDivide2(numbers: Array[Int], index: Int): Unit =
     for i <- 0 until numbers.length do numbers(i) /= denom
   catch
     case _: IndexOutOfBoundsException => fancyDivide2(numbers, numbers.length - 1)
-    case _: ArithmeticException => println("fancyDivide2: -2")
-    case _ => println("fancyDivide2: 1")
+    case _: ArithmeticException       => println("fancyDivide2: -2")
+    case _                            => println("fancyDivide2: 1")
   finally println("fancyDivide2: 0")
 
 def fancyDivide3(numbers: Array[Int], index: Int): Unit =
@@ -27,15 +27,13 @@ def fancyDivide3(numbers: Array[Int], index: Int): Unit =
       for i <- 0 until numbers.length do numbers(i) /= denom
     catch
       case _: IndexOutOfBoundsException => fancyDivide3(numbers, numbers.length - 1)
-      case _ => println("fancyDivide3: 1")
+      case _                            => println("fancyDivide3: 1")
     finally println("fancyDivide3: 0")
-  catch
-    case _: ArithmeticException => println("fancyDivide3: -2")
+  catch case _: ArithmeticException => println("fancyDivide3: -2")
 
 def fancyDivide4(numbers: Array[Int], index: Int): Unit =
   try
-    try
-      throw new Exception("0")
+    try throw new Exception("0")
     finally
       val denom = numbers(index)
       for i <- 0 until numbers.length do numbers(i) /= denom

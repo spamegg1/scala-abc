@@ -2,7 +2,7 @@ val EPSILON = 0.00000001
 
 def bisectionCubeRoot(cube: Double) =
   // Approximates squareroot of positive input within epsilon accuracy.
-  var left = 0.0
+  var left  = 0.0
   var right = 0.0
 
   if cube >= 0 then
@@ -13,7 +13,7 @@ def bisectionCubeRoot(cube: Double) =
     right = 0
 
   var guess = (right + left) / 2
-  var diff = math.pow(guess, 3) - cube
+  var diff  = math.pow(guess, 3) - cube
 
   while math.abs(diff) >= EPSILON do
     if diff >= 0 then right = guess else left = guess

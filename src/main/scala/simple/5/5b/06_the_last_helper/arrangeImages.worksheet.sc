@@ -57,7 +57,7 @@ val img3 = Image.rectangle(300, 400).fillColor(blue)
 // interp. An arbitrary number of images
 val imgList1 = List[Image]()
 val imgList2 = List(img3, img1, img2)
-val sorted = List(img1, img2, img3)
+val sorted   = List(img1, img2, img3)
 
 def fnForImgList(imgList: List[Image]): AnyVal = imgList match
   case head :: next => ??? // head, fnForImgList(next)

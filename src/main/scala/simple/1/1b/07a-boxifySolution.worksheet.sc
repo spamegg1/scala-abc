@@ -6,7 +6,6 @@ import doodle.language.Basic
 import doodle.image.Image
 import doodle.algebra.Size
 
-
 // PROBLEM:
 // Use the How to Design Functions (HtDF) recipe to design a function that
 // consumes an image, and appears to put a box around it. Note that you can do
@@ -36,7 +35,7 @@ import doodle.algebra.Size
 // solution
 // def boxify(i: Image): Image = ???
 
-val redCircle = Picture.circle(100).strokeColor(Color.red)
+val redCircle     = Picture.circle(100).strokeColor(Color.red)
 val twoRedCircles = redCircle.beside(redCircle)
 val sixRedCircles = twoRedCircles above twoRedCircles above twoRedCircles
 

@@ -8,7 +8,7 @@ class Message(text: String):
     * (list, determined using helper function loadWords
     */
   val messageText = text
-  val validWords = loadWords(WORDLISTFILENAME)
+  val validWords  = loadWords(WORDLISTFILENAME)
 
   // DO NOT MODIFY THIS METHOD
   def getMessageText =
@@ -55,8 +55,8 @@ class PlaintextMessage(text: String, shift: Int) extends Message(text):
     * built using shift) self.messageTextEncrypted (string, created using shift) Hint:
     * consider using the parent class constructor so less code is repeated
     */
-  var thisShift = shift
-  var encryptingDict = buildShiftDict(shift)
+  var thisShift            = shift
+  var encryptingDict       = buildShiftDict(shift)
   var messageTextEncrypted = applyShift(shift)
 
   def getShift =
@@ -103,13 +103,13 @@ class CiphertextMessage(text: String) extends Message(text):
       * shift value used to decrypt the message and the decrypted message text using that
       * shift value
       */
-    val words = getValidWords
-    var bestShiftValue = 0
+    val words                = getValidWords
+    var bestShiftValue       = 0
     var decryptedMessageText = ""
-    var bestCount = 0
+    var bestCount            = 0
 
     for shift <- 0 until 26 do
-      val shiftedText = applyShift(shift)
+      val shiftedText    = applyShift(shift)
       val validWordCount =
         shiftedText
           .split(" ")

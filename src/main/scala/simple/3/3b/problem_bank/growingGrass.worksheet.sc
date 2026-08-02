@@ -31,18 +31,18 @@ import doodle.image.syntax.all.*
 
 // Growing and replanting grass
 // Constants:
-val WIDTH = 600
-val HEIGHT = 400
-val GRASSCOLOR = green
-val GRASSWIDTH = 10
-val GRASSY = -HEIGHT / 2
-val SPACING = 10
-val SUNCENTER = Image.circle(50).fillColor(yellow)
-val SUNSTAR = Image.star(20, 30, 45).fillColor(orange)
-val SUN = SUNCENTER on SUNSTAR at Point(-WIDTH / 2 + 50, HEIGHT / 2 - 50)
-val TICKRATE = FiniteDuration(100, "milliseconds")
+val WIDTH       = 600
+val HEIGHT      = 400
+val GRASSCOLOR  = green
+val GRASSWIDTH  = 10
+val GRASSY      = -HEIGHT / 2
+val SPACING     = 10
+val SUNCENTER   = Image.circle(50).fillColor(yellow)
+val SUNSTAR     = Image.star(20, 30, 45).fillColor(orange)
+val SUN         = SUNCENTER on SUNSTAR at Point(-WIDTH / 2 + 50, HEIGHT / 2 - 50)
+val TICKRATE    = FiniteDuration(100, "milliseconds")
 val GROWTHSPEED = 50
-val FRAME = Frame.default
+val FRAME       = Frame.default
   .withSize(WIDTH, HEIGHT)
   .withBackground(skyBlue)
   .withCenterAtOrigin
@@ -71,8 +71,8 @@ def fnForGrass(grass: Grass) = ???
 def main(grass: Grass): Unit =
   Reactor
     .init[Grass](grass)
-    .withOnTick(growGrass) // grass -> grass
-    .withRender(renderGrass) // grass -> Image
+    .withOnTick(growGrass)      // grass -> grass
+    .withRender(renderGrass)    // grass -> Image
     .withOnMouseClick(cutGrass) // Point grass -> grass
     .withTickRate(TICKRATE)
     .animateWithFrame(FRAME)

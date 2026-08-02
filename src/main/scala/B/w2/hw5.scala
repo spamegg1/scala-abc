@@ -37,7 +37,7 @@ object MUPL:
   def toScalaList(lst: MUPL): List[MUPL] = lst match
     case Aunit         => Nil
     case Apair(e1, e2) => e1 :: toScalaList(e2)
-    case _ =>
+    case _             =>
       throw new IllegalArgumentException(
         "${lst} is not Aunit or Apair, can't be a MUPL list"
       )
@@ -51,11 +51,11 @@ object MUPL:
   def evalUnderEnv(exp: MUPL, env: Map[String, MUPL]): MUPL = exp match
     case Fun(_, _, _) => Closure(env, exp)
     case Var(varName) => envLookup(env, varName)
-    case Add(e1, e2) =>
+    case Add(e1, e2)  =>
       val (v1, v2) = (evalUnderEnv(e1, env), evalUnderEnv(e2, env))
       (v1, v2) match
         case (Integer(i1), Integer(i2)) => Integer(i1 + i2)
-        case _ =>
+        case _                          =>
           throw new IllegalArgumentException("MUPL addition applied to non-number")
     case IfGreater(e1, e2, e3, e4) =>
       val (v1, v2) = (evalUnderEnv(e1, env), evalUnderEnv(e2, env))
@@ -65,11 +65,11 @@ object MUPL:
         case _ =>
           throw new IllegalArgumentException("MUPL IfGreater applied to non-number")
     case Mlet(varName, e, body) =>
-      val v = evalUnderEnv(e, env)
+      val v      = evalUnderEnv(e, env)
       val newEnv = env + (varName -> v)
       evalUnderEnv(body, newEnv)
     case Apair(e1, e2) => Apair(evalUnderEnv(e1, env), evalUnderEnv(e2, env))
-    case First(e) =>
+    case First(e)      =>
       evalUnderEnv(e, env) match
         case Apair(e1, e2) => e1
         case _ => throw new IllegalArgumentException("MUPL First applied to non-pair")
@@ -85,7 +85,7 @@ object MUPL:
       val (closure, argument) = (evalUnderEnv(cl, env), evalUnderEnv(ar, env))
       closure match
         case Closure(env1, Fun(nameOpt, arg, body)) =>
-          val env2 = env1 + (arg -> argument)
+          val env2   = env1 + (arg -> argument)
           val newEnv = nameOpt match
             case Some(funName) => env2 + (funName -> closure)
             case None          => env2

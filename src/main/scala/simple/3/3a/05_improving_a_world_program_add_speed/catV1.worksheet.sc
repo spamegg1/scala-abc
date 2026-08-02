@@ -61,7 +61,7 @@ val octoMouth = octoNose
 //     octo-mouth)
 //    octo-face-bg))
 val eyesNoseMouth = octoEyes above octoNose above octoMouth
-val octoFace = eyesNoseMouth on octoFaceBg
+val octoFace      = eyesNoseMouth on octoFaceBg
 // (define octo-face-head
 //   (overlay/align
 //    "middle" "bottom"
@@ -76,22 +76,22 @@ val octoFaceHead = octoFace above octoHead
 val octoCat = octoEars above octoFaceHead
 
 // A cat that walks from left to right across the screen.
-val ear = Triangle(40, 40).fillColor(brown)
-val ears = ear beside ear
-val eye = Circle(20).fillColor(lightBlue)
-val eyes = eye beside eye
-val nose = Triangle(10, 20).fillColor(black)
+val ear   = Triangle(40, 40).fillColor(brown)
+val ears  = ear beside ear
+val eye   = Circle(20).fillColor(lightBlue)
+val eyes  = eye beside eye
+val nose  = Triangle(10, 20).fillColor(black)
 val mouth = Rectangle(30, 10).fillColor(white)
-val face = eyes above nose above mouth
-val head = Circle(100).fillColor(brown)
-val CAT = ears above (face on head)
+val face  = eyes above nose above mouth
+val head  = Circle(100).fillColor(brown)
+val CAT   = ears above (face on head)
 
 // Constants:
-val WIDTH = 800
-val HEIGHT = 600
+val WIDTH      = 800
+val HEIGHT     = 600
 val HORIZONTAL = 0
-val SPEED = 10 // number of pixels per second
-val FRAME = Frame.default
+val SPEED      = 10 // number of pixels per second
+val FRAME      = Frame.default
   .withSize(WIDTH, HEIGHT)
   .withBackground(white)
   .withCenterAtOrigin

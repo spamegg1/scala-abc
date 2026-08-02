@@ -25,7 +25,6 @@ import math.{pow, sqrt}
 // (define (distance x1 y1 x2 y2)
 //   (... x1 y1 x2 y2))
 
-
 // Number Number Number Number -> Number
 // produce cartesian distance between (x1, y1) and (x2, y2)
 distance(3, 0, 0, 4) == 5.0

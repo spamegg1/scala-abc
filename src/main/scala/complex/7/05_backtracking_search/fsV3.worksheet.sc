@@ -14,9 +14,9 @@ import Element.*
 val file1 = File("file1", 1)
 val file2 = File("file2", 2)
 val file3 = File("file3", 3)
-val dir1 = Directory("dir1", List(file1, file2))
-val dir2 = Directory("dir2", List(file3))
-val dir3 = Directory("dir3", List(dir1, dir2))
+val dir1  = Directory("dir1", List(file1, file2))
+val dir2  = Directory("dir2", List(file3))
+val dir3  = Directory("dir3", List(dir1, dir2))
 
 def fnForElement(element: Element) = element match
   case File(name, data)         => ??? // name, data
@@ -96,11 +96,9 @@ namesElement(dir3) == List("dir3", "dir1", "file1", "file2", "dir2", "file3")
 
 // Another approach: using foldLeft again
 def namesElement(element: Element): List[String] = element match
-  case File(name, data) => List(name)
+  case File(name, data)         => List(name)
   case Directory(name, subdirs) =>
-    subdirs.foldLeft(List(name))((list, element) =>
-      list ::: namesElement(element)
-    )
+    subdirs.foldLeft(List(name))((list, element) => list ::: namesElement(element))
 
 // PROBLEM
 // Design a function that consumes String and Element and looks

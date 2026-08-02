@@ -10,13 +10,13 @@
 case class SeatNumber(number: Int):
   require(1 <= number && number <= 32)
 
-val seatNumber1 = SeatNumber( 1) // aisle
+val seatNumber1 = SeatNumber(1)  // aisle
 val seatNumber2 = SeatNumber(12) // middle
 val seatNumber3 = SeatNumber(32) // aisle
 
 // template
 def fnForSeatNumber(seatNumber: SeatNumber) = ???
-  // seatNumber.number ???
+// seatNumber.number ???
 
 // Template rules used:
 //  - atomic non-distinct: Natural[1, 32]

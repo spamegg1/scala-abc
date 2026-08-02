@@ -3,7 +3,6 @@
 // consumes a letter grade and produces the next highest letter grade.
 // Call your function bump-up.
 
-
 // Data definitions:
 
 // LetterGrade is one of:
@@ -28,7 +27,6 @@ def fnForLetterGrade(letterGrade: LetterGrade) = letterGrade match
 //  - atomic distinct: "A"
 //  - atomic distinct: "B"
 //  - atomic distinct: "C"
-
 
 // Functions:
 

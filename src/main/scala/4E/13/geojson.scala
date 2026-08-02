@@ -57,18 +57,18 @@ package py4e
 @main
 def geojson =
   val apiKey = 42
-  val loc = "Stanford"
-  val url = uri"http://py4e-data.dr-chuck.net/json?address=${loc}&key=${apiKey}"
+  val loc    = "Stanford"
+  val url    = uri"http://py4e-data.dr-chuck.net/json?address=${loc}&key=${apiKey}"
 
-  val client = DefaultSyncBackend()
-  val request = basicRequest.get(url)
+  val client   = DefaultSyncBackend()
+  val request  = basicRequest.get(url)
   val response = client.send(request)
-  val body = response.body.getOrElse("")
+  val body     = response.body.getOrElse("")
 
-  val jsObject = body.parseJson.asJsObject
-  val mapJsVal = jsObject.fields
+  val jsObject   = body.parseJson.asJsObject
+  val mapJsVal   = jsObject.fields
   val arrayJsObj = mapJsVal("results").convertTo[Array[JsObject]]
-  val firstRes = arrayJsObj(0).asJsObject.fields
+  val firstRes   = arrayJsObj(0).asJsObject.fields
 
   println(firstRes("place_id").toString)
 

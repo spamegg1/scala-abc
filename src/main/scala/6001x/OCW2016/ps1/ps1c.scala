@@ -78,7 +78,7 @@ def optimalSavingRate(
     println("It is not possible to pay the down payment in three years.")
   else
     val (left, right, portion, steps) = (0, 10000, 5000, 1)
-    val (portionRes, stepsRes) = bisearch(
+    val (portionRes, stepsRes)        = bisearch(
       salary,
       investRate,
       semiRaise,
@@ -131,10 +131,10 @@ def testC(investRate: Double, semiRaise: Double, downPay: Double): Unit =
 @main
 def ps1c =
   // Constants given to us by the problem
-  val SEMIRAISE = 0.07
+  val SEMIRAISE  = 0.07
   val INVESTRATE = 0.04
   val TOTAL_COST = 1000000
-  val DOWNPAY = TOTAL_COST * 0.25
+  val DOWNPAY    = TOTAL_COST * 0.25
   testC(INVESTRATE, SEMIRAISE, DOWNPAY)
   // SALARY = readLine("Enter the starting salary: ").toDouble
   // optimalSavingRate(SALARY, INVESTRATE, SEMIRAISE, DOWNPAY)

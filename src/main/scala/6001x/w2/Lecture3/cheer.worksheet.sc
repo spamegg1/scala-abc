@@ -1,4 +1,4 @@
-val word = "scala"
+val word  = "scala"
 val times = 5
 
 val letters = "aefhilmnorsxAEFHILMNORSX"

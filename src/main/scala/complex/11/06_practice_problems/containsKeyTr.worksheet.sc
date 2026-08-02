@@ -9,7 +9,7 @@ enum BinaryTree:
 import BinaryTree.*
 // Interp. A binary tree, each node has a key, value and 2 children
 
-val leaf = Leaf
+val leaf  = Leaf
 val node4 = Node(4, "d", leaf, leaf)
 val node6 = Node(6, "f", leaf, leaf)
 val node7 = Node(7, "g", leaf, leaf)
@@ -26,7 +26,7 @@ containsNoTr(7, node1)
 // from the backtracking to visit unvisited right branches of the tree. An
 // accumulator can be used to keep a list of those branches to visit.
 def containsNoTr(searchKey: Int, bt: BinaryTree): Boolean = bt match
-  case Leaf => false
+  case Leaf                          => false
   case Node(key, value, left, right) =>
     searchKey == key ||
     containsNoTr(searchKey, left) ||
@@ -49,7 +49,7 @@ containsTr(7, node1)
 // helper function. In doing so we rename the original inner function.
 def containsTr(searchKey: Int, bt: BinaryTree): Boolean =
   def helperOne(bin: BinaryTree, toDo: List[BinaryTree]): Boolean = bin match
-    case Leaf => helperList(toDo)
+    case Leaf                          => helperList(toDo)
     case Node(key, value, left, right) =>
       searchKey == key || helperOne(left, right :: toDo)
 
@@ -73,7 +73,7 @@ def containsTr2(searchKey: Int, bt: BinaryTree): Boolean =
         case _    => helper(toDo, Leaf)
     case Node(key, value, left, right) =>
       searchKey == key match
-        case true => true
+        case true  => true
         case false =>
           (left, right) match
             case (Leaf, _) => helper(right, toDo)

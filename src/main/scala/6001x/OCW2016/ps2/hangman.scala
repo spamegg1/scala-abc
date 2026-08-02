@@ -17,12 +17,12 @@ def hangman(secretWord: Word) =
   // * After each guess, you should display to the user the
   //   partially guessed word so far.
   // Follows the other limitations detailed in the problem write-up.
-  var guessesLeft = 6
-  var warningsLeft = 3
-  var score = 0
-  var wonGame = false
+  var guessesLeft    = 6
+  var warningsLeft   = 3
+  var score          = 0
+  var wonGame        = false
   var lettersGuessed = List[Char]()
-  var guessesSoFar = ""
+  var guessesSoFar   = ""
 
   println("Welcome to the game Hangman!")
   println(s"I am thinking of a word that is ${secretWord.length} letters long.")
@@ -84,8 +84,8 @@ def matchWithGaps(myWord: Word, otherWord: Word) =
   //     corresponding letters of otherWord, or the letter is the special symbol
   //     _ , and myWord and otherWord are of the same length;
   //     False otherwise:
-  val word = myWord.split(" ").mkString
-  val checkLength = word.length == otherWord.length
+  val word         = myWord.split(" ").mkString
+  val checkLength  = word.length == otherWord.length
   val checkLetters = word
     .zip(otherWord)
     .forall((c1, c2) => c1 == c2 || c1 == '_' && !word.contains(c2))
@@ -119,12 +119,12 @@ def hangmanWithHints(secretWord: Word, wordList: List[Word]) =
   // * If the guess is the symbol *, println out all words in wordList that
   //   matches the current guessed word.
   // Follows the other limitations detailed in the problem write-up.
-  var guessesLeft = 6
-  var warningsLeft = 3
-  var wonGame = false
-  var score = 0
+  var guessesLeft    = 6
+  var warningsLeft   = 3
+  var wonGame        = false
+  var score          = 0
   var lettersGuessed = List[Char]()
-  var guessesSoFar = getGuessedWord(secretWord, lettersGuessed)
+  var guessesSoFar   = getGuessedWord(secretWord, lettersGuessed)
 
   println("Welcome to the game Hangman!")
   println(s"I am thinking of a word that is ${secretWord.length} letters long.")
@@ -195,7 +195,7 @@ def hangmanTests =
 @main
 def playHangman =
   hangmanTests
-  val wordList = loadWords(WORDLISTFILENAME)
+  val wordList   = loadWords(WORDLISTFILENAME)
   val secretWord = chooseWord(wordList)
   // hangman(secretWord)
   hangmanWithHints(secretWord, wordList)

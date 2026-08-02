@@ -7,11 +7,11 @@ import java.time.{LocalDate, Period} // need to figure this out!
 
 class Person(name: String):
   var birthday: Option[LocalDate] = None
-  val lastName =
+  val lastName                    =
     val fullName = name.split(' ')
     if fullName.length == 1 then "" else fullName(1)
 
-  def getName = name
+  def getName     = name
   def getLastName = lastName
 
   def setBirthday(month: Int, day: Int, year: Int) =

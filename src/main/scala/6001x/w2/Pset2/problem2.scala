@@ -18,7 +18,7 @@ def pset2Problem2 =
   // Lowest Payment: 310
 
   // Test Case 2:
-  var balance = 4773.0
+  var balance            = 4773.0
   val annualInterestRate = 0.2
   // Result Your Code Should Generate:
   // -------------------
@@ -34,11 +34,11 @@ def pset2Problem2 =
   // Bisection search to find the minimum
   // monthly payment that pays off balance
   val monthlyInterestRate = annualInterestRate / 12.0
-  var left = 0.0
-  var right = balance
-  var monthlyPayment = (left + right) / 2
-  val epsilon = 1
-  var attempt = balance
+  var left                = 0.0
+  var right               = balance
+  var monthlyPayment      = (left + right) / 2
+  val epsilon             = 1
+  var attempt             = balance
 
   boundary:
     while math.abs(attempt) >= epsilon do

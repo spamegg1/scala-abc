@@ -43,8 +43,8 @@ def fnForDinnerOrder(order: DinnerOrder) = order match
 // DinnerOrder -> String
 // produce message to describe what passenger ordered
 dinnerOrderToMsg(NoDinner) == "The passenger did not order dinner."
-dinnerOrderToMsg(Chicken)  == "The passenger ordered chicken."
-dinnerOrderToMsg(Pasta)    == "The passenger ordered pasta."
+dinnerOrderToMsg(Chicken) == "The passenger ordered chicken."
+dinnerOrderToMsg(Pasta) == "The passenger ordered pasta."
 
 // def dinnerOrderToMsg(order: DinnerOrder): String = "" // stub
 

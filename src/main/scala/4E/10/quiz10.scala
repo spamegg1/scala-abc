@@ -26,8 +26,8 @@ package py4e
 @main
 def quiz102 =
   val fileName = "mbox-short.txt"
-  val file = fromResource(fileName)
-  val hours = MMap[String, Int]()
+  val file     = fromResource(fileName)
+  val hours    = MMap[String, Int]()
 
   Using.resource(fromResource(fileName)): file =>
     for

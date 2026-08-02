@@ -25,14 +25,14 @@ import concurrent.duration.FiniteDuration
 // A simple countdown animation.
 
 // Constants:
-val WIDTH = 50
-val HEIGHT = 50
-val CTRX = WIDTH / 2
-val CTRY = HEIGHT / 2
-val TEXTSIZE = 24
+val WIDTH     = 50
+val HEIGHT    = 50
+val CTRX      = WIDTH / 2
+val CTRY      = HEIGHT / 2
+val TEXTSIZE  = 24
 val TEXTCOLOR = black
-val TICKRATE = FiniteDuration(1, "seconds")
-val FRAME = Frame.default
+val TICKRATE  = FiniteDuration(1, "seconds")
+val FRAME     = Frame.default
   .withSize(WIDTH, HEIGHT)
   .withBackground(white)
   .withCenterAtOrigin
@@ -44,8 +44,8 @@ case class Countdown(n: Int):
   require(0 <= n && n <= 10)
 
 val CD1 = Countdown(10) // countdown hasn't started
-val CD2 = Countdown(5) // countdown in progress
-val CD3 = Countdown(0) // countdown finished
+val CD2 = Countdown(5)  // countdown in progress
+val CD3 = Countdown(0)  // countdown finished
 
 // Template
 def fnForCountdown(cd: Countdown) = cd.n match

@@ -6,9 +6,9 @@ package lec10
 class Grades:
   type Grade = Double
   // A mapping from students to a list of GradStudentes
-  var students = List[Student]() // list of Student objects
-  val grades = MMap[Int, List[Grade]]() // maps idNum -> list of grades
-  var isSorted = true // true if students is sorted
+  var students = List[Student]()          // list of Student objects
+  val grades   = MMap[Int, List[Grade]]() // maps idNum -> list of grades
+  var isSorted = true                     // true if students is sorted
 
   def addStudent(student: Student) =
     // Assumes: student is of type Student
@@ -47,7 +47,7 @@ def gradeReport(course: Grades) =
   var report = List[String]()
 
   for s <- course.allStudents do
-    var tot = 0.0
+    var tot       = 0.0
     var numGrades = 0
 
     for g <- course.getGrades(s) do
@@ -68,8 +68,8 @@ def gradesExample =
   val UGStudent2 = UGStudent("Ben Affleck", 2019)
   val UGStudent3 = UGStudent("Drew Houston", 2017)
   val UGStudent4 = UGStudent("Mark Zuckerberg", 2017)
-  val g1 = GradStudent("Bill Gates")
-  val g2 = GradStudent("Steve Wozniak")
+  val g1         = GradStudent("Bill Gates")
+  val g2         = GradStudent("Steve Wozniak")
 
   val six00 = Grades()
   six00.addStudent(g1)

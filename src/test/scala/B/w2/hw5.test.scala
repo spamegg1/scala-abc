@@ -38,35 +38,35 @@ class HW5Suite extends munit.FunSuite:
     assertEquals(obtained, expected)
 
   test("02. evalUnderEnv: Var"):
-    val varName = Var("x")
-    val env = Map[String, MUPL]("x" -> Integer(5))
+    val varName  = Var("x")
+    val env      = Map[String, MUPL]("x" -> Integer(5))
     val obtained = evalUnderEnv(varName, env)
     val expected = Integer(5)
     assertEquals(obtained, expected)
 
   test("03. evalUnderEnv: Add"):
-    val env = Map[String, MUPL]("x" -> Integer(5))
-    val add = Add(Integer(3), Var("x"))
+    val env      = Map[String, MUPL]("x" -> Integer(5))
+    val add      = Add(Integer(3), Var("x"))
     val obtained = evalUnderEnv(add, env)
     val expected = Integer(8)
     assertEquals(obtained, expected)
 
   test("04. evalUnderEnv: IfGreater"):
-    val env = Map[String, MUPL]("x" -> Integer(5), "y" -> Aunit)
-    val ifg = IfGreater(Integer(3), Var("x"), Var("x"), Var("y"))
+    val env      = Map[String, MUPL]("x" -> Integer(5), "y" -> Aunit)
+    val ifg      = IfGreater(Integer(3), Var("x"), Var("x"), Var("y"))
     val obtained = evalUnderEnv(ifg, env)
     val expected = Aunit
     assertEquals(obtained, expected)
 
   test("05. evalUnderEnv: Mlet"):
-    val mlet = Mlet("x", Integer(1), Add(Integer(5), Var("x")))
+    val mlet     = Mlet("x", Integer(1), Add(Integer(5), Var("x")))
     val obtained = evalUnderEnv(mlet, emptyEnv)
     val expected = Integer(6)
     assertEquals(obtained, expected)
 
   test("06. evalUnderEnv: Apair"):
-    val apair = Apair(Add(Integer(1), Var("y")), Add(Integer(3), Var("x")))
-    val env = Map("x" -> Integer(4), "y" -> Integer(2))
+    val apair    = Apair(Add(Integer(1), Var("y")), Add(Integer(3), Var("x")))
+    val env      = Map("x" -> Integer(4), "y" -> Integer(2))
     val obtained = evalUnderEnv(apair, env)
     val expected = Apair(Integer(3), Integer(7))
     assertEquals(obtained, expected)
@@ -75,7 +75,7 @@ class HW5Suite extends munit.FunSuite:
     val first = First(
       Apair(Add(Integer(1), Var("y")), Add(Integer(3), Var("x")))
     )
-    val env = Map("x" -> Integer(4), "y" -> Integer(2))
+    val env      = Map("x" -> Integer(4), "y" -> Integer(2))
     val obtained = evalUnderEnv(first, env)
     val expected = Integer(3)
     assertEquals(obtained, expected)
@@ -84,29 +84,29 @@ class HW5Suite extends munit.FunSuite:
     val second = Second(
       Apair(Add(Integer(1), Var("y")), Add(Integer(3), Var("x")))
     )
-    val env = Map("x" -> Integer(4), "y" -> Integer(2))
+    val env      = Map("x" -> Integer(4), "y" -> Integer(2))
     val obtained = evalUnderEnv(second, env)
     val expected = Integer(7)
     assertEquals(obtained, expected)
 
   test("09. evalUnderEnv: IsAunit"):
-    val env = emptyEnv
-    val isaunit = IsAunit(Closure(env, Fun(None, "x", Aunit)))
+    val env      = emptyEnv
+    val isaunit  = IsAunit(Closure(env, Fun(None, "x", Aunit)))
     val obtained = evalUnderEnv(isaunit, env)
     val expected = Integer(0)
     assertEquals(obtained, expected)
 
   test("10. evalUnderEnv: Call"):
-    val fun = Fun(None, "x", Add(Var("x"), Integer(5)))
-    val cls = Closure(emptyEnv, fun)
-    val arg = Integer(1)
-    val call = Call(cls, arg)
+    val fun      = Fun(None, "x", Add(Var("x"), Integer(5)))
+    val cls      = Closure(emptyEnv, fun)
+    val arg      = Integer(1)
+    val call     = Call(cls, arg)
     val obtained = evalUnderEnv(call, emptyEnv)
     val expected = Integer(6)
     assertEquals(obtained, expected)
 
   test("11. evalUnderEnv: recursive Call"):
-    val call = Call(muplLength, muplList)
+    val call     = Call(muplLength, muplList)
     val obtained = evalUnderEnv(call, emptyEnv)
     val expected = Integer(3)
     assertEquals(obtained, expected)
@@ -136,8 +136,8 @@ class HW5Suite extends munit.FunSuite:
     assertEquals(obtained, expected)
 
   test("17. evalExp: muplMapAddN and toScalaList"):
-    val addSeven = Call(muplMapAddN, Integer(7))
+    val addSeven  = Call(muplMapAddN, Integer(7))
     val addedList = Call(addSeven, muplList)
-    val obtained = toScalaList(evalExp(addedList))
-    val expected = List(Integer(8), Integer(9), Integer(10))
+    val obtained  = toScalaList(evalExp(addedList))
+    val expected  = List(Integer(8), Integer(9), Integer(10))
     assertEquals(obtained, expected)

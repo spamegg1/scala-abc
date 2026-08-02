@@ -18,7 +18,7 @@ package py4e
 @main
 def quiz84 =
   val fileName = "romeo.txt"
-  var words = List[String]()
+  var words    = List[String]()
 
   Using.resource(fromResource(fileName)): file =>
     for

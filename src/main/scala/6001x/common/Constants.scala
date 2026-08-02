@@ -1,22 +1,22 @@
 package curriculum
 package mit6001x
 
-type Word = String
+type Word  = String
 type Words = List[Word]
-type Hand = Map[Char, Int]
+type Hand  = Map[Char, Int]
 
 val WORDLISTFILENAME = "words.txt"
 val WORDGAMEFILENAME = "wordgame.txt"
-val STORYFILENAME = "story.txt"
-val LOWER = "abcdefghijklmnopqrstuvwxyz"
-val UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-val VOWELS = "aeiou"
-val PUNCTUATION = raw"(\p{Punct})"
-val CONSONANTS = "bcdfghjklmnpqrstvwxyz"
-val CONSONANTSUPPER = "BCDFGHJKLMNPQRSTVWXYZ"
-val HANDSIZE = 10
-val VOWELRATIO = 3
-val BONUS = 50
+val STORYFILENAME    = "story.txt"
+val LOWER            = "abcdefghijklmnopqrstuvwxyz"
+val UPPER            = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+val VOWELS           = "aeiou"
+val PUNCTUATION      = raw"(\p{Punct})"
+val CONSONANTS       = "bcdfghjklmnpqrstvwxyz"
+val CONSONANTSUPPER  = "BCDFGHJKLMNPQRSTVWXYZ"
+val HANDSIZE         = 10
+val VOWELRATIO       = 3
+val BONUS            = 50
 
 val SCRABBLE = Map(
   'a' -> 1,

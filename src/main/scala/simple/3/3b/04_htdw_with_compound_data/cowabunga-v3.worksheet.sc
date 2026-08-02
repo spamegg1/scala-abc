@@ -11,12 +11,12 @@ import concurrent.duration.FiniteDuration
 
 // A cow, meandering back and forth across the screen.
 // Constants:
-val WIDTH = 600
-val HEIGHT = 300
-val LCOW = Image.circle(200).fillColor(red)
-val RCOW = Image.circle(200).fillColor(green)
+val WIDTH    = 600
+val HEIGHT   = 300
+val LCOW     = Image.circle(200).fillColor(red)
+val RCOW     = Image.circle(200).fillColor(green)
 val TICKRATE = FiniteDuration(1, "seconds")
-val FRAME = Frame.default
+val FRAME    = Frame.default
   .withSize(WIDTH, HEIGHT)
   .withBackground(white)
   .withCenterAtOrigin
@@ -29,7 +29,7 @@ case class Cow(x: Int, dx: Int):
 //         the x is the center of the cow
 //         x  is in screen coordinates (pixels)
 //         dx is in pixels per tick
-val c1 = Cow(10, 3) // at 10, moving left -> right
+val c1 = Cow(10, 3)  // at 10, moving left -> right
 val c2 = Cow(20, -4) // at 20, moving left <- right
 
 def fnForCow(cow: Cow) = ??? // ???(cow.x, cow.dx)
@@ -45,7 +45,7 @@ def main(cow: Cow): Unit =
     .init[Cow](cow)
     .withOnTick(advanceCow) // Cow -> Cow
     .withTickRate(TICKRATE)
-    .withRender(renderCow) // Cow -> Image
+    .withRender(renderCow)       // Cow -> Image
     .withOnMouseClick(handleKey) // Cow KeyEvent -> Cow
     .animateWithFrame(FRAME)
 

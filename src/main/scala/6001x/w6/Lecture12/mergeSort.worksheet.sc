@@ -5,8 +5,8 @@ def mergeSort[T](L: List[T], compare: (T, T) => Boolean): List[T] =
   if len < 2 then L
   else
     val middle = len / 2
-    val left = mergeSort(L.take(middle), compare)
-    val right = mergeSort(L.drop(middle), compare)
+    val left   = mergeSort(L.take(middle), compare)
+    val right  = mergeSort(L.drop(middle), compare)
     merge(left, right, compare)
 
 def merge[T](left: List[T], right: List[T], compare: (T, T) => Boolean): List[T] =

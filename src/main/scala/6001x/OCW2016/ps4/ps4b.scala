@@ -15,7 +15,7 @@ def ps4b =
   println(s"Actual Output: ${ciphertext.decryptMessage}")
 
   // Example test case (PlaintextMessage)
-  val msg = Message("test")
+  val msg        = Message("test")
   val plaintext2 = PlaintextMessage("hello", 2)
   println("Expect Output: jgnnq")
   println(s"Actual Output: ${plaintext.getMessageTextEncrypted}")

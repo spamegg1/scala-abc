@@ -24,7 +24,7 @@ def hangman(secretWord: String) =
   println("Welcome to the game, hangman!")
   println(s"I am thinking of a word that is ${secretWord.length} letters long.")
 
-  var mistakesMade = 0
+  var mistakesMade   = 0
   var lettersGuessed = List[Char]()
 
   boundary:
@@ -63,6 +63,6 @@ def hangman(secretWord: String) =
 // Load the list of words into the variable wordlist
 // so that it can be accessed from anywhere in the program
 @main def runhangman =
-  val WORDLIST = loadWords(WORDLISTFILENAME)
+  val WORDLIST   = loadWords(WORDLISTFILENAME)
   val SECRETWORD = chooseWord(WORDLIST)
   hangman(SECRETWORD)

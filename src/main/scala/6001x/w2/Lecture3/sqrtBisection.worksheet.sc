@@ -1,10 +1,10 @@
-val x = 25
-val epsilon = 0.01
+val x          = 25
+val epsilon    = 0.01
 var numGuesses = 0
 
-var low = 0.0
+var low  = 0.0
 var high = x.toDouble
-var ans = (high + low) / 2.0
+var ans  = (high + low) / 2.0
 
 while math.abs(math.pow(ans, 2) - x) >= epsilon do
   println(s"low = ${low}  high = ${high}  ans = ${ans}")

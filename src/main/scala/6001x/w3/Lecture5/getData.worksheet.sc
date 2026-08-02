@@ -1,5 +1,5 @@
 def getData(aTuple: List[(Int, String)]) =
-  var nums = List[Int]()
+  var nums  = List[Int]()
   var words = List[String]()
   for tuple <- aTuple do
     nums = tuple._1 :: nums

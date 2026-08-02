@@ -15,7 +15,7 @@ package py4e
 @main
 def quiz94 =
   val fileName = "mbox-short.txt"
-  val senders = MMap[String, Int]()
+  val senders  = MMap[String, Int]()
 
   Using.resource(fromResource(fileName)): file =>
     for
@@ -25,7 +25,7 @@ def quiz94 =
       val sender = line.split(" ")(1)
       senders(sender) = senders.getOrElse(sender, 0) + 1
 
-  var maximum = 0
+  var maximum   = 0
   var topSender = ""
   for
     (sender, count) <- senders

@@ -32,7 +32,6 @@ def fnForDirection(direction: Direction) = direction match
 // - atomic distinct: "E"
 // - atomic distinct: "W"
 
-
 // Functions:
 // Direction -> Direction
 // direction resulting from facing d and turning 90 degrees left

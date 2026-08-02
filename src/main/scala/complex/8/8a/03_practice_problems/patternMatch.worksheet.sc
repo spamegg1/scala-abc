@@ -70,8 +70,8 @@ def patternMatch(patterns: List[Pattern], string: String): Boolean =
     // case (Nil, "")                => true // redundant case!
     // case (Alphabetic :: next, "") => false // redundant case!
     // case (Numeric :: next, "")    => false // redundant case!
-    case (Nil, _) => true
-    case (_, "")  => false // summarizes two cases above
+    case (Nil, _)                     => true
+    case (_, "")                      => false // summarizes two cases above
     case (Alphabetic :: next, string) =>
       string(0).isLetter && patternMatch(next, string.drop(1))
     case (Numeric :: next, string) =>

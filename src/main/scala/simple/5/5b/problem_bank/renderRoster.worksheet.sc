@@ -19,7 +19,7 @@ import doodle.image.syntax.all.*
 // helper rules in mind and use helper functions when necessary.
 
 // Constants
-val CELLWIDTH = 200
+val CELLWIDTH  = 200
 val CELLHEIGHT = 30
 
 // Data Definitions
@@ -44,10 +44,9 @@ def fnForPlayer(player: Player) = ??? // player.name, player.team
 val playerList0 = List[Player]()
 val playerList1 = List(player1, player2)
 
-
 def fnForPlayerList(players: List[Player]) = players match
   case head :: next => ??? // fnForPlayer(head), fnForPlayerList(next)
-  case Nil => ???
+  case Nil          => ???
 
 // Functions
 // PROBLEM 1:
@@ -65,7 +64,7 @@ selectPlayers(playerList1, Away) == List(player2)
 def template(players: List[Player], team: Team): List[Player] =
   players match
     case head :: next => ??? // team, fnForPlayer(head), selectPlayers(next, team)
-    case Nil => ???
+    case Nil          => ???
 
 def selectPlayers(players: List[Player], team: Team): List[Player] =
   players match

@@ -3,7 +3,7 @@ package mit6001x
 
 @main
 def readingData =
-  val data = ArrayBuffer[String]()
+  val data     = ArrayBuffer[String]()
   val fileName = "a.txt" // cannot be found
   // val fileName = "b.txt" // cannot be opened due to permissions
   // val fileName = "romeo.txt" // OK

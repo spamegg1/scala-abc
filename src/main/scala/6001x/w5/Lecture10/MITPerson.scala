@@ -13,4 +13,4 @@ class MITPerson(name: String) extends Person(name) with Ordered[MITPerson]:
 
   // sorting MIT people uses their ID number, not name!
   def compare(other: MITPerson) = getIdNum - other.getIdNum
-  def speak(utterance: String) = s"${name} says: ${utterance}"
+  def speak(utterance: String)  = s"${name} says: ${utterance}"

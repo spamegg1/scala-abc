@@ -46,10 +46,10 @@ import scala.util.Random
 // A world program for running a cantor set
 // The mouse position controls parameters of the fractal.
 // Constants:
-val WIDTH = 400
-val HEIGHT = 600
+val WIDTH     = 400
+val HEIGHT    = 600
 val BARHEIGHT = 20.0
-val SPACING = BARHEIGHT / 2.0
+val SPACING   = BARHEIGHT / 2.0
 
 // Data definitions:
 // In a more elaborate version of the program the world state
@@ -105,9 +105,9 @@ def cantor(depth: Int, width: Double, ratio: Double): Image =
   if depth == 0 then rect
   else
     val centerWidth = width * ratio
-    val sideWidth = (width - centerWidth) / 2.0
-    val center = Image.rectangle(centerWidth, BARHEIGHT).fillColor(blue)
-    val side = cantor(depth - 1, sideWidth, ratio)
+    val sideWidth   = (width - centerWidth) / 2.0
+    val center      = Image.rectangle(centerWidth, BARHEIGHT).fillColor(blue)
+    val side        = cantor(depth - 1, sideWidth, ratio)
     rect
       .above(Image.rectangle(width, SPACING).fillColor(blue))
       .above(side beside center beside side)

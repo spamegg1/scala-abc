@@ -50,8 +50,8 @@ package py4e
 
 @main
 def quiz11 =
-  val sample = "regex_sum_42.txt" // 445833
-  val data = "regex_sum_1129910.txt" // 492327
+  val sample        = "regex_sum_42.txt"      // 445833
+  val data          = "regex_sum_1129910.txt" // 492327
   val numberPattern = "[0-9]+".r
 
   Using.resource(fromResource(data)): file =>

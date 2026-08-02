@@ -19,11 +19,11 @@ import Account.*
 //     id is > all ids in its l(eft)  child
 //     id is < all ids in its r(ight) child
 //     the same id never appears twice in the collection
-val account0 = Leaf
-val account1 = Node(1, "Mr. Rogers", 22.0, Leaf, Leaf)
-val account7 = Node(7, "Mr. Natural", 13.0, Leaf, Leaf)
-val account4 = Node(4, "Mrs. Doubtfire", -3.0, Leaf, account7)
-val account3 = Node(3, "Miss Marple", 600.0, account1, account4)
+val account0  = Leaf
+val account1  = Node(1, "Mr. Rogers", 22.0, Leaf, Leaf)
+val account7  = Node(7, "Mr. Natural", 13.0, Leaf, Leaf)
+val account4  = Node(4, "Mrs. Doubtfire", -3.0, Leaf, account7)
+val account3  = Node(3, "Miss Marple", 600.0, account1, account4)
 val account14 = Node(14, "Mr. Impossible", -9.0, Leaf, Leaf)
 val account27 = Node(27, "Mr. Selatcia", 40.0, account14, Leaf)
 val account50 = Node(50, "Miss 604", 16.0, Leaf, Leaf)
@@ -42,8 +42,8 @@ def fnForAccount(account: Account) = account match
 // to use your abstract function. Remember, the signature and tests should
 // not change from the original functions.
 def join(act1: Account, act2: Account): Account = (act1, act2) match
-  case (_, Leaf) => act1
-  case (Leaf, _) => act2
+  case (_, Leaf)                                          => act1
+  case (Leaf, _)                                          => act2
   case (Node(id1, _, _, _, _), Node(id2, n2, b2, l2, r2)) =>
     id1 compare id2 match
       case -1 => Node(id2, n2, b2, join(act1, l2), r2)
@@ -68,7 +68,7 @@ removeAccounts(isProf)(Node(0, "Prof. Longhair", 0, Leaf, Leaf)) == Leaf
 // <template from Accounts>
 def removeAccounts(pred: Account => Boolean)(account: Account): Account =
   account match
-    case Leaf => Leaf
+    case Leaf                                 => Leaf
     case Node(id, name, balance, left, right) =>
       if pred(account)
       then join(removeAccounts(pred)(left), removeAccounts(pred)(right))
@@ -86,7 +86,7 @@ def removeAccounts(pred: Account => Boolean)(account: Account): Account =
 // Remove all professors' accounts.
 // <template as call to abstract fold function: remove-acts>
 def removeDebtors = removeAccounts(isDebtor)
-def removeProfs = removeAccounts(isProf)
+def removeProfs   = removeAccounts(isProf)
 
 // PROBLEM 2:
 // Using your new abstract function, design a function that removes from a given
@@ -94,7 +94,7 @@ def removeProfs = removeAccounts(isProf)
 // characters.  Call it remove-odd-characters.
 // Accounts -> Accounts
 // Remove accounts where the holder's name has an odd number of characters
-val daisy = Node(7, "Miss Daisy", 12, Leaf, Leaf)
+val daisy    = Node(7, "Miss Daisy", 12, Leaf, Leaf)
 val robinson = Node(7, "Mrs. Robinson", 12, Leaf, Leaf)
 removeOddLengths(daisy) == daisy
 removeOddLengths(robinson) == Leaf
@@ -118,7 +118,7 @@ def foldForAccount[T](function: (Int, String, Double, T, T) => T)(base: T)(
     account: Account
 ): T =
   account match
-    case Leaf => base
+    case Leaf                                 => base
     case Node(id, name, balance, left, right) =>
       function(
         id,

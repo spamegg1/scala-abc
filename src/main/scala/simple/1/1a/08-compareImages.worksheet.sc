@@ -4,9 +4,8 @@ import doodle.image.Image.Elements.Rectangle
 val img1 = Rectangle(10, 15)
 val img2 = Rectangle(15, 10)
 
-/**
-  * (using .w and .h to access width and height)
-  * write three expressions to determine whether:
+/** (using .w and .h to access width and height) write three expressions to determine
+  * whether:
   */
 
 /*  1) IMAGE1 is taller than IMAGE2 */

@@ -4,7 +4,7 @@ package w2
 
 /* COMMUNITY PROBLEMS FOR WEEK 3 */
 type StudentId = Int
-type Grade = Int /* must be in 0 to 100 range */
+type Grade     = Int /* must be in 0 to 100 range */
 case class FinalGrade(id: StudentId, grade: Option[Grade])
 enum PassFail:
   case Pass, Fail
@@ -22,7 +22,7 @@ def hasPassed(finalGrade: FinalGrade): Boolean =
     case Fail => false
 
 def numberPassed(xs: List[FinalGrade]): Int = xs match
-  case Nil => 0
+  case Nil     => 0
   case x :: xs =>
     if hasPassed(x)
     then 1 + numberPassed(xs)
@@ -30,7 +30,7 @@ def numberPassed(xs: List[FinalGrade]): Int = xs match
 
 def numberMisgraded(grades: List[(PassFail, FinalGrade)]): Int =
   grades match
-    case Nil => 0
+    case Nil           => 0
     case (pf, g) :: gs =>
       if passOrFail(g) == pf
       then numberMisgraded(gs)
@@ -121,8 +121,8 @@ def doesInclude(xs: List[Int], n: Int): Boolean = xs match
 def intersect(ls1: List[Int], ls2: List[Int]): List[Int] =
   def helper(l1: List[Int], l2: List[Int], rsf: List[Int]): List[Int] =
     (l1, l2) match
-      case (Nil, _) => rsf
-      case (_, Nil) => rsf
+      case (Nil, _)      => rsf
+      case (_, Nil)      => rsf
       case (x :: xs, l2) =>
         if doesInclude(l2, x)
         then helper(xs, l2, x :: rsf)
@@ -132,7 +132,7 @@ def intersect(ls1: List[Int], ls2: List[Int]): List[Int] =
 def union(ls1: List[Int], ls2: List[Int]): List[Int] =
   def helper(l1: List[Int], l2: List[Int], rsf: List[Int]): List[Int] =
     l1 match
-      case Nil => rsf
+      case Nil       => rsf
       case (x :: xs) =>
         if doesInclude(l2, x)
         then helper(xs, l2, rsf)
@@ -146,7 +146,7 @@ def range(m: Int, n: Int): List[Int] =
 def filterDuplicate(lst: List[Int]) =
   def helper(ls: List[Int], rsf: List[Int]): List[Int] =
     ls match
-      case Nil => rsf
+      case Nil     => rsf
       case x :: xs =>
         if doesInclude(rsf, x)
         then helper(xs, rsf)
@@ -170,9 +170,9 @@ def toList(mySet: IntSet): List[Int] = mySet match
 
 /* PROBLEM 17 */
 def isEmpty(mySet: IntSet): Boolean = mySet match
-  case Elems(Nil)    => true
-  case Elems(_)      => false
-  case Range(m, n)   => m > n
-  case Union(i1, i2) => isEmpty(i1) && isEmpty(i2)
+  case Elems(Nil)           => true
+  case Elems(_)             => false
+  case Range(m, n)          => m > n
+  case Union(i1, i2)        => isEmpty(i1) && isEmpty(i2)
   case Intersection(i1, i2) =>
     isEmpty(i1) || isEmpty(i2) || intersect(toList(i1), toList(i2)) == Nil

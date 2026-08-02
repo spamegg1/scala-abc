@@ -49,7 +49,7 @@ package py4e
 @main
 def quiz85 =
   val fileName = "mbox-short.txt"
-  var count = 0
+  var count    = 0
 
   Using.resource(fromResource(fileName)): file =>
     for

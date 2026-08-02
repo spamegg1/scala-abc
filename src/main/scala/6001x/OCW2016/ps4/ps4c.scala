@@ -58,15 +58,15 @@ class EncryptedSubMessage(text: String) extends SubMessage(text):
     // Returns: the best decrypted message
     // Hint: use your function from Part 4A
 
-    val perms = getPermutations(VOWELS)
-    var maxWords = 0
+    val perms            = getPermutations(VOWELS)
+    var maxWords         = 0
     var decryptedMessage = ""
 
     for perm <- perms do
-      val transposeDict = buildTransposeDict(perm)
+      val transposeDict     = buildTransposeDict(perm)
       val transposedMessage = applyTranspose(transposeDict)
-      val words = transposedMessage.split(" ")
-      var wordCount = 0
+      val words             = transposedMessage.split(" ")
+      var wordCount         = 0
 
       for word <- words do if isWord(validWords, word) then wordCount += 1
 
@@ -79,9 +79,9 @@ class EncryptedSubMessage(text: String) extends SubMessage(text):
 @main
 def ps4c =
   // Example test case
-  val message = SubMessage("Hello World!")
+  val message     = SubMessage("Hello World!")
   val permutation = "eaiuo"
-  val encDict = message.buildTransposeDict(permutation)
+  val encDict     = message.buildTransposeDict(permutation)
 
   println(s"Original message: ${message.getMessageText} Permutation: $permutation")
   println("Expect encryption: Hallu Wurld!")

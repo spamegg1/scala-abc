@@ -10,7 +10,7 @@ trait GeoInterface:
   def evalProg(env: Map[String, GeoValInterface]): GeoValInterface
 
 object GeoValInterface:
-  val epsilon = 0.00001
+  val epsilon                                    = 0.00001
   def realClose(r1: Double, r2: Double): Boolean = ???
   def realClosePoint(
       x1: Double,
@@ -37,10 +37,10 @@ trait GeoValInterface extends GeoInterface:
       that: LineSegmentInterface
   ): GeoValInterface
 
-abstract class NoPointsInterface extends GeoValInterface
+abstract class NoPointsInterface                    extends GeoValInterface
 abstract class PointInterface(x: Double, y: Double) extends GeoValInterface
-abstract class LineInterface(m: Double, b: Double) extends GeoValInterface
-abstract class VerticalLineInterface(x: Double) extends GeoValInterface
+abstract class LineInterface(m: Double, b: Double)  extends GeoValInterface
+abstract class VerticalLineInterface(x: Double)     extends GeoValInterface
 abstract class LineSegmentInterface(
     x1: Double,
     y1: Double,

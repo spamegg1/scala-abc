@@ -27,8 +27,8 @@ import scala.util.Random
 // (define (circle-fractal n)
 def circleFractal(depth: Int, size: Double): Image =
   val topLeaf = drawLeaf(depth - 1, size / 2.0)
-  val center = Image.circle(size).fillColor(blueViolet)
-  val mid =
+  val center  = Image.circle(size).fillColor(blueViolet)
+  val mid     =
     topLeaf.rotate(90.degrees) beside center beside topLeaf.rotate(-90.degrees)
   topLeaf above mid above topLeaf.rotate(180.degrees)
 

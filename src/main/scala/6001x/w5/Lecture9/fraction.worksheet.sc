@@ -1,7 +1,7 @@
 class Fraction(numer: Int, denom: Int):
-  override def toString = s"${numer} / ${denom}"
-  def getNumer = numer
-  def getDenom = denom
+  override def toString  = s"${numer} / ${denom}"
+  def getNumer           = numer
+  def getDenom           = denom
   def +(other: Fraction) =
     val numerNew =
       other.getDenom * getNumer + other.getNumer * getDenom

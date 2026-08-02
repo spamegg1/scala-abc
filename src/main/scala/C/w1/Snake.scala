@@ -13,14 +13,14 @@ import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.Random
 
-type Food = (x: Double, y: Double)
+type Food  = (x: Double, y: Double)
 type Snake = List[Food]
 
 object Constants:
-  val Width = 600
-  val Height = 600
-  val Size = 25
-  val Start = 200.0
+  val Width     = 600
+  val Height    = 600
+  val Size      = 25
+  val Start     = 200.0
   val SleepTime = 100
 
 object Food:
@@ -93,8 +93,8 @@ object SnakeFx extends JFXApp3:
     .flatMap(_ => Future(gameLoop(update)))
 
   override def start(): Unit =
-    val state = ObjectProperty(State.init)
-    val frame = IntegerProperty(0)
+    val state     = ObjectProperty(State.init)
+    val frame     = IntegerProperty(0)
     val direction = IntegerProperty(4) // right
 
     frame.onChange:

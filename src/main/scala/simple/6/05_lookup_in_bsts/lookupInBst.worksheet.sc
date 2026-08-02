@@ -16,11 +16,11 @@ import BST.*
 //     key is < all keys in its r(ight) child
 //     the same key never appears twice in the tree
 
-val bst0 = Leaf
-val bst1 = Node(1, "abc", Leaf, Leaf)
-val bst7 = Node(7, "ruf", Leaf, Leaf)
-val bst4 = Node(4, "dcj", Leaf, bst7)
-val bst3 = Node(3, "ilk", bst1, bst4)
+val bst0  = Leaf
+val bst1  = Node(1, "abc", Leaf, Leaf)
+val bst7  = Node(7, "ruf", Leaf, Leaf)
+val bst4  = Node(4, "dcj", Leaf, bst7)
+val bst3  = Node(3, "ilk", bst1, bst4)
 val bst14 = Node(14, "olp", Leaf, Leaf)
 val bst27 = Node(27, "wit", bst14, Leaf)
 val bst42 = Node(42, "ily", bst27, Leaf)
@@ -58,7 +58,7 @@ lookupKey(bst4, 7) == Some("ruf")
 
 // def lookupKey(bst: BST, searchKey: Int): Option[String] = None // stub
 def lookupKey(bst: BST, searchKey: Int): Option[String] = bst match
-  case Leaf => None
+  case Leaf                          => None
   case Node(key, value, left, right) =>
     if searchKey == key
     then Some(value)

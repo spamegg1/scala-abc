@@ -106,12 +106,12 @@ case class Region(
     subregions: List[Region]
 )
 val VANCOUVER = Region("Vancouver", City, Nil)
-val VICTORIA = Region("Victoria", City, Nil)
-val BC = Region("British Columbia", Province, List(VANCOUVER, VICTORIA))
-val CALGARY = Region("Calgary", City, Nil)
-val EDMONTON = Region("Edmonton", City, Nil)
-val ALBERTA = Region("Alberta", Province, List(CALGARY, EDMONTON))
-val CANADA = Region("Canada", Country, List(BC, ALBERTA))
+val VICTORIA  = Region("Victoria", City, Nil)
+val BC        = Region("British Columbia", Province, List(VANCOUVER, VICTORIA))
+val CALGARY   = Region("Calgary", City, Nil)
+val EDMONTON  = Region("Edmonton", City, Nil)
+val ALBERTA   = Region("Alberta", Province, List(CALGARY, EDMONTON))
+val CANADA    = Region("Canada", Country, List(BC, ALBERTA))
 
 // (String X Z -> Y) (Y Z -> Z) X X X X X Z Region -> Y
 // (check-expect (fold-region

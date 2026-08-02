@@ -23,17 +23,17 @@ import cats.effect.unsafe.implicits.global
 def rect(w: Double, h: Double, c: Color): Image =
   Rectangle(w, h).fillColor(c).strokeWidth(0)
 
-val redBand = rect(200, 400, Color.red)
-val whiteBand = rect(400, 400, Color.white)
+val redBand     = rect(200, 400, Color.red)
+val whiteBand   = rect(400, 400, Color.white)
 val canadaFlag1 = redBand beside whiteBand beside redBand
 
 /*  Solution 2: using 8 squares */
 def sqr(s: Double, c: Color): Image =
   Image.square(s).fillColor(c).strokeWidth(0)
 
-val redSq = sqr(200, Color.red)
-val whiteSq = sqr(200, Color.white)
-val row = redSq beside whiteSq beside whiteSq beside redSq
+val redSq       = sqr(200, Color.red)
+val whiteSq     = sqr(200, Color.white)
+val row         = redSq beside whiteSq beside whiteSq beside redSq
 val canadaFlag2 = row above row
 
 canadaFlag1.draw()

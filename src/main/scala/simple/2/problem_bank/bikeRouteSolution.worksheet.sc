@@ -20,8 +20,7 @@ import cats.effect.unsafe.implicits.global
 // - "Painted Shared-Use Lane"
 // interp.  Varieties of bike routes in Vancouver
 enum BikeRoute:
-  case
-    SeparatedBikeway,
+  case SeparatedBikeway,
     LocalStreetBikeway,
     PaintedBikeLane,
     PaintedSharedUseLane

@@ -9,14 +9,14 @@ def lyricsToFrequencies(lyrics: List[String]) =
   myDict
 
 def mostCommonWords(freqs: MMap[String, Int]) =
-  val best = freqs.values.max
+  val best  = freqs.values.max
   var words = List[String]()
   for (key, value) <- freqs do if value == best then words = key :: words
   (words, best)
 
 def wordsOften(freqs: MMap[String, Int], minTimes: Int) =
   var result = List[(List[String], Int)]()
-  var done = false
+  var done   = false
   while !done do
     val (words, best) = mostCommonWords(freqs)
     if best >= minTimes then
@@ -28,7 +28,7 @@ def wordsOften(freqs: MMap[String, Int], minTimes: Int) =
 @main
 def songs =
   val sheLovesYou = fromResource("sheLovesYou.txt").getLines().toList
-  val beatles = lyricsToFrequencies(sheLovesYou)
+  val beatles     = lyricsToFrequencies(sheLovesYou)
   wordsOften(beatles, 5).foreach(println)
 // (List(love),5)
 // (List(glad, should, that),7)

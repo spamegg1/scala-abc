@@ -6,7 +6,7 @@ type Slots = List[Slot]
 case class TA(name: String, maxHours: Int, slots: Slots)
 type TAs = List[TA]
 
-type Schedule = Map[Slot, TA]
+type Schedule  = Map[Slot, TA]
 type Schedules = List[Schedule]
 
 def taGoodForSlot(schedule: Schedule, slot: Slot, ta: TA): Boolean =
@@ -15,12 +15,12 @@ def taGoodForSlot(schedule: Schedule, slot: Slot, ta: TA): Boolean =
 @annotation.tailrec
 def solver(tas: TAs, slots: Slots, schedules: Schedules): Schedules =
   slots match
-    case Nil => schedules
+    case Nil          => schedules
     case slot :: rest =>
       val newSchedules =
         for
           schedule <- schedules
-          ta <- tas
+          ta       <- tas
           if taGoodForSlot(schedule, slot, ta)
         yield schedule + (slot -> ta)
       solver(tas, rest, newSchedules)

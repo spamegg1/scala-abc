@@ -27,7 +27,7 @@ import Terrain.*
 case class Pos(x: Int, y: Int):
   require(0 <= x && 0 <= y)
 
-type Row = Vector[Terrain]
+type Row  = Vector[Terrain]
 type Maze = Vector[Row]
 
 def stringToMaze(mazeString: String): Maze =
@@ -141,10 +141,10 @@ def valid(pos: Pos, maze: Maze): Boolean =
 def nextPos(maze: Maze, pos: Pos): List[Pos] =
   List(Pos(pos.x + 1, pos.y), Pos(pos.x, pos.y + 1)).filter(valid(_, maze))
 
-val CELLSIZE = 100
-val BLOCK = Image.square(CELLSIZE)
-val OPEN = BLOCK.fillColor(lightGray)
-val WALL = BLOCK.fillColor(black)
+val CELLSIZE       = 100
+val BLOCK          = Image.square(CELLSIZE)
+val OPEN           = BLOCK.fillColor(lightGray)
+val WALL           = BLOCK.fillColor(black)
 val terrainToImage = (terrain: Terrain) =>
   terrain match
     case Open => OPEN

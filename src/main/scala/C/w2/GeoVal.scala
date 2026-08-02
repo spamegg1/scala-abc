@@ -4,7 +4,7 @@ package w7
 
 /*  companion object for useful helper methods */
 object GeoVal:
-  val epsilon = 0.00001
+  val epsilon                                    = 0.00001
   def realClose(r1: Double, r2: Double): Boolean = (r1 - r2).abs < epsilon
 
   def realClosePoint(
@@ -50,6 +50,6 @@ abstract class GeoVal extends Geometry:
   def intersectNoPoints(that: GeoVal): GeoVal = that // NoPoints
 
   def evalProg(env: Map[String, GeoVal]): GeoVal = this
-  def preprocessProg: Geometry = this
+  def preprocessProg: Geometry                   = this
 
 end GeoVal

@@ -1,11 +1,11 @@
-val x = 0.5
+val x      = 0.5
 var p: Int = 0
 
 while (math.pow(2, p) * x) % 1 != 0 do
   println(s"Remainder = ${math.pow(2, p) * x - (math.pow(2, p) * x).toInt}")
   p += 1
 
-var num = (math.pow(2, p) * x).toInt
+var num    = (math.pow(2, p) * x).toInt
 var result = ""
 
 if num == 0 then result = "0"

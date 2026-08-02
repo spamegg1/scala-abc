@@ -9,7 +9,7 @@ def spam(x: Int) = x
  *  assumes string occurs in list at most once  */
 def allExceptOption(s: String, lst: List[String]): Option[List[String]] =
   lst match
-    case Nil => None
+    case Nil     => None
     case x :: xs =>
       val rest = allExceptOption(s, xs)
       (x == s, rest) match
@@ -22,7 +22,7 @@ def allExceptOption(s: String, lst: List[String]): Option[List[String]] =
  *  assumes each list has no repetitions  */
 def getSubst1(lst: List[List[String]], s: String): List[String] =
   lst match
-    case Nil => Nil
+    case Nil     => Nil
     case x :: xs =>
       allExceptOption(s, x) match
         case None    => getSubst1(xs, s)
@@ -37,7 +37,7 @@ def getSubst2(lst: List[List[String]], s: String): List[String] =
       acc: List[String]
   ): List[String] =
     ls match
-      case Nil => acc
+      case Nil     => acc
       case l :: ls =>
         allExceptOption(str, l) match
           case None    => helper(ls, s, acc)
@@ -102,15 +102,15 @@ def cardValue(card: Card): Int =
 /*  remove card from list (only once), throws IllegalMove if card not in list */
 def removeCard(hand: List[Card], card: Card): List[Card] =
   hand match
-    case Nil => throw new IllegalMove
+    case Nil     => throw new IllegalMove
     case x :: xs =>
       if card == x then xs
       else x :: removeCard(xs, card)
 
 /*  returns true if all cards in list have same color  */
 def allSameColor(cards: List[Card]): Boolean = cards match
-  case Nil      => true
-  case _ :: Nil => true
+  case Nil                    => true
+  case _ :: Nil               => true
   case head :: (neck :: rest) =>
     cardColor(head) == cardColor(neck) && allSameColor(neck :: rest)
 
@@ -123,8 +123,8 @@ def sumCards(cards: List[Card]): Int =
 
 /*  computes score for held cards  */
 def score(hand: List[Card], goal: Int): Int =
-  val sum = sumCards(hand)
-  val same = allSameColor(hand)
+  val sum    = sumCards(hand)
+  val same   = allSameColor(hand)
   val prelim =
     if sum > goal
     then (sum - goal) * 3

@@ -1,6 +1,6 @@
-val epsilon = 0.01
-val y = 54.0
-var guess = y / 2.0
+val epsilon    = 0.01
+val y          = 54.0
+var guess      = y / 2.0
 var numGuesses = 0
 
 while math.abs(math.pow(guess, 2) - y) >= epsilon do

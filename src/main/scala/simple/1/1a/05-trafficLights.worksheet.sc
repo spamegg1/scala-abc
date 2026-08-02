@@ -6,9 +6,9 @@ import cats.effect.unsafe.implicits.global
 
 def colorCircle(c: Color): Image = Image.circle(200).fillColor(c)
 
-val redCircle = colorCircle(Color.red)
+val redCircle    = colorCircle(Color.red)
 val yellowCircle = colorCircle(Color.yellow)
-val greenCircle = colorCircle(Color.green)
+val greenCircle  = colorCircle(Color.green)
 
 val trafficLights =
   redCircle

@@ -32,7 +32,7 @@ concat(List("hello", "world"), List("spam", "ham", "eggs")) ==
 
 def concat(list1: List[String], list2: List[String]): List[String] =
   (list1, list2) match
-    case (Nil, _) => list2
-    case (_, Nil) => list1
+    case (Nil, _)                         => list2
+    case (_, Nil)                         => list1
     case (head1 :: next1, head2 :: next2) =>
       head1 :: concat(next1, list2)

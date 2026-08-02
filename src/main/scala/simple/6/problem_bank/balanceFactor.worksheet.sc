@@ -30,11 +30,11 @@ enum BST:
   case Node(key: Int, value: String, left: BST, right: BST)
 import BST.*
 
-val bst0 = Leaf
-val bst1 = Node(1, "abc", Leaf, Leaf)
-val bst7 = Node(7, "ruf", Leaf, Leaf)
-val bst4 = Node(4, "dcj", Leaf, bst7)
-val bst3 = Node(3, "ilk", bst1, bst4)
+val bst0  = Leaf
+val bst1  = Node(1, "abc", Leaf, Leaf)
+val bst7  = Node(7, "ruf", Leaf, Leaf)
+val bst4  = Node(4, "dcj", Leaf, bst7)
+val bst3  = Node(3, "ilk", bst1, bst4)
 val bst14 = Node(14, "olp", Leaf, Leaf)
 val bst27 = Node(27, "wit", bst14, Leaf)
 val bst42 = Node(42, "ily", bst27, Leaf)
@@ -55,7 +55,7 @@ balanceFactor(bst10) == 0
 balanceFactor(Node(42, "ily", Leaf, bst27)) == -2
 
 def height(bst: BST): Int = bst match
-  case Leaf => -1
+  case Leaf                          => -1
   case Node(key, value, left, right) =>
     1 + math.max(height(left), height(right))
 
@@ -77,7 +77,7 @@ balanced(bst27)
 
 //<template from BST>
 def balanced(bst: BST): Boolean = bst match
-  case Leaf => true
+  case Leaf                          => true
   case Node(key, value, left, right) =>
     -1 <= balanceFactor(bst) &&
     balanceFactor(bst) <= 1 &&

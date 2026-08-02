@@ -26,10 +26,10 @@ package py4e
 
 @main
 def socket1 =
-  val request = basicRequest.get(uri"http://data.pr4e.org/intro-short.txt")
-  val client = DefaultSyncBackend()
+  val request  = basicRequest.get(uri"http://data.pr4e.org/intro-short.txt")
+  val client   = DefaultSyncBackend()
   val response = client.send(request)
-  val header = response.header
+  val header   = response.header
 
   println(header("ETag").get)
   println(header("Last-Modified").get)

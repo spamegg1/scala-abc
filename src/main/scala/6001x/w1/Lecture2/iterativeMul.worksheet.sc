@@ -1,5 +1,5 @@
-val x = 5
-var ans = 0
+val x         = 5
+var ans       = 0
 var itersLeft = x
 
 while itersLeft != 0 do

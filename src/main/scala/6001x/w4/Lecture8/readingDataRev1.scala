@@ -4,8 +4,8 @@ package mit6001x
 @main
 def readDataRev1 =
   val fileName = "hello.txt"
-  val file = fromResource(fileName)
-  val data = ArrayBuffer[String]()
+  val file     = fromResource(fileName)
+  val data     = ArrayBuffer[String]()
 
   try
     for line <- file.getLines()

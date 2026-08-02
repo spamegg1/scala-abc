@@ -16,11 +16,11 @@ def intSetTest =
   s.insert(3)
   s.insert(4)
   s.insert(3)
-  println(s) // 3,4
+  println(s)           // 3,4
   println(s.member(3)) // true
   println(s.member(5)) // false
   s.insert(6)
   println(s) // 3,4,6
   s.remove(3)
-  println(s) // 4,6
+  println(s)  // 4,6
   s.remove(3) // 3 not found

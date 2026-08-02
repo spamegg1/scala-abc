@@ -19,12 +19,12 @@ def monthsA(
   //     For example down = 0.15
   // rate: Double : annual Interest rate that you receive on your investments.
   //     For example rate = 0.04
-  var month: Int = 0
+  var month: Int             = 0
   var currentSavings: Double = 0.0
 
   while currentSavings < total * down do
     val investReturn = currentSavings * rate / 12
-    val monthlySave = salary / 12 * save
+    val monthlySave  = salary / 12 * save
     currentSavings += monthlySave + investReturn
     month += 1
 
@@ -40,8 +40,8 @@ def ps1a =
   testA
 
   val portionDownPay = 0.25
-  val annualRate = 0.04
-  val annualSalary = readLine("Enter your annual salary: ").toInt
+  val annualRate     = 0.04
+  val annualSalary   = readLine("Enter your annual salary: ").toInt
 
   val portionSaved = readLine(
     "Enter the percent of your salary to save, as a decimal: "

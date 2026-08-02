@@ -21,11 +21,11 @@ import BST.*
 //     key is > all keys in its l(eft)  child
 //     key is < all keys in its r(ight) child
 //     the same key never appears twice in the tree
-val bst0 = Leaf
-val bst1 = Node(1, "abc", Leaf, Leaf)
-val bst7 = Node(7, "ruf", Leaf, Leaf)
-val bst4 = Node(4, "dcj", Leaf, bst7)
-val bst3 = Node(3, "ilk", bst1, bst4)
+val bst0  = Leaf
+val bst1  = Node(1, "abc", Leaf, Leaf)
+val bst7  = Node(7, "ruf", Leaf, Leaf)
+val bst4  = Node(4, "dcj", Leaf, bst7)
+val bst3  = Node(3, "ilk", bst1, bst4)
 val bst14 = Node(14, "olp", Leaf, Leaf)
 val bst27 = Node(27, "wit", bst14, Leaf)
 val bst42 = Node(42, "ily", bst27, Leaf)
@@ -46,8 +46,8 @@ def fnForBst(bst: BST) = bst match
 // Functions:
 // Integer String BST -> BST
 // produce new BST in which key, val pair have been inserted in proper place
-val temp2 = Node(2, "a", Leaf, Leaf)
-val temp3 = Node(3, "c", Leaf, Leaf)
+val temp2  = Node(2, "a", Leaf, Leaf)
+val temp3  = Node(3, "c", Leaf, Leaf)
 val temp19 = Node(19, "z", Leaf, Leaf)
 val temp14 = Node(14, "olp", Leaf, temp19)
 val temp27 = Node(27, "wit", temp14, Leaf)
@@ -61,7 +61,7 @@ insert(19, "z", bst10) == Node(10, "why", bst3, temp42)
 //<template from BST with 2 additional atomic parameters>
 // def insert(insertKey: Int, insertValue: String, bst: BST): BST = bst // stub
 def insert(insertKey: Int, insertValue: String, bst: BST): BST = bst match
-  case Leaf => Node(insertKey, insertValue, Leaf, Leaf)
+  case Leaf                          => Node(insertKey, insertValue, Leaf, Leaf)
   case Node(key, value, left, right) =>
     insertKey compare key match
       case -1 => Node(key, value, insert(insertKey, insertValue, left), right)

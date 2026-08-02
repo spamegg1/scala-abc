@@ -1,7 +1,7 @@
-val cube = 27
-val epsilon = 0.01
-var guess = 0.0
-val increment = 0.0001
+val cube       = 27
+val epsilon    = 0.01
+var guess      = 0.0
+val increment  = 0.0001
 var numGuesses = 0
 
 while math.abs(math.pow(guess, 3) - cube) >= epsilon do

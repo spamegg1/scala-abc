@@ -12,7 +12,7 @@ import cats.effect.unsafe.implicits.global
 def colorSquare(c: Color): Image = Image.square(200).fillColor(c)
 
 val yellowSquare = colorSquare(Color.yellow)
-val blueSquare = colorSquare(Color.blue)
+val blueSquare   = colorSquare(Color.blue)
 
 val yellowBlueRow = yellowSquare beside blueSquare
 val blueYellowRow = blueSquare beside yellowSquare
