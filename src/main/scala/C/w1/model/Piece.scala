@@ -6,9 +6,10 @@ package C.w1
   *   Sequence of positions on the Tetris screen that are occupied by this piece.
   */
 case class Piece(points: Points):
+  val color      = Constants.Colors.sample
   val rotations  = Piece.rotations(points)
   val numOfRots  = rotations.length
-  var basePos    = (x = 5, y = 0)
+  var position   = (x = 5, y = 0)
   var moved      = true
   var rotIndex   = util.Random.nextInt(numOfRots)
   def currentRot = rotations(rotIndex)
@@ -18,10 +19,10 @@ case class Piece(points: Points):
     val index     = (rotIndex + dr) % numOfRots
     val potential = rotations(index)
     potential.foreach: (x, y) =>
-      val pos: Pos = (x = x + dx + basePos.x, y = y + dy + basePos.y)
+      val pos: Pos = (x = x + dx + position.x, y = y + dy + position.y)
       if !board.emptyAt(pos) then moved = false
     if moved then
-      basePos = (basePos.x + dx, basePos.y + dy)
+      position = (position.x + dx, position.y + dy)
       rotIndex = (rotIndex + dr) % numOfRots
     moved
   end move
