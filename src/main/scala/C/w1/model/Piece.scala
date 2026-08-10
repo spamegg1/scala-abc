@@ -27,7 +27,9 @@ case class Piece(points: Points):
     moved
   end move
 
-  def dropByOne(board: Board): Unit = moved = move(0, 1, 0, board)
+  def dropByOne(board: Board) =
+    moved = move(0, 1, 0, board)
+    moved
 end Piece
 
 /** Methods for pieces that are uniform and do not depend on a particular instance. */

@@ -49,3 +49,27 @@ case class Board(pieces: List[Piece]):
           grid(Rows - row2 + 1) = grid(Rows - row2)
         grid(0) = Array.fill[Option[Color]](Cols)(None) // insert new blank row at top
         score += 10                                     // adjust score for full flow
+
+  def nextPiece: Unit =
+    if cheated then
+      currentBlock = StandardPieces.Cheat
+      cheated = false
+    else currentBlock = StandardPieces.next
+    currentPos = Seq()
+
+  def cheat: Unit =
+    if score >= 100 && !cheated then
+      score -= 100
+      cheated = true
+
+  def gameOver    = grid(1).exists(_.isDefined)
+  def updateScore = ()
+  def draw        = ()
+
+  def run: Unit =
+    val ran = currentBlock.dropByOne(this)
+    if !ran then
+      storeCurrent
+      if !gameOver then nextPiece
+    updateScore
+    draw
